@@ -1,0 +1,118 @@
+
+*{
+	/*background-color: #00c1;/**/
+	/*margin: 0;
+	padding: 0;*/
+}
+
+body{
+	font-family: "Times New Roman", serif;
+	font-size: 14pt;
+}
+
+
+
+
+/* Титульник */
+
+header{
+	height: 100%;
+
+	page-break-after: always;
+	text-align: center;
+	position: relative;
+}
+
+header > *{
+	position: absolute;
+	width: 100%;
+}
+
+header > :first-child{
+	position: relative;
+}
+
+header > :nth-last-child(2){
+	bottom: 0cm;
+}
+
+header > :last-child{
+	position: relative;
+	page-break-before: always;
+}
+
+header table{
+	display: inline-block;
+	text-align: left;
+	width: auto;
+	/*left: 0;*/
+	right: 0;
+}
+
+header table *{
+	vertical-align: bottom;
+}
+
+.discipline{
+	top: 5cm;
+}
+
+.title_work{
+	top: 9cm;
+}
+
+.signature{
+	text-align: right;
+	top: 14cm;
+}
+
+
+
+
+/* Форматирование */
+h1, h2, h3{
+	page-break-after: avoid;
+}
+
+h1{
+	text-align: center;
+}
+
+
+
+
+/* Отображение */
+
+@page{
+	size: A4; /*landscape*/
+	margin: 1cm 1.5cm 1cm 3cm;
+}
+/*
+@page:first{
+	;
+}*/
+
+@media screen{
+	header{
+		height: 15cm;
+		width: 17cm;
+		margin: 0 auto;
+	}
+
+	.discipline{
+		top: 25%;
+	}
+
+	.title_work{
+		top: 50%;
+	}
+
+	.signature{
+		text-align: right;
+		top: 65%;
+	}
+
+	body > *{
+		margin-bottom: 20px;
+	}
+}
