@@ -8,6 +8,7 @@
 body{
 	font-family: "Times New Roman", serif;
 	font-size: 14pt;
+	line-height: 1.5;
 }
 
 
@@ -15,7 +16,7 @@ body{
 
 /* Титульник */
 
-header{
+.title_page{
 	height: 100%;
 
 	page-break-after: always;
@@ -23,33 +24,31 @@ header{
 	position: relative;
 }
 
-header > *{
+.title_page > *{
 	position: absolute;
 	width: 100%;
 }
 
-header > :first-child{
+.title_page > :first-child{
 	position: relative;
 }
 
-header > :nth-last-child(2){
+.title_page > :nth-last-child(2){
 	bottom: 0cm;
 }
 
-header > :last-child{
+.title_page > :last-child{
 	position: relative;
 	page-break-before: always;
 }
 
-header table{
+.title_page table{
 	display: inline-block;
 	text-align: left;
-	width: auto;
-	/*left: 0;*/
 	right: 0;
 }
 
-header table *{
+.title_page table *{
 	vertical-align: bottom;
 }
 
@@ -86,6 +85,16 @@ h1{
 
 
 
+
+/* Вспомогательное форматирование */
+ins{
+	background-color: #9ff;
+	text-decoration: none;
+}
+
+
+
+
 /* Отображение */
 
 @page{
@@ -98,10 +107,28 @@ h1{
 }*/
 
 @media screen{
-	header{
-		height: 15cm;
-		width: 17cm;
+	body{
+		background-color: #ddd;
+	}
+
+	main{
+		width: 800px;
 		margin: 0 auto;
+	}
+
+	main > *{
+		padding: 1cm 1.5cm 1cm 3cm;
+		background-color: #fff;
+		margin-bottom: 10px;
+	}
+
+	.title_page{
+		/*padding: 0;/**/
+		height: 700px;
+	}
+
+	.title_page > *{
+		width: auto;
 	}
 
 	.discipline{
@@ -115,9 +142,5 @@ h1{
 	.signature{
 		text-align: right;
 		top: 65%;
-	}
-
-	body > *{
-		margin-bottom: 20px;
 	}
 }
