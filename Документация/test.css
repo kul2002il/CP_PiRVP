@@ -70,6 +70,11 @@ header table *{
 
 
 /* Форматирование */
+
+main > div{
+	page-break-after: always;
+}
+
 h1, h2, h3{
 	page-break-after: avoid;
 }
