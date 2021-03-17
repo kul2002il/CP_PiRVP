@@ -94,6 +94,15 @@ h1{
 	font-size: 12pt;
 }
 
+p{
+	text-align: justify;
+}
+
+a{
+	color: black;
+	text-decoration: none;
+}
+
 
 
 
