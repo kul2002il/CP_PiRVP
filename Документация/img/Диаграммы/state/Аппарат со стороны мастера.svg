@@ -1,247 +1,232 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
-<svg width="40cm" height="64cm" viewBox="-1 -201 799 1272" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <g id="Фон">
-    <ellipse style="fill: #000000; fill-opacity: 1; stroke: none" cx="391.45" cy="-170" rx="10" ry="10"/>
-    <g>
-      <ellipse style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" cx="391.45" cy="1055" rx="15" ry="15"/>
-      <ellipse style="fill: #000000; fill-opacity: 1; stroke: none" cx="391.45" cy="1055" rx="10" ry="10"/>
-    </g>
-    <g>
-      <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="335.4" y="-100" width="112.1" height="36" rx="10" ry="10"/>
-      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="391.45" y="-78.1">
-        <tspan x="391.45" y="-78.1">Поступивший</tspan>
-      </text>
-    </g>
-    <g>
-      <polygon style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="0,-200 175.4,-200 187.4,-188 187.4,-118 0,-118 "/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 1; stroke: #000000" points="175.4,-200 175.4,-188 187.4,-188 "/>
-      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="7" y="-175.1">
-        <tspan x="7" y="-175.1">Субъект моделирования:</tspan>
-        <tspan xml:space="preserve" x="7" y="-159.1">  Заказ на ремонт</tspan>
-        <tspan x="7" y="-143.1">Точка зрения:</tspan>
-        <tspan xml:space="preserve" x="7" y="-127.1">  Мастер</tspan>
-      </text>
-    </g>
-    <g>
-      <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="300" y="100" width="182.9" height="36" rx="10" ry="10"/>
-      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="391.45" y="121.9">
-        <tspan x="391.45" y="121.9">Продиагностированный</tspan>
-      </text>
-    </g>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="394.45" y="72.425">
-      <tspan x="394.45" y="72.425">Диагностика аппарата</tspan>
-    </text>
-    <g>
-      <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="331.95" y="0" width="119" height="36" rx="10" ry="10"/>
-      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="391.45" y="21.9">
-        <tspan x="391.45" y="21.9">Договорённый</tspan>
-      </text>
-    </g>
-    <g>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="391.45,-158.995 391.45,-130.002 391.45,-130.002 391.45,-105.481 "/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="386.45,-113.245 391.45,-103.245 396.45,-113.245 "/>
-    </g>
-    <g>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="391.45,-62.9907 391.45,-32 391.45,-32 391.45,-5.48141 "/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="386.45,-13.2453 391.45,-3.24535 396.45,-13.2453 "/>
-    </g>
-    <g>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="391.45,37.0093 391.45,68 391.45,68 391.45,94.5186 "/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="386.45,86.7547 391.45,96.7547 396.45,86.7547 "/>
-    </g>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="394.45" y="-27.575">
-      <tspan x="394.45" y="-27.575">Договор о диагностике</tspan>
-    </text>
-    <g>
-      <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="347.45" y="440" width="88" height="36" rx="10" ry="10"/>
-      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="391.45" y="461.9">
-        <tspan x="391.45" y="461.9">Принятый</tspan>
-      </text>
-    </g>
-    <g>
-      <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="160" y="840" width="112.7" height="52" rx="10" ry="10"/>
-      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="216.35" y="861.9">
-        <tspan x="216.35" y="861.9">Отклонённый</tspan>
-        <tspan x="216.35" y="877.9">заказчиком</tspan>
-      </text>
-    </g>
-    <g>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="391.45,357.009 391.45,398 391.45,398 391.45,434.519 "/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="386.45,426.755 391.45,436.755 396.45,426.755 "/>
-    </g>
-    <g>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="338.4,226 216.35,226 216.35,835.528 "/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="211.35,827.764 216.35,837.764 221.35,827.764 "/>
-    </g>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="394.45" y="394.425">
-      <tspan x="394.45" y="394.425">Принятие</tspan>
-      <tspan x="394.45" y="410.425">на ремонт</tspan>
-    </text>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="219.35" y="521.425">
-      <tspan x="219.35" y="521.425">Отказ от</tspan>
-      <tspan x="219.35" y="537.425">ремонта</tspan>
-      <tspan x="219.35" y="553.425">или неоплата</tspan>
-    </text>
-    <g>
-      <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="324.875" y="540" width="133.15" height="52" rx="10" ry="10"/>
-      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="391.45" y="561.9">
-        <tspan x="391.45" y="561.9">Ремонтирование</tspan>
-        <tspan x="391.45" y="577.9">аппарата</tspan>
-      </text>
-    </g>
-    <g>
-      <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="334.225" y="660" width="114.45" height="36" rx="10" ry="10"/>
-      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="391.45" y="681.9">
-        <tspan x="391.45" y="681.9">Тестирование</tspan>
-      </text>
-    </g>
-    <g>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="391.45,592.982 391.45,625.998 391.45,625.998 391.45,654.522 "/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="386.45,646.758 391.45,656.758 396.45,646.758 "/>
-    </g>
-    <g>
-      <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="339.175" y="840" width="104.55" height="36" rx="10" ry="10"/>
-      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="391.45" y="861.9">
-        <tspan x="391.45" y="861.9">На гарантии</tspan>
-      </text>
-    </g>
-    <g>
-      <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="351.45" y="960" width="80" height="36" rx="10" ry="10"/>
-      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="391.45" y="981.9">
-        <tspan x="391.45" y="981.9">Рабочий</tspan>
-      </text>
-    </g>
-    <g>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="391.45,876 391.45,918 391.45,918 391.45,955.528 "/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="386.45,947.764 391.45,957.764 396.45,947.764 "/>
-    </g>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="394.45" y="906.425">
-      <tspan x="394.45" y="906.425">Конец гарантии</tspan>
-      <tspan x="394.45" y="922.425">[С момента сдачи</tspan>
-      <tspan x="394.45" y="938.425">в работу&gt; 3 месяцев]</tspan>
-    </text>
-    <g>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="443.725,858 521.862,858 521.862,858 595.528,858 "/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="587.764,863 597.764,858 587.764,853 "/>
-    </g>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="521.862" y="851.95">
-      <tspan x="521.862" y="851.95">Поломка аппарата</tspan>
-    </text>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="394.45" y="512.426">
-      <tspan x="394.45" y="512.426">Начало работ</tspan>
-    </text>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="394.45" y="630.423">
-      <tspan x="394.45" y="630.423">Починка</tspan>
-    </text>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="394.45" y="764.425">
-      <tspan x="394.45" y="764.425">Успешная работа</tspan>
-      <tspan x="394.45" y="780.425">аппарата</tspan>
-    </text>
-    <g>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="448.675,678 500,678 500,566 462.497,566 "/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="470.261,561 460.261,566 470.261,571 "/>
-    </g>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="503" y="618.425">
-      <tspan x="503" y="618.425">Выяснен</tspan>
-      <tspan x="503" y="634.425">дефект</tspan>
-    </text>
-    <g>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="391.45,997 391.45,1020 391.45,1020 391.45,1035.53 "/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="386.45,1027.76 391.45,1037.76 396.45,1027.76 "/>
-    </g>
-    <g>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="216.35,893.005 216.35,1020 391.45,1020 391.45,1035.53 "/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="386.45,1027.76 391.45,1037.76 396.45,1027.76 "/>
-    </g>
-    <g>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="391.45,477.009 391.45,508.001 391.45,508.001 391.45,534.521 "/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="386.45,526.757 391.45,536.757 396.45,526.757 "/>
-    </g>
-    <g>
-      <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="338.4" y="200" width="106.1" height="52" rx="10" ry="10"/>
-      <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="391.45" y="221.9">
-        <tspan x="391.45" y="221.9">Ожидающий</tspan>
-        <tspan x="391.45" y="237.9">оплаты</tspan>
-      </text>
-    </g>
-    <g>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="391.45,253.007 391.45,285.999 391.45,285.999 391.45,314.519 "/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="386.45,306.755 391.45,316.755 396.45,306.755 "/>
-    </g>
-    <g>
-      <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="351.45" y="320" width="80" height="36" rx="10" ry="10"/>
-      <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="391.45" y="341.9">
-        <tspan x="391.45" y="341.9">Оплачен</tspan>
-      </text>
-    </g>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="394.45" y="282.424">
-      <tspan x="394.45" y="282.424">Оплата</tspan>
-      <tspan x="394.45" y="298.424">ремонта</tspan>
-    </text>
-    <g>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="391.45,697.009 391.45,768 391.45,768 391.45,834.519 "/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="386.45,826.755 391.45,836.755 396.45,826.755 "/>
-    </g>
-    <g>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="391.45,137.009 391.45,168.001 391.45,168.001 391.45,194.521 "/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="386.45,186.757 391.45,196.757 396.45,186.757 "/>
-    </g>
-    <g>
-      <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="607.025" y="320" width="182.9" height="36" rx="10" ry="10"/>
-      <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="698.475" y="341.9">
-        <tspan x="698.475" y="341.9">Продиагностированный</tspan>
-      </text>
-    </g>
-    <g>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="607.025,338 500,338 500,458 440.928,458 "/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="448.692,453 438.692,458 448.692,463 "/>
-    </g>
-    <g>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="607.025,338 500,338 500,226 448.972,226 "/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="456.736,221 446.736,226 456.736,231 "/>
-    </g>
-    <g>
-      <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="20" y="840" width="112.7" height="52" rx="10" ry="10"/>
-      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="76.35" y="861.9">
-        <tspan x="76.35" y="861.9">Отклонённый</tspan>
-        <tspan x="76.35" y="877.9">компанией</tspan>
-      </text>
-    </g>
-    <g>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="76.35,892 76.35,1020 391.45,1020 391.45,1035.53 "/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="386.45,1027.76 391.45,1037.76 396.45,1027.76 "/>
-    </g>
-    <g>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="300,118 76.35,118 76.35,835.528 "/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="71.35,827.764 76.35,837.764 81.35,827.764 "/>
-    </g>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="79.35" y="467.425">
-      <tspan x="79.35" y="467.425">Отклонение</tspan>
-      <tspan x="79.35" y="483.425">ремонта</tspan>
-      <tspan x="79.35" y="499.425">мастером</tspan>
-    </text>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="503" y="394.425">
-      <tspan x="503" y="394.425">Диагностированна</tspan>
-      <tspan x="503" y="410.425">гарантийная поломка</tspan>
-    </text>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="503" y="278.425">
-      <tspan x="503" y="278.425">Диагностированна</tspan>
-      <tspan x="503" y="294.425">не гарантийная поломка</tspan>
-    </text>
-    <g>
-      <rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="600" y="840" width="196.95" height="36" rx="10" ry="10"/>
-      <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="698.475" y="861.9">
-        <tspan x="698.475" y="861.9">Ожидающий диагностики</tspan>
-      </text>
-    </g>
-    <g>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="698.475,838.991 698.475,598 698.475,598 698.475,361.481 "/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="703.475,369.245 698.475,359.245 693.475,369.245 "/>
-    </g>
-    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="701.475" y="594.238">
-      <tspan x="701.475" y="594.238">Диагностика</tspan>
-      <tspan x="701.475" y="610.238">аппарата</tspan>
-    </text>
-  </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1267.9 1814.2" style="enable-background:new 0 0 1267.9 1814.2;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;stroke:#000000;stroke-width:2;}
+	.st1{font-family:'ArialMT';}
+	.st2{font-size:18.1644px;}
+	.st3{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;stroke:#000000;stroke-width:2;}
+	.st4{fill:none;stroke:#000000;}
+	.st5{font-family:'CourierNewPSMT';}
+	.st6{fill:none;stroke:#000000;stroke-width:2;}
+	.st7{font-size:18.1642px;}
+</style>
+<g id="Фон">
+	<ellipse cx="611.4" cy="48.5" rx="14.2" ry="14.2"/>
+	<g>
+		<ellipse class="st0" cx="611.4" cy="1786.9" rx="21.3" ry="21.3"/>
+		<ellipse cx="611.4" cy="1786.9" rx="14.2" ry="14.2"/>
+	</g>
+	<g>
+		<path class="st0" d="M546,147.9h130.7c7.8,0,14.2,6.4,14.2,14.2v22.7c0,7.8-6.4,14.2-14.2,14.2H546c-7.8,0-14.2-6.4-14.2-14.2
+			v-22.7C531.8,154.2,538.2,147.9,546,147.9z"/>
+		<text transform="matrix(1 0 0 1 554.2164 178.9478)" class="st1 st2">Поступивший</text>
+	</g>
+	<g>
+		<polygon class="st3" points="55.9,6 304.8,6 321.8,23 321.8,122.3 55.9,122.3 		"/>
+		<polyline class="st4" points="304.8,6 304.8,23 321.8,23 		"/>
+		<text transform="matrix(1 0 0 1 65.8169 41.2954)" class="st5 st2">Субъект моделирования:</text>
+		<text transform="matrix(1 0 0 1 305.6265 41.2954)" class="st5 st2"> </text>
+		<text transform="matrix(1 0 0 1 65.8169 64.001)" class="st5 st2">  Заказ на ремонт</text>
+		<text transform="matrix(1 0 0 1 251.1241 64.001)" class="st5 st2"> </text>
+		<text transform="matrix(1 0 0 1 65.8169 86.7065)" class="st5 st2">Точка зрения:</text>
+		<text transform="matrix(1 0 0 1 207.522 86.7065)" class="st5 st2"> </text>
+		<text transform="matrix(1 0 0 1 65.8169 109.4121)" class="st5 st2">  Мастер</text>
+	</g>
+	<g>
+		<path class="st0" d="M495.8,431.7H727c7.8,0,14.2,6.4,14.2,14.2v22.7c0,7.8-6.4,14.2-14.2,14.2H495.8c-7.8,0-14.2-6.4-14.2-14.2
+			v-22.7C481.6,438,488,431.7,495.8,431.7z"/>
+		<text transform="matrix(1 0 0 1 510.8716 462.7671)" class="st1 st2">Продиагностированный</text>
+	</g>
+	<text transform="matrix(1 0 0 1 615.6451 392.5571)" class="st1 st2">Диагностика аппарата</text>
+	<g>
+		<path class="st0" d="M541.1,289.8h140.5c7.8,0,14.2,6.4,14.2,14.2v22.7c0,7.8-6.4,14.2-14.2,14.2H541.1c-7.8,0-14.2-6.4-14.2-14.2
+			V304C527,296.1,533.3,289.8,541.1,289.8z"/>
+		<text transform="matrix(1 0 0 1 550.4117 320.8574)" class="st1 st2">Договорённый</text>
+	</g>
+	<g>
+		<polyline class="st6" points="611.4,64.2 611.4,105.3 611.4,105.3 611.4,140.1 		"/>
+		<polyline class="st6" points="604.3,129.1 611.4,143.3 618.5,129.1 		"/>
+	</g>
+	<g>
+		<polyline class="st6" points="611.4,200.4 611.4,244.4 611.4,244.4 611.4,282 		"/>
+		<polyline class="st6" points="604.3,271 611.4,285.2 618.5,271 		"/>
+	</g>
+	<g>
+		<polyline class="st6" points="611.4,342.3 611.4,386.3 611.4,386.3 611.4,423.9 		"/>
+		<polyline class="st6" points="604.3,412.9 611.4,427.1 618.5,412.9 		"/>
+	</g>
+	<text transform="matrix(1 0 0 1 615.6451 250.6475)" class="st1 st2">Договор о диагностике</text>
+	<g>
+		<path class="st0" d="M563.1,914.2h96.5c7.8,0,14.2,6.4,14.2,14.2v22.7c0,7.8-6.4,14.2-14.2,14.2h-96.5c-7.8,0-14.2-6.4-14.2-14.2
+			v-22.7C548.9,920.5,555.3,914.2,563.1,914.2z"/>
+		<text transform="matrix(1 0 0 1 569.0416 945.2598)" class="st1 st2">Принятый</text>
+	</g>
+	<g>
+		<path class="st0" d="M297.1,1481.8h131.6c7.8,0,14.2,6.4,14.2,14.2v45.4c0,7.8-6.4,14.2-14.2,14.2H297.1
+			c-7.8,0-14.2-6.4-14.2-14.2V1496C282.9,1488.2,289.3,1481.8,297.1,1481.8z"/>
+		<text transform="matrix(1 0 0 1 302.9302 1512.8984)" class="st1 st2">Отклонённый</text>
+		<text transform="matrix(1 0 0 1 417.8326 1512.8984)" class="st1 st2"> </text>
+		<text transform="matrix(1 0 0 1 315.5288 1535.6045)" class="st1 st2">заказчиком</text>
+	</g>
+	<g>
+		<polyline class="st6" points="611.4,796.4 611.4,854.6 611.4,854.6 611.4,906.4 		"/>
+		<polyline class="st6" points="604.3,895.4 611.4,909.6 618.5,895.4 		"/>
+	</g>
+	<g>
+		<polyline class="st6" points="536.1,610.5 362.9,610.5 362.9,1475.5 		"/>
+		<polyline class="st6" points="355.8,1464.5 362.9,1478.6 370,1464.5 		"/>
+	</g>
+	<text transform="matrix(1 0 0 1 615.6451 849.5059)" class="st1 st2">Принятие</text>
+	<text transform="matrix(1 0 0 1 697.3853 849.5059)" class="st1 st2"> </text>
+	<text transform="matrix(1 0 0 1 615.6451 872.2119)" class="st1 st2">на ремонт</text>
+	<text transform="matrix(1 0 0 1 367.1617 1029.7314)" class="st1 st2">Отказ от</text>
+	<text transform="matrix(1 0 0 1 439.2525 1029.7314)" class="st1 st2"> </text>
+	<text transform="matrix(1 0 0 1 367.1617 1052.4375)" class="st1 st2">ремонта</text>
+	<text transform="matrix(1 0 0 1 438.2056 1052.4375)" class="st1 st2"> </text>
+	<text transform="matrix(1 0 0 1 367.1617 1075.1426)" class="st1 st2">или неоплата</text>
+	<g>
+		<path class="st0" d="M531.1,1056.1h160.6c7.8,0,14.2,6.4,14.2,14.2v45.4c0,7.8-6.4,14.2-14.2,14.2H531.1
+			c-7.8,0-14.2-6.4-14.2-14.2v-45.4C516.9,1062.4,523.3,1056.1,531.1,1056.1z"/>
+		<text transform="matrix(1 0 0 1 537.5953 1087.1699)" class="st1 st2">Ремонтирование</text>
+		<text transform="matrix(1 0 0 1 680.1353 1087.1699)" class="st1 st2"> </text>
+		<text transform="matrix(1 0 0 1 572.438 1109.875)" class="st1 st2">аппарата</text>
+	</g>
+	<g>
+		<path class="st0" d="M544.4,1226.4h134c7.8,0,14.2,6.4,14.2,14.2v22.7c0,7.8-6.4,14.2-14.2,14.2h-134c-7.8,0-14.2-6.4-14.2-14.2
+			v-22.7C530.2,1232.7,536.5,1226.4,544.4,1226.4z"/>
+		<text transform="matrix(1 0 0 1 552.5093 1257.4609)" class="st1 st2">Тестирование</text>
+	</g>
+	<g>
+		<polyline class="st6" points="611.4,1131.3 611.4,1178.1 611.4,1178.1 611.4,1218.6 		"/>
+		<polyline class="st6" points="604.3,1207.6 611.4,1221.8 618.5,1207.6 		"/>
+	</g>
+	<g>
+		<path class="st0" d="M551.4,1481.8h120c7.8,0,14.2,6.4,14.2,14.2v22.7c0,7.8-6.4,14.2-14.2,14.2h-120c-7.8,0-14.2-6.4-14.2-14.2
+			V1496C537.2,1488.2,543.6,1481.8,551.4,1481.8z"/>
+		<text transform="matrix(1 0 0 1 559.6666 1512.8984)" class="st1 st2">На гарантии</text>
+	</g>
+	<g>
+		<path class="st0" d="M568.8,1652.1H654c7.8,0,14.2,6.4,14.2,14.2v22.7c0,7.8-6.4,14.2-14.2,14.2h-85.1c-7.8,0-14.2-6.4-14.2-14.2
+			v-22.7C554.6,1658.5,561,1652.1,568.8,1652.1z"/>
+		<text transform="matrix(1 0 0 1 575.649 1683.1904)" class="st1 st2">Рабочий</text>
+	</g>
+	<g>
+		<polyline class="st6" points="611.4,1532.9 611.4,1592.5 611.4,1592.5 611.4,1645.8 		"/>
+		<polyline class="st6" points="604.3,1634.7 611.4,1648.9 618.5,1634.7 		"/>
+	</g>
+	<text transform="matrix(1 0 0 1 615.6451 1576.084)" class="st1 st2">Конец гарантии</text>
+	<text transform="matrix(1 0 0 1 747.0894 1576.084)" class="st1 st2"> </text>
+	<text transform="matrix(1 0 0 1 615.6451 1598.7891)" class="st1 st2">[С момента сдачи</text>
+	<text transform="matrix(1 0 0 1 766.3267 1598.7891)" class="st1 st2"> </text>
+	<text transform="matrix(1 0 0 1 615.6451 1621.4951)" class="st1 st2">в работу&gt; 3 месяцев]</text>
+	<g>
+		<polyline class="st6" points="685.6,1507.4 796.5,1507.4 796.5,1507.4 901,1507.4 		"/>
+		<polyline class="st6" points="890,1514.5 904.2,1507.4 890,1500.3 		"/>
+	</g>
+	<text transform="matrix(1 0 0 1 717.6822 1498.7783)" class="st1 st2">Поломка аппарата</text>
+	<text transform="matrix(1 0 0 1 615.6451 1016.9609)" class="st1 st2">Начало работ</text>
+	<text transform="matrix(1 0 0 1 615.6451 1184.4102)" class="st1 st2">Починка</text>
+	<text transform="matrix(1 0 0 1 615.6451 1374.5723)" class="st1 st2">Успешная работа</text>
+	<text transform="matrix(1 0 0 1 763.108 1374.5723)" class="st1 st2"> </text>
+	<text transform="matrix(1 0 0 1 615.6451 1397.2773)" class="st1 st2">аппарата</text>
+	<g>
+		<polyline class="st6" points="692.6,1251.9 765.4,1251.9 765.4,1093 712.2,1093 		"/>
+		<polyline class="st6" points="723.2,1085.9 709,1093 723.2,1100.1 		"/>
+	</g>
+	<text transform="matrix(1 0 0 1 769.688 1167.3838)" class="st1 st2">Выяснен</text>
+	<text transform="matrix(1 0 0 1 843.9429 1167.3838)" class="st1 st2"> </text>
+	<text transform="matrix(1 0 0 1 769.688 1190.0898)" class="st1 st2">дефект</text>
+	<g>
+		<polyline class="st6" points="611.4,1704.6 611.4,1737.3 611.4,1737.3 611.4,1759.3 		"/>
+		<polyline class="st6" points="604.3,1748.3 611.4,1762.5 618.5,1748.3 		"/>
+	</g>
+	<g>
+		<polyline class="st6" points="362.9,1557 362.9,1737.3 611.4,1737.3 611.4,1759.3 		"/>
+		<polyline class="st6" points="604.3,1748.3 611.4,1762.5 618.5,1748.3 		"/>
+	</g>
+	<g>
+		<polyline class="st6" points="611.4,966.7 611.4,1010.7 611.4,1010.7 611.4,1048.3 		"/>
+		<polyline class="st6" points="604.3,1037.3 611.4,1051.5 618.5,1037.3 		"/>
+	</g>
+	<g>
+		<path class="st0" d="M550.3,573.6h122.2c7.8,0,14.2,6.4,14.2,14.2v45.4c0,7.8-6.4,14.2-14.2,14.2H550.3c-7.8,0-14.2-6.4-14.2-14.2
+			v-45.4C536.1,580,542.5,573.6,550.3,573.6z"/>
+		<text transform="matrix(1 0 0 1 555.8716 604.6768)" class="st1 st7">Ожидающий</text>
+		<text transform="matrix(1 0 0 1 661.8589 604.6768)" class="st1 st7"> </text>
+		<text transform="matrix(1 0 0 1 580.5806 627.3828)" class="st1 st7">оплаты</text>
+	</g>
+	<g>
+		<polyline class="st6" points="611.4,648.8 611.4,695.6 611.4,695.6 611.4,736.1 		"/>
+		<polyline class="st6" points="604.3,725.1 611.4,739.3 618.5,725.1 		"/>
+	</g>
+	<g>
+		<path class="st0" d="M568.8,743.9H654c7.8,0,14.2,6.4,14.2,14.2v22.7c0,7.8-6.4,14.2-14.2,14.2h-85.1c-7.8,0-14.2-6.4-14.2-14.2
+			v-22.7C554.6,750.2,561,743.9,568.8,743.9z"/>
+		<text transform="matrix(1 0 0 1 574.4566 774.9688)" class="st1 st7">Оплачен</text>
+	</g>
+	<text transform="matrix(1 0 0 1 615.6451 690.5664)" class="st1 st2">Оплата</text>
+	<text transform="matrix(1 0 0 1 678.1304 690.5664)" class="st1 st2"> </text>
+	<text transform="matrix(1 0 0 1 615.6451 713.2715)" class="st1 st2">ремонта</text>
+	<g>
+		<polyline class="st6" points="611.4,1278.9 611.4,1379.6 611.4,1379.6 611.4,1474 		"/>
+		<polyline class="st6" points="604.3,1463 611.4,1477.2 618.5,1463 		"/>
+	</g>
+	<g>
+		<polyline class="st6" points="611.4,484.2 611.4,528.2 611.4,528.2 611.4,565.8 		"/>
+		<polyline class="st6" points="604.3,554.8 611.4,569 618.5,554.8 		"/>
+	</g>
+	<g>
+		<path class="st0" d="M931.5,743.9h231.2c7.8,0,14.2,6.4,14.2,14.2v22.7c0,7.8-6.4,14.2-14.2,14.2H931.5c-7.8,0-14.2-6.4-14.2-14.2
+			v-22.7C917.3,750.2,923.7,743.9,931.5,743.9z"/>
+		<text transform="matrix(1 0 0 1 946.5718 774.9688)" class="st1 st7">Продиагностированный</text>
+	</g>
+	<g>
+		<polyline class="st6" points="917.3,769.4 765.4,769.4 765.4,939.7 681.6,939.7 		"/>
+		<polyline class="st6" points="692.6,932.6 678.4,939.7 692.6,946.8 		"/>
+	</g>
+	<g>
+		<polyline class="st6" points="917.3,769.4 765.4,769.4 765.4,610.5 693,610.5 		"/>
+		<polyline class="st6" points="704,603.4 689.8,610.5 704,617.6 		"/>
+	</g>
+	<g>
+		<path class="st0" d="M98.5,1481.8H230c7.8,0,14.2,6.4,14.2,14.2v45.4c0,7.8-6.4,14.2-14.2,14.2H98.5c-7.8,0-14.2-6.4-14.2-14.2
+			V1496C84.3,1488.2,90.6,1481.8,98.5,1481.8z"/>
+		<text transform="matrix(1 0 0 1 104.2564 1512.8984)" class="st1 st2">Отклонённый</text>
+		<text transform="matrix(1 0 0 1 219.1587 1512.8984)" class="st1 st2"> </text>
+		<text transform="matrix(1 0 0 1 118.6783 1535.6045)" class="st1 st2">компанией</text>
+	</g>
+	<g>
+		<polyline class="st6" points="164.2,1555.6 164.2,1737.3 611.4,1737.3 611.4,1759.3 		"/>
+		<polyline class="st6" points="604.3,1748.3 611.4,1762.5 618.5,1748.3 		"/>
+	</g>
+	<g>
+		<polyline class="st6" points="481.6,457.2 164.2,457.2 164.2,1475.5 		"/>
+		<polyline class="st6" points="157.1,1464.5 164.2,1478.6 171.3,1464.5 		"/>
+	</g>
+	<text transform="matrix(1 0 0 1 168.4883 953.1006)" class="st1 st2">Отклонение</text>
+	<text transform="matrix(1 0 0 1 270.4058 953.1006)" class="st1 st2"> </text>
+	<text transform="matrix(1 0 0 1 168.4883 975.8057)" class="st1 st2">ремонта</text>
+	<text transform="matrix(1 0 0 1 239.5318 975.8057)" class="st1 st2"> </text>
+	<text transform="matrix(1 0 0 1 168.4883 998.5117)" class="st1 st2">мастером</text>
+	<text transform="matrix(1 0 0 1 769.688 849.5059)" class="st1 st2">Диагностированна</text>
+	<text transform="matrix(1 0 0 1 926.4634 849.5059)" class="st1 st2"> </text>
+	<text transform="matrix(1 0 0 1 769.688 872.2119)" class="st1 st2">гарантийная поломка</text>
+	<text transform="matrix(1 0 0 1 769.688 684.8906)" class="st1 st2">Диагностированна</text>
+	<text transform="matrix(1 0 0 1 926.4634 684.8906)" class="st1 st2"> </text>
+	<text transform="matrix(1 0 0 1 769.688 707.5967)" class="st1 st2">не гарантийная поломка</text>
+	<g>
+		<path class="st0" d="M921.5,1481.8h251.1c7.8,0,14.2,6.4,14.2,14.2v22.7c0,7.8-6.4,14.2-14.2,14.2H921.5
+			c-7.8,0-14.2-6.4-14.2-14.2V1496C907.3,1488.2,913.7,1481.8,921.5,1481.8z"/>
+		<text transform="matrix(1 0 0 1 939.9459 1512.8984)" class="st1 st7">Ожидающий диагностики</text>
+	</g>
+	<g>
+		<polyline class="st6" points="1047.1,1480.4 1047.1,1138.4 1047.1,1138.4 1047.1,802.8 		"/>
+		<polyline class="st6" points="1054.2,813.8 1047.1,799.6 1040,813.8 		"/>
+	</g>
+	<text transform="matrix(1 0 0 1 1051.3442 1133.0605)" class="st1 st2">Диагностика</text>
+	<text transform="matrix(1 0 0 1 1156.6499 1133.0605)" class="st1 st2"> </text>
+	<text transform="matrix(1 0 0 1 1051.3442 1155.7656)" class="st1 st2">аппарата</text>
+</g>
 </svg>
