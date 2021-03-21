@@ -141,8 +141,8 @@
     </g>
     <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="65" y1="1280" x2="340" y2="1339.14"/>
     <g>
-      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="436.51" y1="609.373" x2="513.221" y2="542.266"/>
-      <polygon style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="518.488,548.287 520.748,535.681 507.954,536.244 "/>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="436.51" y1="609.372" x2="513.221" y2="542.266"/>
+      <polygon style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="518.488,548.287 520.747,535.682 507.953,536.245 "/>
     </g>
     <g>
       <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="450.1" y1="492" x2="489.232" y2="507.684"/>
@@ -286,29 +286,29 @@
       <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="767.65,1025.58 765.189,1014.67 757.94,1023.19 "/>
     </g>
     <g>
-      <rect style="fill: #ffffff; fill-opacity: 1; stroke: none" x="716.835" y="1028.31" width="86.3" height="14.95"/>
-      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="759.985" y="1040.21">
-        <tspan x="759.985" y="1040.21">"расширить"</tspan>
+      <rect style="fill: #ffffff; fill-opacity: 1; stroke: none" x="716.836" y="1028.31" width="86.3" height="14.95"/>
+      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="759.986" y="1040.2">
+        <tspan x="759.986" y="1040.2">"расширить"</tspan>
       </text>
     </g>
     <g>
-      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke-dasharray: 10; stroke: #000000" x1="549.75" y1="1138.29" x2="715.715" y2="1187.89"/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="706.845,1190.46 717.858,1188.53 709.708,1180.88 "/>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke-dasharray: 10; stroke: #000000" x1="549.75" y1="1138.29" x2="715.715" y2="1187.9"/>
+      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="706.845,1190.46 717.858,1188.54 709.708,1180.88 "/>
     </g>
     <g>
-      <rect style="fill: #ffffff; fill-opacity: 1; stroke: none" x="591.725" y="1156.26" width="86.3" height="14.95"/>
-      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="634.875" y="1168.16">
-        <tspan x="634.875" y="1168.16">"расширить"</tspan>
+      <rect style="fill: #ffffff; fill-opacity: 1; stroke: none" x="591.724" y="1156.26" width="86.3" height="14.95"/>
+      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="634.874" y="1168.16">
+        <tspan x="634.874" y="1168.16">"расширить"</tspan>
       </text>
     </g>
     <g>
-      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke-dasharray: 10; stroke: #000000" x1="807.525" y1="1160" x2="808.236" y2="1113.91"/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="813.116,1121.75 808.27,1111.67 803.117,1121.59 "/>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke-dasharray: 10; stroke: #000000" x1="807.524" y1="1160" x2="808.235" y2="1113.91"/>
+      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="813.115,1121.75 808.27,1111.67 803.116,1121.59 "/>
     </g>
     <g>
-      <rect style="fill: #ffffff; fill-opacity: 1; stroke: none" x="764.765" y="1127.24" width="86.3" height="14.95"/>
-      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="807.915" y="1139.14">
-        <tspan x="807.915" y="1139.14">"расширить"</tspan>
+      <rect style="fill: #ffffff; fill-opacity: 1; stroke: none" x="764.764" y="1127.24" width="86.3" height="14.95"/>
+      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="807.914" y="1139.14">
+        <tspan x="807.914" y="1139.14">"расширить"</tspan>
       </text>
     </g>
     <g>
@@ -326,7 +326,7 @@
         <tspan x="455.05" y="896.917">на диагностику аппарата</tspan>
       </text>
     </g>
-    <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="125" y1="1060" x2="320" y2="885.017"/>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="125" y1="1060" x2="320" y2="885.016"/>
     <g>
       <ellipse style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" cx="425.35" cy="735.117" rx="105.35" ry="35.1167"/>
       <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="425.35" y="731.017">
@@ -334,7 +334,7 @@
         <tspan x="425.35" y="747.017">на диагностику</tspan>
       </text>
     </g>
-    <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="165" y1="680" x2="320" y2="735.117"/>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="165" y1="680" x2="320" y2="735.116"/>
     <g>
       <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke-dasharray: 10; stroke: #000000" x1="445.934" y1="839.005" x2="433.372" y2="775.606"/>
       <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="439.786,782.25 432.938,773.413 429.977,784.194 "/>
@@ -353,7 +353,7 @@
       </text>
     </g>
     <g>
-      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke-dasharray: 10; stroke: #000000" x1="530.7" y1="735.117" x2="675.528" y2="736.369"/>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke-dasharray: 10; stroke: #000000" x1="530.7" y1="735.116" x2="675.528" y2="736.369"/>
       <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="667.721,741.302 677.764,736.389 667.808,731.302 "/>
     </g>
     <g>
@@ -364,43 +364,43 @@
     </g>
     <g>
       <ellipse style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" cx="498.225" cy="979.408" rx="118.225" ry="39.4083"/>
-      <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="498.225" y="975.308">
+      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="498.225" y="975.308">
         <tspan x="498.225" y="975.308">Назначение мастера</tspan>
         <tspan x="498.225" y="991.308">на ремонт</tspan>
       </text>
     </g>
     <g>
-      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke-dasharray: 10; stroke: #000000" x1="581.823" y1="951.542" x2="635.51" y2="708.683"/>
-      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="638.716,717.344 635.992,706.5 628.952,715.185 "/>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke-dasharray: 10; stroke: #000000" x1="581.822" y1="951.542" x2="635.511" y2="708.683"/>
+      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="638.717,717.343 635.993,706.499 628.953,715.184 "/>
     </g>
     <g>
-      <rect style="fill: #ffffff; fill-opacity: 1; stroke: none" x="579.699" y="820.455" width="58.9" height="14.95"/>
-      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="609.149" y="832.355">
-        <tspan x="609.149" y="832.355">"влияет"</tspan>
+      <rect style="fill: #ffffff; fill-opacity: 1; stroke: none" x="579.698" y="820.455" width="58.9" height="14.95"/>
+      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="609.148" y="832.355">
+        <tspan x="609.148" y="832.355">"влияет"</tspan>
       </text>
     </g>
     <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="125" y1="1060" x2="380" y2="979.408"/>
     <g>
-      <ellipse style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" cx="613.4" cy="432" rx="73.4" ry="32"/>
-      <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="613.4" y="427.9">
-        <tspan x="613.4" y="427.9">Нарисание</tspan>
-        <tspan x="613.4" y="443.9">отзыва</tspan>
+      <ellipse style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" cx="613.6" cy="432" rx="73.6" ry="32"/>
+      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="613.6" y="427.9">
+        <tspan x="613.6" y="427.9">Написание</tspan>
+        <tspan x="613.6" y="443.9">отзыва</tspan>
       </text>
     </g>
     <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="185" y1="420" x2="540" y2="432"/>
     <g>
       <polygon style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="680,540 870.8,540 882.8,552 882.8,606 680,606 "/>
       <polyline style="fill: none; stroke-opacity: 1; stroke-width: 1; stroke: #000000" points="870.8,540 870.8,552 882.8,552 "/>
-      <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="687" y="564.9">
+      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="687" y="564.9">
         <tspan x="687" y="564.9">Возможно в добровольном,</tspan>
         <tspan x="687" y="580.9">а также в принудительном</tspan>
         <tspan x="687" y="596.9">порядке</tspan>
       </text>
     </g>
-    <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke-dasharray: 10; stroke: #000000" x1="704.693" y1="649.419" x2="748.281" y2="605.995"/>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke-dasharray: 10; stroke: #000000" x1="704.694" y1="649.418" x2="748.281" y2="605.994"/>
     <g>
       <ellipse style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" cx="228.9" cy="320" rx="48.9" ry="20"/>
-      <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="228.9" y="323.9">
+      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="228.9" y="323.9">
         <tspan x="228.9" y="323.9">Оплата</tspan>
       </text>
     </g>

@@ -84,6 +84,7 @@ h1{
 
 .img{
 	text-align: center;
+	page-break-inside: avoid;
 }
 
 .img > img{
@@ -92,6 +93,7 @@ h1{
 
 .img > p{
 	font-size: 12pt;
+	text-align: center;
 }
 
 p{
