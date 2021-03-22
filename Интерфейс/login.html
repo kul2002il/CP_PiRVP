@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Главная</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style type="text/css">
+		form{
+			width: 250px;
+			margin: 5px;
+			padding: 10px;
+			border: 1px solid #000;
+			background-color: #fff;
+
+			font-size: 14px;
+		}
+
+		input{
+			width: calc(100% - 10px);
+			margin: 5px;
+			border: 1px solid #000;
+			border-radius: 3px;
+			font-size: inherit;
+		}
+
+		button,
+		[type="button"],
+		[type="submit"],
+		.button{
+			width: auto;
+			padding: 1px 6px;
+			background-color: #eee;
+			border: 1px solid #000;
+			border-radius: 3px;
+			font-size: inherit;
+		}
+
+		#openRegister:checked+form{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<h1>Главная</h1>
+	<header>
+		<nav>
+			<ul>
+				<li>
+					<a href="./index.html">Главная</a>
+				</li>
+				<li>
+					<a href="./set_works.html">Виды работ</a>
+				</li>
+				<li>
+					<a href="./contacts.html">Контакты</a>
+				</li>
+				<li>
+					<a href="./login.html">Вход</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<div class="login">
+			<form method="post">
+				<div>
+					<input type="text" name="login" required
+					placeholder="Телефон или e-mail"><br/>
+
+					<input type="password" name="password" required
+					placeholder="Пароль"><br/>
+
+					<input type="submit" value="Войти">
+					<label for="openRegister" class="button">
+						Регистация
+					</label>
+				</div>
+			</form>
+
+			<input type="checkbox" id="openRegister" checked style="display: none">
+
+			<form method="post" class="register">
+				<div>
+					<input type="text" name="firstName" required
+					placeholder="Имя"><br/>
+
+					<input type="text" name="lastName" required
+					placeholder="Фамилия"><br/>
+					
+					<input type="text" name="midleName" required
+					placeholder="Отчество"><br/>
+
+					<input type="text" name="telephone"
+					placeholder="Телефон"><br/>
+
+					<input type="email" name="e-mail" required
+					placeholder="E-mail"><br/>
+
+					<input type="password" name="password1" required
+					placeholder="Пароль"><br/>
+
+					<input type="password" name="password2" required
+					placeholder="Повторить пароль"><br/>
+
+					<input type="submit" value="Зарегистрироваться">
+				</div>
+			</form>
+		</div>
+	</main>
+	<footer>РЕПРОТЭК</footer>
+</body>
+</html>
