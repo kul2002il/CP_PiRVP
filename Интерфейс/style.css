@@ -28,8 +28,9 @@ a:hover{
 
 
 
-h1{
+.logo{
 	padding: 20px;
+	font-size: 2em;
 	background-color: #fff;
 }
 
@@ -54,6 +55,11 @@ nav>ul>li>a:hover{
 
 
 
+
+h1{
+	padding: 30px;
+	background-color: #fff;
+}
 
 article{
 	background-color: #fff;
