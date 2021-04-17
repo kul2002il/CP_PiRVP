@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Подача заявки</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="logo">РЕПРОТЕК</div>
+	<header>
+		<nav>
+			<ul>
+				<li>
+					<a href="./index.html">Главная</a>
+				</li>
+				<li>
+					<a href="./set_works.html">Виды работ</a>
+				</li>
+				<li>
+					<a href="./contacts.html">Контакты</a>
+				</li>
+				<li>
+					<a href="./login.html">Вход</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<h1>Подача заявки</h1>
+		<form action="user.html">
+			<article>
+				<h2>Аппарат</h2>
+				<table>
+					<tr>
+						<td>
+							<label for="typeApparatus">
+								Тип аппарата
+							</label>
+						</td>
+						<td>
+							<select id="typeApparatus" name="typeApparatus">
+								<option>Сварочный аппарат</option>
+								<option>Генератор</option>
+								<option>Промышленное пичевое оборудование</option>
+								<option>Промышленый трансформатор</option>
+								<option>ТНВД</option>
+								<option>Холодильник</option>
+								<option>Бытовая техника</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="model">
+								Модель
+							</label>
+						</td>
+						<td>
+							<input type="text" id="model" name="model"
+								placeholder="Ресанта САИ220">
+						</td>
+					</tr>
+				</table>
+			</article>
+			<article>
+				<h2>Поломка</h2>
+				<textarea
+					name="description"
+					id="description"
+					placeholder="Описание поломки"
+				></textarea>
+				<button>
+					Подать заявку
+				</button>
+			</article>
+		</form>
+	</main>
+	<footer>
+		РЕПРОТЭК
+	</footer>
+</body>
+</html>

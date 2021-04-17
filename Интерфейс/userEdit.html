@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Печенька с корицей - РЕПРОТЕК</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="logo">РЕПРОТЕК</div>
+	<header>
+		<nav>
+			<ul>
+				<li>
+					<a href="./index.html">Главная</a>
+				</li>
+				<li>
+					<a href="./set_works.html">Виды работ</a>
+				</li>
+				<li>
+					<a href="./contacts.html">Контакты</a>
+				</li>
+				<li>
+					<a href="./user.html">Печенька</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<h1>Редактирование профиля</h1>
+		<article>
+			<h2>Личная информация</h2>
+			<form>
+				<table>
+					<tr>
+						<td>
+							<label for="nameLast">
+								Фамилия
+							</label>
+						</td>
+						<td>
+							<input
+								type="text"
+								id="nameLast"
+								name="name"
+								placeholder="Иванов">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="nameFirst">
+								Имя
+							</label>
+						</td>
+						<td>
+							<input
+								type="text"
+								id="nameFirst"
+								name="name"
+								placeholder="Иван">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="nameMiddle">
+								Отчество
+							</label>
+						</td>
+						<td>
+							<input
+								type="text"
+								id="nameMiddle"
+								name="name"
+								placeholder="Иванович">
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<button>Сохранить</button>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</article>
+
+		<article>
+			<h2>Контакты</h2>
+			<form>
+				<table>
+					<tr>
+						<td>
+							<label for="email">
+								email
+							</label>
+						</td>
+						<td>
+							<input
+								type="email"
+								id="email"
+								name="email"
+								placeholder="exemple@exemple.exe">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="tel">
+								Телефон
+							</label>
+						</td>
+						<td>
+							<input
+								type="tel"
+								id="tel"
+								name="tel"
+								placeholder="89008007766">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="company">
+								Компания
+							</label>
+						</td>
+						<td>
+							<input
+								type="text"
+								id="company"
+								name="company"
+								placeholder="IBM">
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<button>Сохранить</button>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</article>
+
+		<article>
+			<h2>Смена пароля</h2>
+			<form>
+				<table>
+					<tr>
+						<td>
+							<label for="old">
+								Старый пароль
+							</label>
+						</td>
+						<td>
+							<input type="password" id="old" name="old">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="new">
+								Новый пароль
+							</label>
+						</td>
+						<td>
+							<input
+								type="password"
+								id="new"
+								name="new"
+								pattern="[a-zA-Z0-9,.!?-_=+]{6,100}">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="repeat">
+								Повторить новый пароль
+							</label>
+						</td>
+						<td>
+							<input type="password" id="repeat" name="repeat">
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<button>Сохранить</button>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</article>
+	</main>
+	<footer>
+		РЕПРОТЭК
+	</footer>
+</body>
+</html>

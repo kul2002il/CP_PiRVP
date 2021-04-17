@@ -23,6 +23,19 @@ a:hover{
 	text-decoration: underline;
 }
 
+th{
+	text-align: left;
+}
+
+textarea{
+	width: 100%;
+	min-height: 80px;
+	max-height: 300px;
+	padding: 10px;
+	resize: none;
+	box-sizing: border-box;
+}
+
 
 
 
