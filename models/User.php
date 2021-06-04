@@ -49,12 +49,12 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             'id' => 'ID',
-            'id_role' => 'Id Role',
-            'nameFirst' => 'Name First',
-            'nameLast' => 'Name Last',
-            'nameMiddle' => 'Name Middle',
+            'id_role' => 'Роль',
+            'nameFirst' => 'Имя',
+            'nameLast' => 'Фамилия',
+            'nameMiddle' => 'Отчество',
             'email' => 'Email',
-            'password' => 'Password',
+            'password' => 'Пароль',
         ];
     }
 
@@ -146,5 +146,12 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 		}
 
 		return false;
+	}
+
+	public function getUsername()
+	{
+		$name = Yii::$app->user->identity->email;
+		$name = explode('@', $name)[0];
+		return $name;
 	}
 }

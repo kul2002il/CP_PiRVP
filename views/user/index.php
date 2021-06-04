@@ -6,34 +6,24 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Users';
+$this->title = Yii::$app->user->identity->getUsername();
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'id_role',
-            'nameFirst',
-            'nameLast',
-            'nameMiddle',
-            //'email:email',
-            //'password',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-
+	<h1><?=
+		Yii::$app->user->identity->nameLast . ' ' .
+		Yii::$app->user->identity->nameFirst
+	?></h1>
+<?php
+	echo '<p>'
+		. Html::beginForm(['/user/logout'], 'post')
+		. Html::submitButton(
+		'Выйти',
+		['class' => 'btn btn-submit logout']
+		)
+		. Html::endForm()
+	. '</p>'
+?>
 
 </div>

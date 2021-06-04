@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\User;
+use app\models\RegisterForm;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -51,10 +52,37 @@ class UserController extends Controller
 		]);
 	}
 
+	/**
+	 * Logout action.
+	 *
+	 * @return Response
+	 */
+	public function actionLogout()
+	{
+		Yii::$app->user->logout();
+
+		$this->redirect(['login']);
+	}
+
+	public function actionRegister()
+	{
+		$form = new RegisterForm();
+		if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+			$model = new User();
+			if ($model->load(Yii::$app->request->post()) && $model->save())
+			{
+				$this->redirect(['login']);
+			}
+		}
+		return $this->render('register', [
+			'model' => $form
+		]);
+	}
+
 	public function actionIndex()
 	{
 		$id = Yii::$app->user->id;
-		return $this->render('profile', [
+		return $this->render('index', [
 			'model' => $this->findModel($id),
 		]);
 	}
@@ -69,7 +97,7 @@ class UserController extends Controller
             'query' => User::find(),
         ]);
 
-        return $this->render('index', [
+        return $this->render('allUser', [
             'dataProvider' => $dataProvider,
         ]);
     }
