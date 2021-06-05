@@ -19,6 +19,7 @@ use Yii;
  */
 class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
+	public $password_repeat;
     /**
      * {@inheritdoc}
      */
@@ -37,6 +38,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             [['nameFirst', 'nameLast', 'email', 'password'], 'required'],
             [['nameFirst', 'nameLast', 'nameMiddle', 'email'], 'string', 'max' => 100],
             [['password'], 'string', 'max' => 255],
+			[['password_repeat'], 'compare', 'compareAttribute' => 'password'],
             [['email'], 'unique'],
             [['id_role'], 'exist', 'skipOnError' => true, 'targetClass' => Role::className(), 'targetAttribute' => ['id_role' => 'id']],
         ];
@@ -55,6 +57,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             'nameMiddle' => 'Отчество',
             'email' => 'Email',
             'password' => 'Пароль',
+			'password_repeat' => 'Повторение пароля',
         ];
     }
 

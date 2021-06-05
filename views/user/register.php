@@ -6,8 +6,8 @@ $this->title = 'Регистрация';
 ?>
 <?php $form = ActiveForm::begin();
 
-echo $form->field($model, 'nameFirst');
 echo $form->field($model, 'nameLast');
+echo $form->field($model, 'nameFirst');
 echo $form->field($model, 'nameMiddle');
 echo $form->field($model, 'email');
 echo $form->field($model, 'password')->passwordInput(['maxlength' => true]);
