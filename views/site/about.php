@@ -4,15 +4,18 @@
 
 use yii\helpers\Html;
 
-$this->title = 'About';
+$this->title = 'О компании';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-about">
-    <h1><?= Html::encode($this->title) ?></h1>
+	<h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        This is the About page. You may modify the following file to customize its content:
-    </p>
-
-    <code><?= __FILE__ ?></code>
+	<p>
+		Компания РЕПРОТЭК занимается ремонтом сварочного
+		и промышленного оборудования в городе Томске.
+	</p>
+	<p>
+		Вы всегда можете отправить нам письмо или узнать
+		контакты на соответствующей странице "Контакты".
+	</p>
 </div>
