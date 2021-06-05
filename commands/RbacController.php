@@ -10,24 +10,40 @@ class RbacController extends Controller
 	{
 		$authManager = Yii::$app->authManager;
 
-		// добавляем разрешение
+		$authManager->removeAll();
+		
+		// Мастер
+		$master = $authManager->createRole('master');
+		$authManager->add($master);
+		
+		$repair = $authManager->createPermission('repair');
+		$repair->description = 'Чинить.';
+		$authManager->add($repair);
+		$authManager->addChild($master, $repair);
+		
+		
+		// Администратор
+		$admin = $authManager->createRole('admin');
+		$authManager->add($admin);
+		$authManager->addChild($admin, $master);
+		
+		$manageMaster = $authManager->createPermission('manageMaster');
+		$manageMaster->description = 'Управлять заданиями мастеров.';
+		$authManager->add($manageMaster);
+		$authManager->addChild($admin, $manageMaster);
+
+		// Суперпользователь
+		$sudo = $authManager->createRole('superuser');
+		$authManager->add($sudo);
+		$authManager->addChild($sudo, $admin);
+		
 		$setRole = $authManager->createPermission('setRole');
 		$setRole->description = 'Назначать роли.';
 		$authManager->add($setRole);
-
-		// добавляем роль "admin"
-		$admin = $authManager->createRole('admin');
-		$authManager->add($admin);
-
-		// добавляем роль "superuser" и даём роли разрешение "setRole"
-		// а также все разрешения роли "author"
-		$sudo = $authManager->createRole('superuser');
-		$authManager->add($sudo);
 		$authManager->addChild($sudo, $setRole);
-		$authManager->addChild($sudo, $admin);
+		
 
-		// Назначение ролей пользователям. 1 это IDs возвращаемые IdentityInterface::getId()
-		// обычно реализуемый в модели User.
+		// Назначение ролей пользователям по ID.
 		$authManager->assign($sudo, 1);
 	}
 }

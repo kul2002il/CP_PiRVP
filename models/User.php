@@ -14,62 +14,55 @@ use Yii;
  * @property string|null $nameMiddle
  * @property string $email
  * @property string $password
- *
- * @property Role $role
  */
 class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
 	public $password_repeat;
-    /**
-     * {@inheritdoc}
-     */
-    public static function tableName()
-    {
-        return 'user';
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public static function tableName()
+	{
+		return 'user';
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function rules()
-    {
-        return [
-            [['id_role'], 'integer'],
-            [['nameFirst', 'nameLast', 'email', 'password'], 'required'],
-            [['nameFirst', 'nameLast', 'nameMiddle', 'email'], 'string', 'max' => 100],
-            [['password'], 'string', 'max' => 255],
+	/**
+	 * {@inheritdoc}
+	 */
+	public function rules()
+	{
+		return [
+			[['id_role'], 'integer'],
+			[['nameFirst', 'nameLast', 'email', 'password'], 'required'],
+			[['nameFirst', 'nameLast', 'nameMiddle', 'email'], 'string', 'max' => 100],
+			[['password'], 'string', 'max' => 255],
 			[['password_repeat'], 'compare', 'compareAttribute' => 'password'],
-            [['email'], 'unique'],
-            [['id_role'], 'exist', 'skipOnError' => true, 'targetClass' => Role::className(), 'targetAttribute' => ['id_role' => 'id']],
-        ];
-    }
+			[['email'], 'unique'],
+		];
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'id_role' => 'Роль',
-            'nameFirst' => 'Имя',
-            'nameLast' => 'Фамилия',
-            'nameMiddle' => 'Отчество',
-            'email' => 'Email',
-            'password' => 'Пароль',
+	/**
+	 * {@inheritdoc}
+	 */
+	public function attributeLabels()
+	{
+		return [
+			'id' => 'ID',
+			'id_role' => 'Роль',
+			'nameFirst' => 'Имя',
+			'nameLast' => 'Фамилия',
+			'nameMiddle' => 'Отчество',
+			'email' => 'Email',
+			'password' => 'Пароль',
 			'password_repeat' => 'Повторение пароля',
-        ];
-    }
+		];
+	}
 
-    /**
-     * Gets query for [[Role]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getRole()
-    {
-        return $this->hasOne(Role::className(), ['id' => 'id_role']);
-    }
+	/**
+	 * Gets query for [[Role]].
+	 *
+	 * @return \yii\db\ActiveQuery
+	 */
 
 
 	/**
