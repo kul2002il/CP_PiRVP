@@ -9,8 +9,10 @@ use Yii;
  *
  * @property int $id
  * @property int $idModel
+ * @property int $idOwner
  *
  * @property Model $idModel0
+ * @property User $idOwner0
  * @property Repair[] $repairs
  */
 class Apparatus extends \yii\db\ActiveRecord
@@ -29,9 +31,10 @@ class Apparatus extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idModel'], 'required'],
-            [['idModel'], 'integer'],
+            [['idModel', 'idOwner'], 'required'],
+            [['idModel', 'idOwner'], 'integer'],
             [['idModel'], 'exist', 'skipOnError' => true, 'targetClass' => Model::className(), 'targetAttribute' => ['idModel' => 'id']],
+            [['idOwner'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['idOwner' => 'id']],
         ];
     }
 
@@ -43,6 +46,7 @@ class Apparatus extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'idModel' => 'Id Model',
+            'idOwner' => 'Id Owner',
         ];
     }
 
@@ -54,6 +58,16 @@ class Apparatus extends \yii\db\ActiveRecord
     public function getIdModel0()
     {
         return $this->hasOne(Model::className(), ['id' => 'idModel']);
+    }
+
+    /**
+     * Gets query for [[IdOwner0]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getIdOwner0()
+    {
+        return $this->hasOne(User::className(), ['id' => 'idOwner']);
     }
 
     /**

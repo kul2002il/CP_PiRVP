@@ -41,8 +41,12 @@ CREATE TABLE model(
 
 CREATE TABLE apparatus(
 	id INT AUTO_INCREMENT PRIMARY KEY,
+	
 	idModel INT NOT NULL,
-	FOREIGN KEY (idModel) REFERENCES model (id) ON DELETE CASCADE
+	idOwner INT NOT NULL,
+	
+	FOREIGN KEY (idModel) REFERENCES model (id) ON DELETE CASCADE,
+	FOREIGN KEY (idOwner) REFERENCES user (id) ON DELETE CASCADE
 );
 
 
@@ -56,7 +60,6 @@ CREATE TABLE repair(
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	
 	idMaster INT,
-	idClient INT NOT NULL,
 
 	idApparatus INT NOT NULL,
 	idStatus INT NOT NULL,
@@ -69,7 +72,6 @@ CREATE TABLE repair(
 	endRepair DATETIME,
 	
 	FOREIGN KEY (idMaster) REFERENCES user (id) ON DELETE CASCADE,
-	FOREIGN KEY (idClient) REFERENCES user (id) ON DELETE CASCADE,
 	FOREIGN KEY (idApparatus) REFERENCES apparatus (id) ON DELETE CASCADE,
 	FOREIGN KEY (idStatus) REFERENCES statusRepair (id) ON DELETE CASCADE
 );
@@ -89,7 +91,107 @@ INSERT INTO user(nameLast, nameFirst, nameMiddle, email, password) VALUES
 	"Викторович",
 	"al42Sel@gmail.com",
 	"1234"
+),(
+	"Иванов",
+	"Дмитрий",
+	NULL,
+	"ivAN@gmail.com",
+	"1234"
+),(
+	"Вишняков",
+	"Андрей",
+	"Петрович",
+	"user@gmail.com",
+	"1234"
 );
+
+INSERT INTO typeApparatus (name) VALUES
+("Сварочный аппарат"),
+("Генератор"),
+("Тепловая пушка"),
+("Лазерный резак"),
+("Промышленный холодильник"),
+("ТНВД");
+
+INSERT INTO brand (name) VALUES
+("DEXP"),
+("Ресанта"),
+("PKH"),
+("Бирюса"),
+("ЭвалКом"),
+("КАМАЗ");
+
+INSERT INTO model (idType, idBrand, name) VALUES
+(
+	1,
+	2,
+	"201"
+),(
+	6,
+	6,
+	"ТН-01"
+),(
+	1,
+	1,
+	"n501103"
+),(
+	5,
+	4,
+	"ЛЛ-15-30"
+),(
+	3,
+	5,
+	"ТП-85М4"
+),(
+	4,
+	3,
+	"8954-Р"
+);
+
+INSERT INTO apparatus (idModel, idOwner) VALUES
+(1, 3),
+(3, 3),
+(6, 3);
+
+INSERT INTO statusRepair (name) VALUES
+("на рассмотрении"),
+("ожидает передачи"),
+("на диагностике"),
+("ожидает оплаты"),
+("на ремонте"),
+("ожидает приёма"),
+("на гарантии"),
+("завершён"),
+("отказано клиентом"),
+("отказано в починке"),
+("запись о ремонте вне РЕПРОТЕК");
+
+INSERT INTO repair
+(
+	idMaster,
+	idApparatus,
+	idStatus,
+	
+	brekage,
+	description,
+	feedback
+) VALUES
+(
+	2,
+	1,
+	8,
+	"Сварка сломалась",
+	"Однажды во время работы перестал работать аппарат.",
+	"Всё замечательно."
+),(
+	2,
+	1,
+	5,
+	"Сварка сломалась 2",
+	"Однажды во время работы перестал работать аппарат.",
+	NULL
+);
+
 
 
 /*
