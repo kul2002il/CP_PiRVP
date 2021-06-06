@@ -21,11 +21,25 @@ class RbacController extends Controller
 		$authManager->add($repair);
 		$authManager->addChild($master, $repair);
 		
+		// Главный инженер
+		$mainMaster = $authManager->createRole('mainMaster');
+		$authManager->add($mainMaster);
+		
+		$setModelApparatus = $authManager->createPermission('setModelApparatus');
+		$setModelApparatus->description = 'Добавление моделей аппаратов';
+		$authManager->add($setModelApparatus);
+		$authManager->addChild($mainMaster, $setModelApparatus);
+		
+		$setTypeApparatus = $authManager->createPermission('setTypeApparatus');
+		$setTypeApparatus->description = 'Добавление моделей аппаратов';
+		$authManager->add($setTypeApparatus);
+		$authManager->addChild($mainMaster, $setTypeApparatus);
+		
 		
 		// Администратор
 		$admin = $authManager->createRole('admin');
 		$authManager->add($admin);
-		$authManager->addChild($admin, $master);
+		$authManager->addChild($admin, $mainMaster);
 		
 		$manageMaster = $authManager->createPermission('manageMaster');
 		$manageMaster->description = 'Управлять заданиями мастеров.';
@@ -45,5 +59,6 @@ class RbacController extends Controller
 
 		// Назначение ролей пользователям по ID.
 		$authManager->assign($sudo, 1);
+		$authManager->assign($mainMaster, 2);
 	}
 }
