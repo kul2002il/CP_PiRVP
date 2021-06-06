@@ -47,9 +47,9 @@ class Model extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'idType' => 'Id Type',
-            'idBrand' => 'Id Brand',
-            'name' => 'Name',
+            'idType' => 'Id Типа',
+            'idBrand' => 'Id Производителя',
+            'name' => 'Наименование',
         ];
     }
 

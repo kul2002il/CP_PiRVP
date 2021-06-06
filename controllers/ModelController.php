@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Model;
+use app\models\TypeApparatus;
+use app\models\Brand;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -75,13 +77,15 @@ class ModelController extends Controller
 	public function actionCreate()
 	{
 		$model = new Model();
-
+		$addict = $this->addictModel();
+		
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
 			return $this->redirect(['view', 'id' => $model->id]);
 		}
 
 		return $this->render('create', [
 			'model' => $model,
+			'addict' => $addict,
 		]);
 	}
 
@@ -95,6 +99,7 @@ class ModelController extends Controller
 	public function actionUpdate($id)
 	{
 		$model = $this->findModel($id);
+		$addict = $this->addictModel();
 
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
 			return $this->redirect(['view', 'id' => $model->id]);
@@ -102,6 +107,7 @@ class ModelController extends Controller
 
 		return $this->render('update', [
 			'model' => $model,
+			'addict' => $addict,
 		]);
 	}
 
@@ -133,5 +139,25 @@ class ModelController extends Controller
 		}
 
 		throw new NotFoundHttpException('The requested page does not exist.');
+	}
+	
+	protected function addictModel()
+	{
+		$type = new TypeApparatus();
+		if ($type->load(Yii::$app->request->post()))
+		{
+			$type->save();
+		}
+		
+		$brand = new Brand();
+		if ($brand->load(Yii::$app->request->post()))
+		{
+			$brand->save();
+		}
+		
+		return [
+			'type' => $type,
+			'brand' => $brand,
+		];
 	}
 }
