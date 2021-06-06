@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\Url;
 
 $this->title = 'Вход';
 ?>
@@ -11,7 +12,7 @@ $this->title = 'Вход';
 <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
 <div class="form-group">
-	<a class="btn btn-success" href="/user/register">Регистрация</a>
+	<a class="btn btn-success" href="<?= Url::to(['/user/register']) ?>">Регистрация</a>
 	<?= Html::submitButton('Отправить', ['class' => 'btn btn-primary']) ?>
 </div>
 
