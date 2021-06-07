@@ -89,7 +89,12 @@ class UserController extends Controller
 
 		return $this->redirect(['login']);
 	}
-
+	
+	/**
+	 * Signup action.
+	 *
+	 * @return Response
+	 */
 	public function actionRegister()
 	{
 		$model = new User();

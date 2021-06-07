@@ -143,16 +143,25 @@ class ModelController extends Controller
 	
 	protected function addictModel()
 	{
-		$type = new TypeApparatus();
-		if ($type->load(Yii::$app->request->post()))
+		$type = null;
+		$brand = null;
+		
+		if(Yii::$app->user->can('setTypeApparatus'))
 		{
-			$type->save();
+			$type = new TypeApparatus();
+			if ($type->load(Yii::$app->request->post()))
+			{
+				$type->save();
+			}
 		}
 		
-		$brand = new Brand();
-		if ($brand->load(Yii::$app->request->post()))
+		if(Yii::$app->user->can('setBrandApparatus'))
 		{
-			$brand->save();
+			$brand = new Brand();
+			if ($brand->load(Yii::$app->request->post()))
+			{
+				$brand->save();
+			}
 		}
 		
 		return [

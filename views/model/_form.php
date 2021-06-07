@@ -41,29 +41,37 @@ $brand = ArrayHelper::map($brand, 'id', 'name');
 	<?php ActiveForm::end(); ?>
 	
 	
-	
+<?php if($addict['type']): ?>
 	<h2>Новый тип аппарата</h2>
 	<?php $form = ActiveForm::begin(); ?>
 	
-	<?= $form->field($addict['type'], 'name')->textInput(['maxlength' => true]) ?>
+	<?= $form->field($addict['type'], 'name')
+		->textInput(['maxlength' => true])
+		->label('Создать новый тип аппарата, если он ещё не создан.')
+	?>
 
 	<div class="form-group">
 		<?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
 	</div>
 	
 	<?php ActiveForm::end(); ?>
+<?php endif;?>
 	
 	
-	
+<?php if($addict['brand']): ?>
 	<h2>Новый производитель</h2>
 	<?php $form = ActiveForm::begin(); ?>
 	
-	<?= $form->field($addict['brand'], 'name')->textInput(['maxlength' => true]) ?>
+	<?= $form->field($addict['brand'], 'name')
+		->textInput(['maxlength' => true])
+		->label('Создать нового производителя, если он ещё не создан.')
+	?>
 
 	<div class="form-group">
 		<?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
 	</div>
 	
 	<?php ActiveForm::end(); ?>
+<?php endif;?>
 
 </div>

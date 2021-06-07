@@ -4,6 +4,13 @@ namespace app\commands;
 use Yii;
 use yii\console\Controller;
 
+/*
+Для применения:
+yii migrate --migrationPath=@yii/rbac/migrations
+yii rbac/init
+*/
+
+
 class RbacController extends Controller
 {
 	public function actionInit()
@@ -34,6 +41,11 @@ class RbacController extends Controller
 		$setTypeApparatus->description = 'Добавление моделей аппаратов';
 		$authManager->add($setTypeApparatus);
 		$authManager->addChild($mainMaster, $setTypeApparatus);
+		
+		$setBrandApparatus = $authManager->createPermission('setBrandApparatus');
+		$setBrandApparatus->description = 'Добавление моделей аппаратов';
+		$authManager->add($setBrandApparatus);
+		$authManager->addChild($mainMaster, $setBrandApparatus);
 		
 		
 		// Администратор

@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
@@ -23,7 +24,11 @@ $this->params['breadcrumbs'][] = $this->title;
 		['class' => 'btn btn-submit logout']
 		)
 		. Html::endForm()
-	. '</p>'
+	. '</p>';
 ?>
+
+	<div>
+	<?php require __DIR__ . '/iCan.php'; ?>
+	</div>
 
 </div>
