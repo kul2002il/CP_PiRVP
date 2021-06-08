@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Repair */
@@ -11,7 +12,12 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="repair-create">
 
+	<?php $form = ActiveForm::begin(); ?>
 	<h1><?= Html::encode($this->title) ?></h1>
+
+	<?= $form->field($model, 'idApparatus')->textInput()->label('Аппапат') ?>
+
+	Ваш аппарат ещё не зарегистрирован? <a class='btn btn-primary' href="/apparatus/new">Новый аппарат</a>
 
 	<?= $form->field($model, 'brekage')->textInput(['maxlength' => true]) ?>
 
@@ -21,4 +27,5 @@ $this->params['breadcrumbs'][] = $this->title;
 		<?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
 	</div>
 
+	<?php ActiveForm::end(); ?>
 </div>

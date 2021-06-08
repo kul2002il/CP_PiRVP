@@ -17,6 +17,10 @@ $rules = [
 	'setBrandApparatus' =>
 	[
 	],
+	'editRepairRecord' =>
+	[
+		'/repair' => 'Управление записями ремонта.'
+	],
 	'manageMaster' =>
 	[
 	],
@@ -39,7 +43,7 @@ foreach ($rules as $rule => $pages)
 foreach ($actions as $act => $description) { ?>
 
 	<p>
-		<a class="btn btn-success" href="<?= Url::to([$act]); ?>">
+		<a class="btn btn-primary" href="<?= Url::to([$act]); ?>">
 			<?= $description ?>
 		</a>
 	</p>

@@ -4,10 +4,12 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Repair;
+use app\models\StatusRepair;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * RepairController implements the CRUD actions for Repair model.
@@ -20,15 +22,18 @@ class RepairController extends Controller
 	public function behaviors()
 	{
 		return [
-			'rules' => [
-				[
-					'allow' => true,
-					'roles' => ['editRepairRecord'],
-				],
-				[
-					'allow' => true,
-					'actions' => ['create',],
-					'roles' => ['@'],
+			'access' => [
+				'class' => AccessControl::class,
+				'rules' => [
+					[
+						'allow' => true,
+						'roles' => ['editRepairRecord'],
+					],
+					[
+						'allow' => true,
+						'actions' => ['create',],
+						'roles' => ['@'],
+					],
 				],
 			],
 			'verbs' => [
@@ -47,10 +52,6 @@ class RepairController extends Controller
 	public function actionNew()
 	{
 		$model = new Repair();
-		
-		/* @todo
-		 * Сделать автодогрузку данных.
-		 */
 		
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
 			return $this->redirect(['view', 'id' => $model->id]);

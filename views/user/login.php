@@ -12,8 +12,8 @@ $this->title = 'Вход';
 <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
 <div class="form-group">
-	<a class="btn btn-success" href="<?= Url::to(['/user/register']) ?>">Регистрация</a>
-	<?= Html::submitButton('Отправить', ['class' => 'btn btn-primary']) ?>
+	<a class="btn btn-primary" href="<?= Url::to(['/user/register']) ?>">Регистрация</a>
+	<?= Html::submitButton('Войти', ['class' => 'btn btn-success']) ?>
 </div>
 
 <?php ActiveForm::end(); ?>

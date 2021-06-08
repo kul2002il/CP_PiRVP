@@ -55,14 +55,14 @@ class Repair extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'idMaster' => 'Id Master',
-            'idApparatus' => 'Id Apparatus',
-            'idStatus' => 'Id Status',
-            'brekage' => 'Brekage',
-            'description' => 'Description',
-            'feedback' => 'Feedback',
-            'startRepair' => 'Start Repair',
-            'endRepair' => 'End Repair',
+            'idMaster' => 'Id Мастера',
+            'idApparatus' => 'Id Аппарата',
+            'idStatus' => 'Id Статуса',
+            'brekage' => 'Заголовок поломки',
+            'description' => 'Описание поломки',
+            'feedback' => 'Отзыв',
+            'startRepair' => 'Время и дата с подачи заявки',
+            'endRepair' => 'Время и дата конца ремонта',
         ];
     }
 

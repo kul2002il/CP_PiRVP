@@ -62,7 +62,7 @@ CREATE TABLE repair(
 	idMaster INT,
 
 	idApparatus INT NOT NULL,
-	idStatus INT NOT NULL,
+	idStatus INT NOT NULL DEFAULT 0,
 
 	brekage VARCHAR(200) NOT NULL,
 	description TEXT NOT NULL,
