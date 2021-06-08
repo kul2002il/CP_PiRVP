@@ -3,8 +3,7 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Repair;
-use app\models\StatusRepair;
+use app\models\Apparatus;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -12,9 +11,9 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 /**
- * RepairController implements the CRUD actions for Repair model.
+ * ApparatusController implements the CRUD actions for Apparatus model.
  */
-class RepairController extends Controller
+class ApparatusController extends Controller
 {
 	/**
 	 * {@inheritdoc}
@@ -46,12 +45,13 @@ class RepairController extends Controller
 	}
 	
 	/**
-	 * Lists all Repair models.
+	 * Creates a new Apparatus model.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 * @return mixed
 	 */
 	public function actionNew()
 	{
-		$model = new Repair();
+		$model = new Apparatus();
 		
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
 			return $this->redirect(['view', 'id' => $model->id]);
@@ -63,13 +63,13 @@ class RepairController extends Controller
 	}
 
 	/**
-	 * Lists all Repair models.
+	 * Lists all Apparatus models.
 	 * @return mixed
 	 */
 	public function actionIndex()
 	{
 		$dataProvider = new ActiveDataProvider([
-			'query' => Repair::find(),
+			'query' => Apparatus::find(),
 		]);
 
 		return $this->render('index', [
@@ -78,7 +78,7 @@ class RepairController extends Controller
 	}
 
 	/**
-	 * Displays a single Repair model.
+	 * Displays a single Apparatus model.
 	 * @param integer $id
 	 * @return mixed
 	 * @throws NotFoundHttpException if the model cannot be found
@@ -91,13 +91,13 @@ class RepairController extends Controller
 	}
 
 	/**
-	 * Creates a new Repair model.
+	 * Creates a new Apparatus model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 * @return mixed
 	 */
 	public function actionCreate()
 	{
-		$model = new Repair();
+		$model = new Apparatus();
 
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
 			return $this->redirect(['view', 'id' => $model->id]);
@@ -109,7 +109,7 @@ class RepairController extends Controller
 	}
 
 	/**
-	 * Updates an existing Repair model.
+	 * Updates an existing Apparatus model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id
 	 * @return mixed
@@ -129,7 +129,7 @@ class RepairController extends Controller
 	}
 
 	/**
-	 * Deletes an existing Repair model.
+	 * Deletes an existing Apparatus model.
 	 * If deletion is successful, the browser will be redirected to the 'index' page.
 	 * @param integer $id
 	 * @return mixed
@@ -143,15 +143,15 @@ class RepairController extends Controller
 	}
 
 	/**
-	 * Finds the Repair model based on its primary key value.
+	 * Finds the Apparatus model based on its primary key value.
 	 * If the model is not found, a 404 HTTP exception will be thrown.
 	 * @param integer $id
-	 * @return Repair the loaded model
+	 * @return Apparatus the loaded model
 	 * @throws NotFoundHttpException if the model cannot be found
 	 */
 	protected function findModel($id)
 	{
-		if (($model = Repair::findOne($id)) !== null) {
+		if (($model = Apparatus::findOne($id)) !== null) {
 			return $model;
 		}
 
