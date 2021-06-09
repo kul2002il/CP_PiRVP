@@ -3,12 +3,14 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\User;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+
+use app\models\User;
+use app\models\Apparatus;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -54,6 +56,16 @@ class UserController extends Controller
 				],
 			],
 		];
+	}
+	
+	public function actionIndex()
+	{
+		$id = Yii::$app->user->id;
+		$apparatus = (new Apparatus())->find(['idOwner' => $id])->all();
+		
+		return $this->render('index', [
+			'apparatus' => $apparatus,
+		]);
 	}
 
 	/**
@@ -104,14 +116,6 @@ class UserController extends Controller
 		}
 		return $this->render('register', [
 			'model' => $model
-		]);
-	}
-
-	public function actionIndex()
-	{
-		$id = Yii::$app->user->id;
-		return $this->render('index', [
-			'model' => $this->findModel($id),
 		]);
 	}
 

@@ -46,7 +46,6 @@ class ApparatusController extends Controller
 	
 	/**
 	 * Creates a new Apparatus model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 * @return mixed
 	 */
 	public function actionNew()
@@ -56,7 +55,7 @@ class ApparatusController extends Controller
 		$model->idOwner = Yii::$app->user->id;
 		
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
-			return $this->redirect(['view', 'id' => $model->id]);
+			return $this->redirect(['/user/index', 'id' => $model->id]);
 		}
 		
 		return $this->render('new', [

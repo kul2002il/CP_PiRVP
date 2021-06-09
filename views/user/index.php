@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use app\models\Permission;
+use app\models\Apparatus;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -28,6 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 	<div>
+		<h2>Доступные действия</h2>
 		<?php
 
 		$actions = (new Permission())->getICan();
@@ -42,6 +44,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
 		<?php } ?>
 
+	</div>
+	
+	<div>
+		<h2>Мои аппараты</h2>
+		<div class="row">
+		<?php foreach ($apparatus as $appar):?>
+			<div class="col-lg-4">
+				<h3><?=$appar->idModel0()->name?></h3>
+				
+				<p><a
+					class="btn btn-default"
+					href="<?=Url::to(['/apparatus/view', 'id' => $appar->id])?>"
+				>Подробнее &raquo;</a></p>
+			</div>
+		<?php endforeach; ?>
+		</div>
 	</div>
 
 </div>
