@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\grid\GridView;
+use app\models\Permission;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -28,7 +28,20 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 	<div>
-	<?php require __DIR__ . '/iCan.php'; ?>
+		<?php
+
+		$actions = (new Permission())->getICan();
+
+		foreach ($actions as $act => $description) { ?>
+
+			<p>
+				<a class="btn btn-primary" href="<?= Url::to([$act]); ?>">
+					<?= $description ?>
+				</a>
+			</p>
+
+		<?php } ?>
+
 	</div>
 
 </div>
