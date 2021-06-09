@@ -30,6 +30,11 @@ class ModelController extends Controller
 						'allow' => true,
 						'roles' => ['setModelApparatus'],
 					],
+					[
+						'allow' => true,
+						'actions' => ['create'],
+						'roles' => ['@'],
+					],
 				],
 			],
 			'verbs' => [
