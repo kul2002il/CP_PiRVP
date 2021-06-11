@@ -30,6 +30,11 @@ class ApparatusController extends Controller
 					],
 					[
 						'allow' => true,
+						'actions' => ['view', 'edit',],
+						'roles' => ['editOwnerApparatus'],
+					],
+					[
+						'allow' => true,
 						'actions' => ['new',],
 						'roles' => ['@'],
 					],
@@ -53,11 +58,11 @@ class ApparatusController extends Controller
 		$model = new Apparatus();
 
 		$model->idOwner = Yii::$app->user->id;
-		
+
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
 			return $this->redirect(['/user/index', 'id' => $model->id]);
 		}
-		
+
 		return $this->render('new', [
 			'model' => $model,
 		]);

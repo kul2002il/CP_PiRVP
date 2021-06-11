@@ -60,6 +60,7 @@ class Permission
 			[
 				'Редактировать свои аппараты',
 				'rule' => 'OwnerRule',
+				'base' => ['editApparatus']
 			],
 	
 			'setRole' =>
@@ -159,6 +160,17 @@ class Permission
 				}
 			}
 			$authManager->add($perm);
+			if (isset($properties['base']) && isset($properties['rule']))
+			{
+				foreach ($properties['base'] as $base)
+				{
+					if(!isset($permObjects[$base]))
+					{
+						throw new \Exception("Отсутствует или ещё не создано разрешение \"$base\".");
+					}
+					$authManager->addChild($perm, $permObjects[$base]['object']);
+				}
+			}
 			$permObjects[$name]['object'] = $perm;
 		};
 		

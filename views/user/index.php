@@ -2,14 +2,15 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
-use app\models\Permission;
-use app\models\Apparatus;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::$app->user->identity->getUsername();
 $this->params['breadcrumbs'][] = $this->title;
+
+
+
 ?>
 <div class="user-index">
 
@@ -21,35 +22,43 @@ $this->params['breadcrumbs'][] = $this->title;
 	echo '<p>'
 		. Html::beginForm(['/user/logout'], 'post')
 		. Html::submitButton(
-		'Выйти',
-		['class' => 'btn btn-submit logout']
+			'Выйти',
+			['class' => 'btn btn-submit logout']
 		)
 		. Html::endForm()
 	. '</p>';
 ?>
 
+	<?php if($iCan): ?>
 	<div>
 		<h2>Доступные действия</h2>
 		<?php
 
-		$actions = (new Permission())->getICan();
+		foreach ($iCan as $act => $description) { ?>
 
-		foreach ($actions as $act => $description) { ?>
-
-			<p>
-				<a class="btn btn-primary" href="<?= Url::to([$act]); ?>">
-					<?= $description ?>
-				</a>
-			</p>
+		<p>
+			<a class="btn btn-primary" href="<?= Url::to([$act]); ?>">
+				<?= $description ?>
+			</a>
+		</p>
 
 		<?php } ?>
 
 	</div>
+	<?php endif; ?>
 	
 	<div>
-		<h2>Мои аппараты</h2>
+		<h2>
+			Мои аппараты
+			<a class="btn btn-success" href="<?= Url::to('/apparatus/new'); ?>">
+				Создать новый
+			</a>
+		</h2>
+
+		<?php if($apparatus): ?>
+
 		<div class="row">
-		<?php foreach ($apparatus as $appar):?>
+			<?php foreach ($apparatus as $appar):?>
 			<div class="col-lg-4">
 				<h3><?= $appar->getIdModel0()->one()->name ?></h3>
 				
@@ -58,8 +67,16 @@ $this->params['breadcrumbs'][] = $this->title;
 					href="<?=Url::to(['/apparatus/view', 'id' => $appar->id])?>"
 				>Подробнее &raquo;</a></p>
 			</div>
-		<?php endforeach; ?>
+			<?php endforeach; ?>
 		</div>
+
+		<?php else: ?>
+
+		<div>
+			Нет аппараратов.
+		</div>
+
+		<?php endif; ?>
 	</div>
 
 </div>

@@ -19,4 +19,9 @@ class RbacController extends Controller
 		$authManager = Yii::$app->authManager;
 		(new Permission())->initRBAC();
 	}
+
+	public function actionTest()
+	{
+		;
+	}
 }

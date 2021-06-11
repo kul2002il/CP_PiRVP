@@ -11,6 +11,7 @@ use yii\filters\AccessControl;
 
 use app\models\User;
 use app\models\Apparatus;
+use app\models\Permission;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -61,10 +62,16 @@ class UserController extends Controller
 	public function actionIndex()
 	{
 		$id = Yii::$app->user->id;
-		$apparatus = (new Apparatus())->find(['idOwner' => $id])->all();
-		
+		$apparatus = (new Apparatus())
+			->find()
+			->where(['idowner' => $id])
+			->all();
+
+		$iCan = (new Permission())->getICan();
+
 		return $this->render('index', [
 			'apparatus' => $apparatus,
+			'iCan' => $iCan,
 		]);
 	}
 
