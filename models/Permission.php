@@ -6,93 +6,101 @@ use Yii;
 
 class Permission
 {
-	private $permissions =
-	[
-		'repair' =>
-		[
-			'Чинить',
-		],
-
-		'setModelApparatus' =>
-		[
-			'Добавление моделей аппаратов',
-			'pages' => [
-				'/model' => 'Управление моделями аппаратов.',
-			]
-		],
-
-		'setTypeApparatus' =>
-		[
-			'Добавление моделей аппаратов',
-		],
-
-		'setBrandApparatus' =>
-		[
-			'Добавление моделей аппаратов',
-		],
-
-		'editRepairRecord' =>
-		[
-			'Управлять заданиями мастеров',
-			'pages' => [
-				'/repair' => 'Управление записями ремонта.',
-			],
-		],
-
-		'editApparatus' =>
-		[
-			'Управлять аппаратами пользователей',
-			'pages' => [
-				'/apparatus' => 'Управление аппаратами пользователей.',
-			],
-		],
-
-		'setRole' =>
-		[
-			'Назначать роли',
-			'pages' => [
-				'/user/all' => 'Управление пользователями.',
-			],
-		],
-	];
-
-	private $roles =
-	[
-		'master' =>
-		[
-			'repair',
-		],
-
-		'mainMaster' =>
-		[
-			'setModelApparatus',
-			'setTypeApparatus',
-			'setBrandApparatus',
-			'master',
-		],
-
-		'admin' =>
-		[
-			'editRepairRecord',
-			'editApparatus',
-			'mainMaster',
-		],
-
-		'superuser' =>
-		[
-			'setRole',
-			'admin',
-		],
-	];
-
+	
+	public function getRules()
+	{
+		return [
+			'OwnerRule',
+		];
+	}
+	
 	public function getArrayPermissions()
 	{
-		return $this->permissions;
+		return [
+			'repair' =>
+			[
+				'Чинить',
+			],
+	
+			'setModelApparatus' =>
+			[
+				'Добавление моделей аппаратов',
+				'pages' => [
+					'/model' => 'Управление моделями аппаратов.',
+				]
+			],
+	
+			'setTypeApparatus' =>
+			[
+				'Добавление моделей аппаратов',
+			],
+	
+			'setBrandApparatus' =>
+			[
+				'Добавление моделей аппаратов',
+			],
+	
+			'editRepairRecord' =>
+			[
+				'Управлять заданиями мастеров',
+				'pages' => [
+					'/repair' => 'Управление записями ремонта.',
+				],
+			],
+			
+			'editApparatus' =>
+			[
+				'Управлять аппаратами пользователей',
+				'pages' => [
+					'/apparatus' => 'Управление аппаратами пользователей.',
+				],
+			],
+			
+			'editOwnerApparatus' =>
+			[
+				'Редактировать свои аппараты',
+				'rule' => 'OwnerRule',
+			],
+	
+			'setRole' =>
+			[
+				'Назначать роли',
+				'pages' => [
+					'/user/all' => 'Управление пользователями.',
+				],
+			],
+		];
 	}
 
 	public function getArrayRoles()
 	{
-		return $this->roles;
+		return [
+			'master' =>
+			[
+				'repair',
+			],
+			
+			'mainMaster' =>
+			[
+				'setModelApparatus',
+				'setTypeApparatus',
+				'setBrandApparatus',
+				'master',
+			],
+			
+			'admin' =>
+			[
+				'editRepairRecord',
+				'editApparatus',
+				'mainMaster',
+			],
+			
+			'superuser' =>
+			[
+				'setRole',
+				'admin',
+			],
+		];
 	}
 
 	public function initRBAC()
@@ -100,20 +108,70 @@ class Permission
 		$authManager = Yii::$app->authManager;
 
 		$authManager->removeAll();
+		
+		$roles = $this->initRoles($this->initPermissions($this->initRules()));
+		
+		// Назначение ролей пользователям по ID.
+		$authManager->assign($roles['superuser'], 1);
+		$authManager->assign($roles['mainMaster'], 2);
 
+		echo "Разрешения и роли переписаны.\n";
+		return $roles;
+	}
+	
+	private function initRules()
+	{
+		$authManager = Yii::$app->authManager;
+		
+		$rules = $this->getRules();
+		
+		$ruleNames = [];
+		foreach ($rules as $ruleClassName)
+		{
+			$ruleFullClassName = '\\app\\rbac\\' . $ruleClassName;
+			$rule = new $ruleFullClassName;
+			$authManager->add($rule);
+			$ruleNames[$ruleClassName] = $rule->name;
+		}
+		
+		return $ruleNames;
+	}
+	
+	private function initPermissions($ruleNames)
+	{
+		$authManager = Yii::$app->authManager;
 		$permissions = $this->getArrayPermissions();
-
+		
+		$permObjects = [];
 		foreach ($permissions as $name => $properties)
 		{
 			$perm = $authManager->createPermission($name);
 			$perm->description = $properties[0];
+			if(isset($properties['rule']))
+			{
+				if(isset($ruleNames[$properties['rule']]))
+				{
+					$perm->ruleName = $ruleNames[$properties['rule']];
+				}
+				else
+				{
+					throw new \Exception("Отсутствует класс правила \"${properties['rule']}\".");
+				}
+			}
 			$authManager->add($perm);
-			$permissions[$name]['object'] = $perm;
-		}
-
+			$permObjects[$name]['object'] = $perm;
+		};
+		
+		return $permObjects;
+	}
+	
+	private function initRoles($permissions)
+	{
+		$authManager = Yii::$app->authManager;
+		
 		$roles = $this->getArrayRoles();
-		$out = [];
-
+		$roleObjects = [];
+		
 		foreach ($roles as $name => $childs)
 		{
 			$role = $authManager->createRole($name);
@@ -125,9 +183,9 @@ class Permission
 				{
 					$objChild = $permissions[$child]['object'];
 				}
-				else if(isset($out[$child]))
+				else if(isset($roleObjects[$child]))
 				{
-					$objChild = $out[$child];
+					$objChild = $roleObjects[$child];
 				}
 				else
 				{
@@ -135,15 +193,9 @@ class Permission
 				}
 				$authManager->addChild($role, $objChild);
 			}
-			$out[$name] = $role;
-		}
-
-		// Назначение ролей пользователям по ID.
-		$authManager->assign($out['superuser'], 1);
-		$authManager->assign($out['mainMaster'], 2);
-
-		echo "Разрешения и роли переписаны.";
-		return $out;
+			$roleObjects[$name] = $role;
+		};
+		return $roleObjects;
 	}
 
 	public function getICan()

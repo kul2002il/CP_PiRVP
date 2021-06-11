@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		<div class="row">
 		<?php foreach ($apparatus as $appar):?>
 			<div class="col-lg-4">
-				<h3><?=$appar->idModel0()->name?></h3>
+				<h3><?= $appar->getIdModel0()->one()->name ?></h3>
 				
 				<p><a
 					class="btn btn-default"
