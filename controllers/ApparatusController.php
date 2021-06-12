@@ -7,6 +7,7 @@ use app\models\Apparatus;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\ForbiddenHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
@@ -35,7 +36,7 @@ class ApparatusController extends Controller
 					],
 					[
 						'allow' => true,
-						'actions' => ['new',],
+						'actions' => ['new', 'view',],
 						'roles' => ['@'],
 					],
 				],
@@ -157,10 +158,13 @@ class ApparatusController extends Controller
 	 */
 	protected function findModel($id)
 	{
-		if (($model = Apparatus::findOne($id)) !== null) {
-			return $model;
+		if (($model = Apparatus::findOne($id)) === null) {
+			throw new NotFoundHttpException('The requested page does not exist.');
 		}
-
-		throw new NotFoundHttpException('The requested page does not exist.');
+		if ( !(Yii::$app->user->can('editApparatus', ['apparatus' => $model])))
+		{
+			throw new ForbiddenHttpException('Доступ к чужим аппаратам запрещён.');
+		}
+		return $model;
 	}
 }

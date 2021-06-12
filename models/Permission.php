@@ -76,9 +76,15 @@ class Permission
 	public function getArrayRoles()
 	{
 		return [
+			'user' =>
+			[
+				'editOwnerApparatus'
+			],
+			
 			'master' =>
 			[
 				'repair',
+				'user',
 			],
 			
 			'mainMaster' =>
@@ -115,6 +121,8 @@ class Permission
 		// Назначение ролей пользователям по ID.
 		$authManager->assign($roles['superuser'], 1);
 		$authManager->assign($roles['mainMaster'], 2);
+		$authManager->assign($roles['user'], 3);
+		$authManager->assign($roles['user'], 4);
 
 		echo "Разрешения и роли переписаны.\n";
 		return $roles;
