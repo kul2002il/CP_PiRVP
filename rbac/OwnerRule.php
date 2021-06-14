@@ -19,14 +19,8 @@ class OwnerRule extends Rule
 	 */
 	public function execute($user, $item, $params)
 	{
-		$cns = new \debug\Console();
-		
 		$out = isset($params['apparatus'])
 			&& $params['apparatus']->idOwner == $user;
-		
-		$cns->addl('Предмет:')->var($params);
-		
-		$cns->cm('Проверка правила');
 		
 		return $out;
 	}
