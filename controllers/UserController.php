@@ -65,6 +65,7 @@ class UserController extends Controller
 		$apparatus = (new Apparatus())
 			->find()
 			->where(['idowner' => $id])
+			->limit(6)
 			->all();
 
 		$iCan = (new Permission())->getICan();

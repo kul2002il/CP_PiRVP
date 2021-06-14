@@ -27,7 +27,7 @@ class ApparatusController extends Controller
 				'rules' => [
 					[
 						'allow' => true,
-						'actions' => ['new', 'view',],
+						'actions' => ['new', 'view', 'index',],
 						'roles' => ['@'],
 					],
 					[
@@ -63,18 +63,35 @@ class ApparatusController extends Controller
 			'model' => $model,
 		]);
 	}
-
+	
 	/**
-	 * Lists all Apparatus models.
+	 * Lists all Apparatus models User.
 	 * @return mixed
 	 */
 	public function actionIndex()
 	{
 		$dataProvider = new ActiveDataProvider([
+			'query' => Apparatus::find()->where([
+				'idOwner' => Yii::$app->user->id,
+			]),
+		]);
+		
+		return $this->render('userApparatus', [
+			'dataProvider' => $dataProvider,
+		]);
+	}
+
+	/**
+	 * Lists all Apparatus models.
+	 * @return mixed
+	 */
+	public function actionAll()
+	{
+		$dataProvider = new ActiveDataProvider([
 			'query' => Apparatus::find(),
 		]);
 
-		return $this->render('index', [
+		return $this->render('viewAll', [
 			'dataProvider' => $dataProvider,
 		]);
 	}

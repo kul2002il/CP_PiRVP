@@ -49,10 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	
 	<div>
 		<h2>
-			Мои аппараты
-			<a class="btn btn-success" href="<?= Url::to('/apparatus/new'); ?>">
-				Создать новый
-			</a>
+			<?= Html::a('Мои аппараты', ['/apparatus'], ['class' => '']) ?>
 		</h2>
 
 		<?php if($apparatus): ?>
