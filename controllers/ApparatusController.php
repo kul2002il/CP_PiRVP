@@ -27,17 +27,12 @@ class ApparatusController extends Controller
 				'rules' => [
 					[
 						'allow' => true,
-						'roles' => ['editRepairRecord'],
-					],
-					[
-						'allow' => true,
-						'actions' => ['view', 'edit',],
-						'roles' => ['editOwnerApparatus'],
-					],
-					[
-						'allow' => true,
 						'actions' => ['new', 'view',],
 						'roles' => ['@'],
+					],
+					[
+						'allow' => true,
+						'roles' => ['editRepairRecord', 'editApparatus'],
 					],
 				],
 			],
@@ -151,7 +146,6 @@ class ApparatusController extends Controller
 
 	/**
 	 * Finds the Apparatus model based on its primary key value.
-	 * If the model is not found, a 404 HTTP exception will be thrown.
 	 * @param integer $id
 	 * @return Apparatus the loaded model
 	 * @throws NotFoundHttpException if the model cannot be found
@@ -163,7 +157,7 @@ class ApparatusController extends Controller
 		}
 		if ( !(Yii::$app->user->can('editApparatus', ['apparatus' => $model])))
 		{
-			throw new ForbiddenHttpException('Доступ к чужим аппаратам запрещён.');
+			throw new ForbiddenHttpException('You are not allowed to perform this action.');
 		}
 		return $model;
 	}

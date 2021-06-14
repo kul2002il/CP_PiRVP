@@ -21,14 +21,13 @@ class OwnerRule extends Rule
 	{
 		$cns = new \debug\Console();
 		
-		$out = isset($params['apparatus']) ?
-			$params['apparatus']->idOwner == $user :
-			false;
-			
-		$cns->addl('Предмет:')->var($item);
+		$out = isset($params['apparatus'])
+			&& $params['apparatus']->idOwner == $user;
+		
+		$cns->addl('Предмет:')->var($params);
 		
 		$cns->cm('Проверка правила');
 		
-		return true;
+		return $out;
 	}
 }
