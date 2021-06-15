@@ -32,7 +32,7 @@ class ModelController extends Controller
 					],
 					[
 						'allow' => true,
-						'actions' => ['create'],
+						'actions' => ['create', 'index'],
 						'roles' => ['@'],
 					],
 				],

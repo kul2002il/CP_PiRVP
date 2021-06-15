@@ -22,21 +22,9 @@ $this->params['breadcrumbs'][] = $this->title;
 		'dataProvider' => $dataProvider,
 		'columns' => [
 			['class' => 'yii\grid\SerialColumn'],
-
-			[
-				'header' => 'Тип',
-				'content' => function ($model, $key, $index, $column)
-				{
-					return $model->getIdType0()->one()->name;
-				}
-			],
-			[
-				'header' => 'Производитель',
-				'content' => function ($model, $key, $index, $column)
-				{
-					return $model->getIdBrand0()->one()->name;
-			}
-			],
+			
+			'idType0.name',
+			'idBrand0.name',
 			'name',
 
 			['class' => 'yii\grid\ActionColumn'],
