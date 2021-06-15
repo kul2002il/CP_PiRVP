@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Apparatus */
 
-$this->title = $model->id;
+$this->title = $model->idModel0->name;
 $this->params['breadcrumbs'][] = ['label' => 'Apparatuses', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -32,7 +32,7 @@ if(Yii::$app->user->can('editApparatus'))
 	<h1><?= Html::encode($this->title) ?></h1>
 
 	<p>
-		<?= Html::a('Отправить заявку', ['/repair/new', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+		<?= Html::a('Отправить заявку', ['/repair/new', 'apparatus' => $model->id], ['class' => 'btn btn-primary']) ?>
 		<?= $canEditFlag ? Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) : '' ?>
 		<?= Html::a('Delete', ['delete', 'id' => $model->id], [
 			'class' => 'btn btn-danger',

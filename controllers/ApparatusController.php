@@ -56,7 +56,7 @@ class ApparatusController extends Controller
 		$model->idOwner = Yii::$app->user->id;
 
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
-			return $this->redirect(['/user/index', 'id' => $model->id]);
+			return $this->redirect(['/apparatus/view', 'id' => $model->id]);
 		}
 
 		return $this->render('new', [

@@ -4,12 +4,14 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Repair;
+use app\models\Apparatus;
 use app\models\StatusRepair;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 
 /**
  * RepairController implements the CRUD actions for Repair model.
@@ -53,12 +55,24 @@ class RepairController extends Controller
 	{
 		$model = new Repair();
 		
+		$apparatuses = Apparatus::find()
+		->where([
+			'idOwner' => Yii::$app->user->id,
+		])
+		->filterWhere([
+			'id' => Yii::$app->request->get('apparatus'),
+		])
+		->all();
+		
+		$apparatuses = ArrayHelper::map($apparatuses, 'id', 'idModel0.name');
+		
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
 			return $this->redirect(['view', 'id' => $model->id]);
 		}
 		
 		return $this->render('new', [
 			'model' => $model,
+			'apparatuses' => $apparatuses,
 		]);
 	}
 

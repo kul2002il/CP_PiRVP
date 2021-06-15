@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Repair */
+/* @var $apparatuses array */
 
 $this->title = 'Заявка на ремонт';
 $this->params['breadcrumbs'][] = ['label' => 'Repairs', 'url' => ['index']];
@@ -15,7 +16,19 @@ $this->params['breadcrumbs'][] = $this->title;
 	<?php $form = ActiveForm::begin(); ?>
 	<h1><?= Html::encode($this->title) ?></h1>
 
-	<?= $form->field($model, 'idApparatus')->textInput()->label('Аппапат') ?>
+	<?php
+	if(count($apparatuses) === 1)
+	{
+		$optionsField = ['disabled' => true];
+	}
+	else
+	{
+		$optionsField = ['prompt' => 'Выберете'];
+	}
+	echo $form->field($model, 'idApparatus')
+		->dropDownList($apparatuses, $optionsField)
+		->label('Аппапат');
+	?>
 
 	Ваш аппарат ещё не зарегистрирован? <a class='btn btn-primary' href="/apparatus/new">Новый аппарат</a>
 
