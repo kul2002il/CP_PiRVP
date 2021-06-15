@@ -76,6 +76,18 @@ CREATE TABLE repair(
 	FOREIGN KEY (idStatus) REFERENCES statusRepair (id) ON DELETE CASCADE
 );
 
+CREATE TABLE message(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	
+	idSender INT NOT NULL,
+	idRepair INT NOT NULL,
+	content TEXT NOT NULL,
+	startRepair DATETIME NOT NULL DEFAULT NOW(),
+	
+	FOREIGN KEY (idSender) REFERENCES user (id) ON DELETE CASCADE,
+	FOREIGN KEY (idRepair) REFERENCES repair (id) ON DELETE CASCADE
+);
+
 
 
 INSERT INTO user(nameLast, nameFirst, nameMiddle, email, password) VALUES
@@ -192,7 +204,20 @@ INSERT INTO repair
 	NULL
 );
 
-
+INSERT INTO message (idSender, idRepair, content) VALUES
+(
+	2,
+	1,
+	"Спасибо, что обратились в нашу ремонтную компанию. Откуда бы о нас узнали?"
+),(
+	3,
+	1,
+	"Друзья порекомендовали."
+),(
+	2,
+	1,
+	"О проблеме прочитал. Готовы к встече на диагностику."
+);
 
 /*
 Для ролей:
