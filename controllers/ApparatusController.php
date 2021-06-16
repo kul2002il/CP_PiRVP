@@ -104,8 +104,17 @@ class ApparatusController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$apparatus = $this->findModel($id);
+		
+		$dataProvider = new ActiveDataProvider([
+			'query' => $apparatus->queryRepairs(),
+		]);
+		
+		//$repairs = $apparatus->actualRepairs;
+		
 		return $this->render('view', [
-			'model' => $this->findModel($id),
+			'model' => $apparatus,
+			'repairs' => $dataProvider,
 		]);
 	}
 

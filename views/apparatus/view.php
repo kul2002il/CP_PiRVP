@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Apparatus */
@@ -47,5 +48,25 @@ if(Yii::$app->user->can('editApparatus'))
 		'model' => $model,
 		'attributes' => $wigetAttributes,
 	]) ?>
+	
+	<?= GridView::widget([
+		'dataProvider' => $repairs,
+		'columns' => [
+			['class' => 'yii\grid\SerialColumn'],
+
+			'idMaster.nameFirst',
+			
+			'idStatus0.name',
+			
+			'brekage',
+			'description',
+			'feedback',
+			
+			'startRepair',
+			'endRepair',
+
+			['class' => 'yii\grid\ActionColumn'],
+		],
+	]); ?>
 
 </div>

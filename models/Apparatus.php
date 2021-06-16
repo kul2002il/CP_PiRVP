@@ -85,10 +85,8 @@ class Apparatus extends \yii\db\ActiveRecord
 	 *
 	 * @return \yii\db\ActiveQuery
 	 */
-	public function getActualRepairs()
+	public function queryRepairs()
 	{
-		return $this->hasMany(Repair::className(), ['idApparatus' => 'id'])
-			->where(['endRepair != null'])
-			->orderBy(['startRepair']);
+		return Repair::find()->where(['idApparatus' => $this->id]);
 	}
 }
