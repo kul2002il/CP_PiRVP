@@ -6,48 +6,62 @@ $this->title = 'Главная';
 ?>
 <div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+	<div class="jumbotron">
+		<h1>РЕПРОТЕК</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+		<p class="lead">
+			Ремонт промышленного и сварочного оборудования в городе Томск
+		</p>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
+		<p><a class="btn btn-lg btn-success" href="#instruction">
+			Для заявки выполните шаги ниже</a></p>
+	</div>
 
-    <div class="body-content">
+	<div class="body-content" id="instruction">
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+		<div class="row">
+			<div class="col-lg-4">
+				<h2>Пользователь</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+				<p>
+					Для надёжной и быстрой связи по поводу починки аппаратов мы
+					используем данный сайт.
+					Также регистрания позволяет отслеживать статус ремонта, все
+					свои ремонты и все свои аппараты, быстрая связь с мастером
+					по поводу ремонта, отслеживать историю ремонта аппаратов,
+					
+				</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+				<p><a class="btn btn-default" href="/user">Вход &raquo;</a></p>
+			</div>
+			<div class="col-lg-4">
+				<h2>Аппарат</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+				<p>
+					Вы рассказываете о своём аппарате информацию:
+					тип аппарата, бренд, модель.
+					Без лишних вопросов узнаёте подлежит ремонту аппарат в нашей
+					компании или нет.
+					Можете посмотреть
+					историю ремонтов аппарата в нашей компании,
+					и подать заявку на ремонт (новый или гарантийный).
+				</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+				<p><a class="btn btn-default" href="/apparatus">Аппарат &raquo;</a></p>
+			</div>
+			<div class="col-lg-4">
+				<h2>Ремонт</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+				<p>
+					Вы рассказываете о своей проблеме всё, что пощитаете нужным.
+					Это сохраняется для анализа и диагностики аппарата.
+					В случае, если Вам откажут в ремонте, о причине будет
+					написано на странице ремонта.
+				</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
+				<p><a class="btn btn-default" href="/repair">Ремонт &raquo;</a></p>
+			</div>
+		</div>
 
-    </div>
+	</div>
 </div>
