@@ -33,7 +33,7 @@ class RepairController extends Controller
 					],
 					[
 						'allow' => true,
-						'actions' => ['new',],
+						'actions' => ['new', 'index'],
 						'roles' => ['@'],
 					],
 				],

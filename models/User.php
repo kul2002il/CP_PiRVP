@@ -32,12 +32,12 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 	public function rules()
 	{
 		return [
-			[['id_role'], 'integer'],
 			[['nameFirst', 'nameLast', 'email', 'password'], 'required'],
 			[['nameFirst', 'nameLast', 'nameMiddle', 'email'], 'string', 'max' => 100],
 			[['password'], 'string', 'max' => 255],
 			[['password_repeat'], 'compare', 'compareAttribute' => 'password'],
 			[['email'], 'unique'],
+			['email', 'email'],
 		];
 	}
 
@@ -48,7 +48,6 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 	{
 		return [
 			'id' => 'ID',
-			'id_role' => 'Роль',
 			'nameFirst' => 'Имя',
 			'nameLast' => 'Фамилия',
 			'nameMiddle' => 'Отчество',

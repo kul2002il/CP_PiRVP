@@ -38,11 +38,11 @@ AppAsset::register($this);
 	echo Nav::widget([
 		'options' => ['class' => 'navbar-nav navbar-right'],
 		'items' => [
-			['label' => 'Home', 'url' => ['/site/index']],
-			['label' => 'About', 'url' => ['/site/about']],
-			['label' => 'Contact', 'url' => ['/site/contact']],
+			['label' => 'Главная', 'url' => ['/site/index']],
+			['label' => 'О нас', 'url' => ['/site/about']],
+			['label' => 'Контакты', 'url' => ['/site/contact']],
 			Yii::$app->user->isGuest ? (
-				['label' => 'Login', 'url' => ['/user/login']]
+				['label' => 'Вход', 'url' => ['/user/login']]
 			) : ['label' => Yii::$app->user->identity->getUsername(), 'url' => ['/user/index']]
 			/*(
 				'<li>'
