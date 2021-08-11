@@ -1,4 +1,12 @@
 
+/* Виджет переключателя или включателя */
+.switch-widget>input{
+	display: none;
+}
+.switch-widget>:not(:checked)+*{
+	display: none;
+}
+
 header{
 	background-color: #ffc107;
 }
