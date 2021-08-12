@@ -22,10 +22,18 @@
 					<li><a href="?target=about" class="nav-link px-2 link-dark">О нас</a></li>
 				</ul>
 	
+				<?php if($user):?>
 				<div class="col-md-3 text-end">
-					<button type="button" class="btn btn-outline-dark me-2">Войти</button>
-					<button type="button" class="btn btn-outline-dark">Регистрация</button>
+					<a href="?target=personalarea" class="btn btn-outline-dark me-2">
+						<?=$user['nameLast'] . ' ' . $user['nameFirst']?>
+					</a>
 				</div>
+				<?php else:?>
+				<div class="col-md-3 text-end">
+					<a href="?target=login" class="btn btn-outline-dark me-2">Войти</a>
+					<a href="?target=signup" class="btn btn-outline-dark">Регистрация</a>
+				</div>
+				<?php endif;?>
 			</div>
 		</div>
 	</header>

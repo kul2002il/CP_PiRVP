@@ -1,29 +1,19 @@
 <div class="container row">
-	<div class="col-md-3 col-lg-2">
-		<div class="d-flex flex-column flex-shrink-0 p-3" style="width: 280px;">
-			<ul class="nav nav-pills flex-column mb-auto">
-				<li>
-					<label class="p-2"
-						for="page1">
-						Страница 1
-					</label>
-				</li>
-				<li>
-					<label class="p-2"
-						for="page2">
-						Страница 2
-					</label>
-				</li>
-				<li>
-					<label class="p-2"
-						for="page3">
-						Страница 3
-					</label>
-				</li>
-			</ul>
-		</div>
+	<div class="col-md-5 list-group p-4">
+		<label class="list-group-item"
+			for="page1">
+			Страница 1
+		</label>
+		<label class="list-group-item"
+			for="page2">
+			Страница 2
+		</label>
+		<label class="list-group-item"
+			for="page3">
+			Страница 3
+		</label>
 	</div>
-	<div class="switch-widget col">
+	<div class="switch-widget col py-4">
 		<input type="radio" name="pager" id="page1" checked>
 		<div>
 			Страница 1
