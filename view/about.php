@@ -1,32 +1,23 @@
 <div class="container row">
 	<div class="col-md-5 list-group p-4">
+		<?php
+		$end = count($about);
+		for ($i = 0; $i < $end; $i++):?>
 		<label class="list-group-item"
-			for="page1">
-			Страница 1
+			for="page<?=$i?>">
+			<?= $about[$i]['title']?>
 		</label>
-		<label class="list-group-item"
-			for="page2">
-			Страница 2
-		</label>
-		<label class="list-group-item"
-			for="page3">
-			Страница 3
-		</label>
+		<?php endfor;?>
 	</div>
 	<div class="switch-widget col py-4">
-		<input type="radio" name="pager" id="page1" checked>
+		<?php
+		for ($i = 0; $i < $end; $i++):?>
+		<input type="radio" name="pager" id="page<?=$i?>"
+		<?=isset($about[$i]['default']) && $about[$i]['default'] ? 'checked' : ''?>>
 		<div>
-			Страница 1
+			<h2><?= $about[$i]['title']?></h2>
+			<?= $about[$i]['body']?>
 		</div>
-		
-		<input type="radio" name="pager" id="page2">
-		<div>
-			Страница 2
-		</div>
-		
-		<input type="radio" name="pager" id="page3">
-		<div>
-			Страница 3
-		</div>
+		<?php endfor;?>
 	</div>
 </div>
