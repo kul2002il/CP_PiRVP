@@ -34,10 +34,12 @@ function resizeTextAreaWithContext(event)
 	}
 }
 
-/*
-Включение изменения размеров для всех textarea.autogrow
-*/
+//Включение изменения размеров для всех textarea.autogrow элементов.
 document.querySelectorAll("textarea.autogrow").forEach(e=>{
 	e.addEventListener("input", resizeTextAreaWithContext);
+});
+
+//Первое приведение в нормальный размер.
+document.querySelectorAll("textarea.autogrow").forEach(e=>{
 	e.dispatchEvent(new Event('input'));
 });

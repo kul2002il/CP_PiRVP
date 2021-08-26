@@ -44,12 +44,12 @@
 			</div>
 			<?php endforeach;?>
 			
-			<form method="post">
-				<div class="d-flex align-items-end form-message">
+			<form method="post" class="form-message border-top">
+				<div class="d-flex align-items-end">
 					<div class="btn">
 						<img class="button-message" alt="paperclip" src="static/img/paperclip.svg">
 					</div>
-					<textarea class="flex-grow-1 autogrow textarea-message" row="0"></textarea>
+					<textarea class="flex-grow-1 autogrow textarea-message" autofocus></textarea>
 					<button class="btn">
 						<img class="button-message" alt="send" src="static/img/send.svg">
 					</button>
