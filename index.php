@@ -8,6 +8,7 @@ if(isset($_GET['target']))
 }
 
 require 'model/data.php';
+require 'model/apparatus.php';
 require 'model/user.php';
 
 $target = "view/$target.php";
