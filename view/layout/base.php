@@ -24,11 +24,14 @@
 				</ul>
 	
 				<?php if($user):?>
-				<div class="col-md-3 text-end">
+				<form method="post" class="col-md-3 text-end">
 					<a href="?target=personalarea" class="btn btn-outline-dark me-2">
 						<?=$user['nameLast'] . ' ' . $user['nameFirst']?>
 					</a>
-				</div>
+					<button class="btn" name="logout" value="Выйти">
+						<img alt="logout" src="static/img/logout.svg" style="width: 40px;">
+					</button>
+				</form>
 				<?php else:?>
 				<div class="col-md-3 text-end">
 					<a href="?target=login" class="btn btn-outline-dark me-2">Войти</a>
