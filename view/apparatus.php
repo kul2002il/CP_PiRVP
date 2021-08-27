@@ -1,9 +1,6 @@
 <div class="container py-3">
 	<h2>
-		<?= $apparatus['model']['type']['name'] . ' ' .
-			$apparatus['model']['brand']['name'] . ' '  .
-			$apparatus['model']['name']
-		?>
+		<?= $apparatus['name']?>
 	</h2>
 </div>
 

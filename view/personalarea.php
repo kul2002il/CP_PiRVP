@@ -16,10 +16,7 @@
 			<div class="col">
 				<h3>
 					<a href="?target=apparatus" class="link-dark text-decoration-none">
-						<?= $article['model']['type']['name'] . ' ' .
-							$article['model']['brand']['name'] . ' '  .
-							$article['model']['name']
-						?>
+						<?= $article['name']?>
 					</a>
 				</h3>
 				<!-- <div class="row row-cols-2">

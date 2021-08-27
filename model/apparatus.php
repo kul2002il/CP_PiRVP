@@ -116,6 +116,10 @@ foreach ($apparatuses as $key => $app)
 	$apparatuses[$key]['model'] = $models[$app['model']];
 	$apparatuses[$key]['model']['type'] = $types[$apparatuses[$key]['model']['type']];
 	$apparatuses[$key]['model']['brand'] = $brands[$apparatuses[$key]['model']['brand']];
+	$apparatuses[$key]['name'] =
+		$apparatuses[$key]['model']['type']['name'] . ' ' .
+		$apparatuses[$key]['model']['brand']['name'] . ' '  .
+		$apparatuses[$key]['model']['name'];
 
 	$apparatuses[$key]['hist'] = [
 		$histori[0],
