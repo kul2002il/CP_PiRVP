@@ -7,7 +7,7 @@
 					alt="image" width="350" height="250" loading="lazy">
 			</div>
 			<div class="col-lg-6">
-				<h1 class="display-5 fw-bold mb-3"><?= $article['title']?></h1>
+				<h2 class="display-5 fw-bold mb-3"><?= $article['title']?></h2>
 				<p><?= $article['text']?></p>
 				<span class="text-muted"><?= $article['datetime']?></span>
 			</div>

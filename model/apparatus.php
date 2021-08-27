@@ -33,7 +33,7 @@ $models = [
 	],
 ];
 
-$appararuses = [
+$apparatuses = [
 	[
 		'image' => 'static/img/noimg.svg',
 		'model' => 0,
@@ -42,7 +42,7 @@ $appararuses = [
 	],
 	[
 		'image' => 'static/img/noimg.svg',
-		'model' => 0,
+		'model' => 2,
 		'idOwner' => 1,
 		'status' => 'На ремонте',
 	],
@@ -111,17 +111,19 @@ $histori = [
 	],
 ];
 
-$apparatus = [
-	'image' => 'static/img/noimg.svg',
-	'model' => [
-		'type' => $types[0],
-		'brand' => $brands[0],
-		'name' => '220',
-	],
-	'idOwner' => 1,
-	'status' => 'На рассмотрении',
-];
+foreach ($apparatuses as $key => $app)
+{
+	$apparatuses[$key]['model'] = $models[$app['model']];
+	$apparatuses[$key]['model']['type'] = $types[$apparatuses[$key]['model']['type']];
+	$apparatuses[$key]['model']['brand'] = $brands[$apparatuses[$key]['model']['brand']];
 
+	$apparatuses[$key]['hist'] = [
+		$histori[0],
+		$histori[1],
+		$histori[2],
+		$histori[3],
+		$histori[4],
+	];
+}
 
-
-
+$apparatus = $apparatuses[0];
