@@ -5,10 +5,8 @@
 
 use app\assets\AppAsset;
 use app\widgets\Alert;
-use yii\bootstrap4\Breadcrumbs;
-use yii\bootstrap4\Html;
-use yii\bootstrap4\Nav;
-use yii\bootstrap4\NavBar;
+use yii\helpers\Html;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -18,6 +16,7 @@ AppAsset::register($this);
 <head>
 	<meta charset="<?= Yii::$app->charset ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 	<?php $this->registerCsrfMetaTags() ?>
 	<title><?= Html::encode($this->title) ?> — РЕПРОТЭК</title>
 	<?php $this->head() ?>
@@ -26,52 +25,56 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <header>
-	<?php
-	NavBar::begin([
-		'brandLabel' => Yii::$app->name,
-		'brandUrl' => Yii::$app->homeUrl,
-		'options' => [
-			'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
-		],
-	]);
-	echo Nav::widget([
-		'options' => ['class' => 'navbar-nav'],
-		'items' => [
-			['label' => 'Home', 'url' => ['/site/index']],
-			['label' => 'About', 'url' => ['/site/about']],
-			['label' => 'Contact', 'url' => ['/site/contact']],
-			Yii::$app->user->isGuest ? (
-				['label' => 'Login', 'url' => ['/site/login']]
-			) : (
-				'<li>'
-				. Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
-				. Html::submitButton(
-					'Logout (' . Yii::$app->user->identity->username . ')',
-					['class' => 'btn btn-link logout']
-				)
-				. Html::endForm()
-				. '</li>'
-			)
-		],
-	]);
-	NavBar::end();
-	?>
+	<div class="container">
+		<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
+			<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+				<span class="fs-4">РEПРОТЭК</span>
+			</a>
+
+			<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+				<li><a href="/" class="nav-link px-2 link-dark">Главная</a></li>
+				<li><a href="<?=Url::toRoute('news');?>" class="nav-link px-2 link-dark">Новости</a></li>
+				<li><a href="<?=Url::toRoute('contacts');?>" class="nav-link px-2 link-dark">Контакты</a></li>
+				<li><a href="<?=Url::toRoute('about');?>" class="nav-link px-2 link-dark">О нас</a></li>
+			</ul>
+
+			<?php if(!Yii::$app->user->isGuest):?>
+			<form method="post" class="col-md-3 text-end">
+				<a href="<?=Url::toRoute('/user/personalarea');?>" class="btn btn-outline-dark me-2">
+					<?=Yii::$app->user->identity->username?>
+				</a>
+				<button class="btn" name="logout" value="Выйти">
+					<img alt="logout" src="static/img/logout.svg" style="width: 40px;">
+				</button>
+			</form>
+			<?php else:?>
+			<div class="col-md-3 text-end">
+				<a href="<?=Url::toRoute('/user/login');?>" class="btn btn-outline-dark me-2">Войти</a>
+				<a href="<?=Url::toRoute('/user/signup');?>" class="btn btn-outline-dark">Регистрация</a>
+			</div>
+			<?php endif;?>
+		</div>
+	</div>
 </header>
 
 <main role="main" class="flex-shrink-0">
 	<div class="container">
-		<?= Breadcrumbs::widget([
-			'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-		]) ?>
 		<?= Alert::widget() ?>
-		<?= $content ?>
 	</div>
+	<?= $content ?>
 </main>
 
 <footer class="footer mt-auto py-3 text-muted">
-	<div class="container">
-		<p class="float-left">&copy; My Company <?= date('Y') ?></p>
-		<p class="float-right"><?= Yii::powered() ?></p>
+	<div class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+		<div class="col-md-4 d-flex align-items-center">
+			<span class="text-muted">2010—<?=date("Y")?> РЕПРОТЭК</span>
+		</div>
+
+		<!-- <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+			<li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
+			<li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
+			<li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+		</ul> -->
 	</div>
 </footer>
 
