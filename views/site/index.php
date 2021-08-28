@@ -2,52 +2,32 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+use app\models\MainPage;
+
+$model = new MainPage();
+
+$this->title = 'Главная';
 ?>
-<div class="site-index">
 
-	<div class="jumbotron text-center bg-transparent">
-		<h1 class="display-4">Congratulations!</h1>
-
-		<p class="lead">You have successfully created your Yii-powered application.</p>
-
-		<p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-	</div>
-
-	<div class="body-content">
-
-		<div class="row">
-			<div class="col-lg-4">
-				<h2>Heading</h2>
-
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-					dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-					ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-					fugiat nulla pariatur.</p>
-
-				<p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-			</div>
-			<div class="col-lg-4">
-				<h2>Heading</h2>
-
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-					dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-					ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-					fugiat nulla pariatur.</p>
-
-				<p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-			</div>
-			<div class="col-lg-4">
-				<h2>Heading</h2>
-
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-					dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-					ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-					fugiat nulla pariatur.</p>
-
-				<p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-			</div>
-		</div>
-
+<div class="container-banner"
+	style="background-image: url(<?=$model->banner['image']?>)">
+	<div class="blur">
+		<div class="container banner"
+			style="background-image: url(<?=$model->banner['image']?>)"></div>
 	</div>
 </div>
+
+<?php foreach ($model->heroes as $article):?>
+<div class="container col-xxl-8 px-4">
+	<div class="row flex-lg-row-reverse align-items-center g-5 py-4">
+		<div class="col-10 col-sm-8 col-lg-6">
+			<img src="<?= $article['image']?>" class="d-block mx-lg-auto img-fluid"
+				alt="work.jpeg" width="700" height="500" loading="lazy">
+		</div>
+		<div class="col-lg-6">
+			<h1 class="display-5 fw-bold lh-1 mb-3"><?= $article['title']?></h1>
+			<p class="lead"><?= $article['text']?></p>
+		</div>
+	</div>
+</div>
+<?php endforeach;?>
