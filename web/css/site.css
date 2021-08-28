@@ -1,84 +1,64 @@
-main > .container {
-    padding: 70px 15px 20px;
+
+/* Виджет переключателя или включателя */
+.switch-widget>input{
+	display: none;
+}
+.switch-widget>:not(:checked)+*{
+	display: none;
 }
 
-.footer {
-    background-color: #f5f5f5;
-    font-size: .9em;
-    height: 60px;
+.error-code{
+	font-size: 8rem;
 }
 
-.footer > .container {
-    padding-right: 15px;
-    padding-left: 15px;
+header{
+	background-color: #ffc107;
 }
 
-.not-set {
-    color: #c55;
-    font-style: italic;
+.blur{
+	backdrop-filter: blur(50px);
 }
 
-/* add sorting icons to gridview sort links */
-a.asc:after, a.desc:after {
-    content: '';
-    left: 3px;
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border: solid 5px transparent;
-    margin: 4px 4px 2px 4px;
-    background: transparent;
+.banner{
+	height: 70vh;
+	background-position:center center;
+	background-size:cover;
 }
 
-a.asc:after {
-    border-bottom: solid 7px #212529;
-    border-top-width: 0;
+.news-article:nth-child(2n+1){
+	background-color: #eee;
 }
 
-a.desc:after {
-    border-top: solid 7px #212529;
-    border-bottom-width: 0;
+.form-signin {
+	width: 100%;
+	max-width: 330px;
+	padding: 15px;
+	margin: auto;
 }
 
-.grid-view th {
-    white-space: nowrap;
+
+.bubble-message{
+	border-radius: 5px;
+	padding: 5px;
+	background-color: #e5e5e5;
 }
 
-.hint-block {
-    display: block;
-    margin-top: 5px;
-    color: #999;
+.form-message{
+	position: sticky;
+	bottom: 0;
+	box-sizing: border-box;
+	padding: 10px;
+	background-color: white;
 }
 
-.error-summary {
-    color: #a94442;
-    background: #fdf7f7;
-    border-left: 3px solid #eed3d7;
-    padding: 10px 20px;
-    margin: 0 0 15px 0;
+.button-message{
+	height: 30px;
+	width: 30px;
 }
 
-/* align the logout "link" (button in form) of the navbar */
-.nav li > form > button.logout {
-    padding-top: 7px;
-    color: rgba(255, 255, 255, 0.5);
-}
-
-@media(max-width:767px) {
-    .nav li > form > button.logout {
-        display:block;
-        text-align: left;
-        width: 100%;
-        padding: 10px 0;
-    }
-}
-
-.nav > li > form > button.logout:focus,
-.nav > li > form > button.logout:hover {
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.75);
-}
-
-.nav > li > form > button.logout:focus {
-    outline: none;
+.textarea-message{
+	resize: none;
+	border-radius: 20px;
+	padding: 7px 15px;
+	outline: none;
 }
