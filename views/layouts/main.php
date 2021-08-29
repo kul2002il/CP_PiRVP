@@ -39,14 +39,22 @@ AppAsset::register($this);
 			</ul>
 
 			<?php if(!Yii::$app->user->isGuest):?>
-			<form method="post" class="col-md-3 text-end">
-				<a href="<?=Url::toRoute('/user/personalarea');?>" class="btn btn-outline-dark me-2">
+			<div class="col-md-3 text-end">
+				<a href="<?=Url::to('/user/personal-area');?>" class="btn btn-outline-dark me-2">
+					<?=Yii::$app->user->identity->username?>
+				</a>
+				<a href="<?=Url::to('/user/logout');?>" class="btn">
+					<img alt="logout" src="/static/img/logout.svg" style="width: 40px;">
+				</a>
+			</div>
+			<!-- <form method="post" class="col-md-3 text-end" action="<?=Url::to('/user/logout');?>">
+				<a href="<?=Url::toRoute('/user/personal-area');?>" class="btn btn-outline-dark me-2">
 					<?=Yii::$app->user->identity->username?>
 				</a>
 				<button class="btn" name="logout" value="Выйти">
-					<img alt="logout" src="static/img/logout.svg" style="width: 40px;">
+					<img alt="logout" src="/static/img/logout.svg" style="width: 40px;">
 				</button>
-			</form>
+			</form> -->
 			<?php else:?>
 			<div class="col-md-3 text-end">
 				<a href="<?=Url::toRoute('/user/login');?>" class="btn btn-outline-dark me-2">Войти</a>

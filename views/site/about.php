@@ -14,6 +14,7 @@ $about = [
 		'body' => 'Сайт выполнен в качестве курсовой работы с целью практического применения.',
 	],
 ];
+$this->title = 'О нас';
 ?>
 <div class="container row">
 	<div class="col-md-5 list-group p-4">

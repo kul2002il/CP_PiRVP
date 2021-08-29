@@ -1,4 +1,6 @@
+<?php
 
+?>
 <div class="container my-3">
 	<div>
 		<a class="btn btn-warning" href="?target=request">Подать заявку</a>
