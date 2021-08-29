@@ -1,44 +1,34 @@
+<?php
+
+/* @var $this yii\web\View */
+/* @var $user app\models\User */
+
+use yii\widgets\ActiveForm;
+use yii\helpers\Html;
+use yii\helpers\Url;
+
+$this->title = 'Регистрация';
+
+?>
 <div class="container p-4">
 
-<h1 class="h3 mb-3 fw-normal w-3">Регистрация</h1>
+<h2 class="h3 mb-3 fw-normal w-3">Регистрация</h2>
 
-<form method="post">
+<?php $form = ActiveForm::begin(); ?>
 	<div class="row">
 		<div class="col">
-	
-			<div class="form-floating py-2">
-				<input type="email" class="form-control" id="nameLast" placeholder="name@example.com">
-				<label for="nameLast">Фамилия</label>
-			</div>
-	
-			<div class="form-floating py-2">
-				<input type="email" class="form-control" id="nameFirst" placeholder="name@example.com">
-				<label for="nameFirst">Имя</label>
-			</div>
-	
-			<div class="form-floating py-2">
-				<input type="email" class="form-control" id="nameMidle" placeholder="name@example.com">
-				<label for="nameMidle">Отчество</label>
-			</div>
-	
-			<div class="form-floating py-2">
-				<input type="email" class="form-control" id="email" placeholder="name@example.com">
-				<label for="email">Email</label>
-			</div>
-			
-			<div class="form-floating py-2">
-				<input type="password" class="form-control" id="password" placeholder="Password">
-				<label for="password">Пароль</label>
-			</div>
-			
-			<div class="form-floating py-2">
-				<input type="password" class="form-control" id="repeatePassword" placeholder="Password">
-				<label for="repeatePassword">Повторение пароля</label>
-			</div>
-			<input class="w-100 btn btn-lg btn-primary" type="submit" name="signup" value="Зарегистрироваться">
+			<?php
+			echo $form->field($user, 'nameLast');
+			echo $form->field($user, 'nameFirst');
+			echo $form->field($user, 'nameMiddle');
+			echo $form->field($user, 'email');
+			echo $form->field($user, 'password')->passwordInput(['maxlength' => true]);
+			echo $form->field($user, 'password_repeat')->passwordInput(['maxlength' => true]);
+			?>
+			<input class="btn btn-lg btn-primary" type="submit" name="signup" value="Зарегистрироваться">
 		</div>
 		<div class="col">
-			<div class="border border-2 rounded py-2">
+			<div class="border border-2 rounded p-2">
 				Пароль
 				<ul>
 					<li>Должен содержать не менее восьми символов.</li>
@@ -51,6 +41,6 @@
 			</div>
 		</div>
 	</div>
-</form>
+<?php ActiveForm::end(); ?>
 
 </div>

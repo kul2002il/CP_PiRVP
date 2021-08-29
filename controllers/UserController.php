@@ -38,6 +38,18 @@ class UserController extends Controller
 		return $this->render('index');
 	}
 	
+	public function actionSignup()
+	{
+		$model = new User();
+		if ($model->load(Yii::$app->request->post()) && $model->save())
+		{
+			return $this->redirect(['/user/login']);
+		}
+		return $this->render('signup', [
+			'user' => $model
+		]);
+	}
+	
 	public function actionLogin()
 	{
 		if (!Yii::$app->user->isGuest) {

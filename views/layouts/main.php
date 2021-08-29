@@ -40,10 +40,10 @@ AppAsset::register($this);
 
 			<?php if(!Yii::$app->user->isGuest):?>
 			<div class="col-md-3 text-end">
-				<a href="<?=Url::to('/user/personal-area');?>" class="btn btn-outline-dark me-2">
+				<a href="<?=Url::toRoute('/user/personal-area');?>" class="btn btn-outline-dark me-2">
 					<?=Yii::$app->user->identity->username?>
 				</a>
-				<a href="<?=Url::to('/user/logout');?>" class="btn">
+				<a href="<?=Url::toRoute('/user/logout');?>" class="btn">
 					<img alt="logout" src="/static/img/logout.svg" style="width: 40px;">
 				</a>
 			</div>
