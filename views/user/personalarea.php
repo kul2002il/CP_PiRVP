@@ -13,7 +13,7 @@ $this->title = "Мои аппараты";
 
 <div class="container my-3">
 	<div>
-		<a class="btn btn-warning" href="?target=request">Подать заявку</a>
+		<a class="btn btn-warning" href="/apparatus/request">Подать заявку</a>
 	</div>
 </div>
 
@@ -29,7 +29,7 @@ $this->title = "Мои аппараты";
 			</div>
 			<div class="col">
 				<h3>
-					<a href="?target=apparatus" class="link-dark text-decoration-none">
+					<a href="/apparatus?id=<?=$article->id?>" class="link-dark text-decoration-none">
 						<?= Html::encode($article->name)?>
 					</a>
 				</h3>
@@ -41,14 +41,14 @@ $this->title = "Мои аппараты";
 							<?=Html::encode($pin->content)?>
 						</td>
 						<td style="width: 10em;">
-							<?=Html::encode($pin->datetime)?>
+							<?=$pin->datetime?>
 						</td>
 					</tr>
 					<?php endforeach;?>
 				</table>
 				<?php else:?>
 				<div>Нет ремонтов.</div>
-				<a class="btn btn-warning" href="?target=request">Подать заявку</a>
+				<a class="btn btn-warning" href="/apparatus/request?apparatus=<?=$article->id?>">Подать заявку</a>
 				<?php endif;?>
 			</div>
 		</div>

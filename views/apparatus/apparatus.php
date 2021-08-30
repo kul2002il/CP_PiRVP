@@ -1,14 +1,27 @@
+<?php
+
+/* @var $this yii\web\View */
+/* @var $pagination yii\data\Pagination*/
+/* @var $apparatus app\models\Apparatus */
+/* @var $messages app\models\Message[] */
+
+use app\widgets\Pagination;
+use yii\helpers\Html;
+use yii\helpers\Url;
+
+$this->title = Html::encode($apparatus->name);
+?>
 <div class="container py-3">
 	<h2>
-		<?= $apparatus['name']?>
+		<?= Html::encode($apparatus->name)?>
 	</h2>
 </div>
 
 <div class="container">
 	<div class="row">
 		<div class="col-4 my-2 py-2">
-			<img alt="Изображение аппарата" class="img-fluid" src="<?=$apparatus['image']?>">
-			<div class="border-bottom border-4"><?=$apparatus['status']?></div>
+			<img alt="Изображение аппарата" class="img-fluid" src="<?=Url::to($apparatus->idFile0->name)?>">
+			<div class="border-bottom border-4"><?='Статус'?></div>
 			<div>
 				<a href="">Файлы</a>
 			</div>
@@ -17,10 +30,11 @@
 			</div>
 		</div>
 		<div class="col">
-			<?php foreach ($histori as $pin):?>
+			<?= Pagination::widget(['pagination' => $pagination]) ?>
+			<?php foreach ($messages as $pin):?>
 			<div class="my-3 d-flex">
 				<?php
-				$myMess = $pin["sender"] === $user["id"];
+				$myMess = $pin->idSender === Yii::$app->user->id;
 				$spaceLeft = '';
 				$spaceRight = '<dir class="flex-grow-1 m-0"></dir>';
 				if($myMess){
@@ -31,24 +45,25 @@
 				<?=$spaceLeft?>
 				<div class="bubble-message">
 					<div>
-						<?=$pin['context']?>
+						<?=Html::encode($pin->content)?>
 					</div>
 					<div class="text-muted">
-						<?=$pin['datetime']?>
+						<?=$pin->datetime?>
 					</div>
 				</div>
 				<?=$spaceRight?>
 			</div>
 			<?php endforeach;?>
+			<?= Pagination::widget(['pagination' => $pagination]) ?>
 			
 			<form method="post" class="form-message border-top">
 				<div class="d-flex align-items-end">
 					<div class="btn">
-						<img class="button-message" alt="paperclip" src="static/img/paperclip.svg">
+						<img class="button-message" alt="paperclip" src="/static/img/paperclip.svg">
 					</div>
 					<textarea class="flex-grow-1 autogrow textarea-message" autofocus></textarea>
 					<button class="btn">
-						<img class="button-message" alt="send" src="static/img/send.svg">
+						<img class="button-message" alt="send" src="/static/img/send.svg">
 					</button>
 				</div>
 			</form>
