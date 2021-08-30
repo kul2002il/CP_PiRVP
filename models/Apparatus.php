@@ -5,24 +5,24 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "file".
+ * This is the model class for table "apparatus".
  *
  * @property int $id
+ * @property int $idModel
  * @property int $idOwner
- * @property string $name
  *
- * @property FileInMessage[] $fileInMessages
+ * @property Model $idModel0
  * @property User $idOwner0
- * @property News[] $news
+ * @property Repair[] $repairs
  */
-class File extends \yii\db\ActiveRecord
+class Apparatus extends \yii\db\ActiveRecord
 {
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function tableName()
 	{
-		return 'file';
+		return 'apparatus';
 	}
 
 	/**
@@ -31,9 +31,9 @@ class File extends \yii\db\ActiveRecord
 	public function rules()
 	{
 		return [
-			[['idOwner', 'name'], 'required'],
-			[['idOwner'], 'integer'],
-			[['name'], 'string', 'max' => 200],
+			[['idModel', 'idOwner'], 'required'],
+			[['idModel', 'idOwner'], 'integer'],
+			[['idModel'], 'exist', 'skipOnError' => true, 'targetClass' => Model::className(), 'targetAttribute' => ['idModel' => 'id']],
 			[['idOwner'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['idOwner' => 'id']],
 		];
 	}
@@ -45,19 +45,19 @@ class File extends \yii\db\ActiveRecord
 	{
 		return [
 			'id' => 'ID',
+			'idModel' => 'Id Модели',
 			'idOwner' => 'Id Владельца',
-			'name' => 'Путь',
 		];
 	}
 
 	/**
-	 * Gets query for [[FileInMessages]].
+	 * Gets query for [[IdModel0]].
 	 *
 	 * @return \yii\db\ActiveQuery
 	 */
-	public function getFileInMessages()
+	public function getIdModel0()
 	{
-		return $this->hasMany(FileInMessage::className(), ['idFile' => 'id']);
+		return $this->hasOne(Model::className(), ['id' => 'idModel']);
 	}
 
 	/**
@@ -71,12 +71,12 @@ class File extends \yii\db\ActiveRecord
 	}
 
 	/**
-	 * Gets query for [[News]].
+	 * Gets query for [[Repairs]].
 	 *
 	 * @return \yii\db\ActiveQuery
 	 */
-	public function getNews()
+	public function getRepairs()
 	{
-		return $this->hasMany(News::className(), ['idFile' => 'id']);
+		return $this->hasMany(Repair::className(), ['idApparatus' => 'id']);
 	}
 }
