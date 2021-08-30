@@ -5,11 +5,9 @@ namespace app\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
-use yii\web\Response;
-use yii\filters\VerbFilter;
-use yii\helpers\Url;
-use app\models\LoginForm;
+use yii\data\Pagination;
 use app\models\User;
+use app\models\Apparatus;
 
 class UserController extends Controller
 {
@@ -21,10 +19,11 @@ class UserController extends Controller
 		return [
 			'access' => [
 				'class' => AccessControl::className(),
-				'only' => ['logout'],
-				'rules' => [
+				'only' => ['logout', 'personalArea'],
+				'rules' =>
+				[
 					[
-						'actions' => ['logout'],
+						'actions' => ['logout', 'personalArea'],
 						'allow' => true,
 						'roles' => ['@'],
 					],
@@ -75,7 +74,22 @@ class UserController extends Controller
 	
 	public function actionPersonalArea()
 	{
-		return $this->render('personalarea');
+		$query = Apparatus::getMy();
+
+		$pagination = new Pagination([
+			'defaultPageSize' => 10,
+			'totalCount' => $query->count(),
+		]);
+
+		$apparatuses = $query
+			->offset($pagination->offset)
+			->limit($pagination->limit)
+			->all();
+
+		return $this->render('personalarea', [
+			'apparatuses' => $apparatuses,
+			'pagination' => $pagination
+		]);
 	}
 }
 
