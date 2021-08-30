@@ -11,6 +11,11 @@
 	font-size: 8rem;
 }
 
+.pagination {
+	margin-top: .5rem;
+	margin-bottom: .5rem;
+}
+
 header{
 	background-color: #ffc107;
 }
@@ -25,7 +30,7 @@ header{
 	background-size:cover;
 }
 
-.news-article:nth-child(2n+1){
+.news-article:nth-child(2n+2){
 	background-color: #eee;
 }
 
