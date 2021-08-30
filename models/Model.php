@@ -14,7 +14,7 @@ use Yii;
  *
  * @property Apparatus[] $apparatuses
  * @property Brand $idBrand0
- * @property TypeApparatus $idType0
+ * @property Type $idType0
  */
 class Model extends \yii\db\ActiveRecord
 {
@@ -35,7 +35,7 @@ class Model extends \yii\db\ActiveRecord
 			[['idType', 'idBrand', 'name'], 'required'],
 			[['idType', 'idBrand'], 'integer'],
 			[['name'], 'string', 'max' => 80],
-			[['idType'], 'exist', 'skipOnError' => true, 'targetClass' => TypeApparatus::className(), 'targetAttribute' => ['idType' => 'id']],
+			[['idType'], 'exist', 'skipOnError' => true, 'targetClass' => Type::className(), 'targetAttribute' => ['idType' => 'id']],
 			[['idBrand'], 'exist', 'skipOnError' => true, 'targetClass' => Brand::className(), 'targetAttribute' => ['idBrand' => 'id']],
 		];
 	}
@@ -80,6 +80,6 @@ class Model extends \yii\db\ActiveRecord
 	 */
 	public function getIdType0()
 	{
-		return $this->hasOne(TypeApparatus::className(), ['id' => 'idType']);
+		return $this->hasOne(Type::className(), ['id' => 'idType']);
 	}
 }

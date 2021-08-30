@@ -13,7 +13,9 @@ use Yii;
  *
  * @property Model $idModel0
  * @property User $idOwner0
+ * @property File $idFile0
  * @property Repair[] $repairs
+ * @property Repair $lastRepair
  */
 class Apparatus extends \yii\db\ActiveRecord
 {
@@ -35,6 +37,7 @@ class Apparatus extends \yii\db\ActiveRecord
 			[['idModel', 'idOwner'], 'integer'],
 			[['idModel'], 'exist', 'skipOnError' => true, 'targetClass' => Model::className(), 'targetAttribute' => ['idModel' => 'id']],
 			[['idOwner'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['idOwner' => 'id']],
+			[['idFile'], 'exist', 'skipOnError' => true, 'targetClass' => File::className(), 'targetAttribute' => ['idFile' => 'id']],
 		];
 	}
 
@@ -69,6 +72,16 @@ class Apparatus extends \yii\db\ActiveRecord
 	{
 		return $this->hasOne(User::className(), ['id' => 'idOwner']);
 	}
+	
+	/**
+	 * Gets query for [[IdFile0]].
+	 *
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getIdFile0()
+	{
+		return $this->hasOne(File::className(), ['id' => 'idFile']);
+	}
 
 	/**
 	 * Gets query for [[Repairs]].
@@ -79,4 +92,33 @@ class Apparatus extends \yii\db\ActiveRecord
 	{
 		return $this->hasMany(Repair::className(), ['idApparatus' => 'id']);
 	}
+	
+	public static function getByUser($idOwner)
+	{
+		return self::find(['idOwner'=>$idOwner]);
+	}
+	
+	public static function getMy()
+	{
+		return self::getByUser(Yii::$app->user->id);
+	}
+	
+	public function getName()
+	{
+		return $this->idModel0->idType0->name . ' ' .
+			$this->idModel0->idBrand0->name . ' ' .
+			$this->idModel0->name;
+	}
+	
+	public function getLastRepair() {
+		return $this->getRepairs()->orderBy(['startRepair' => SORT_DESC])->one();
+	}
 }
+
+
+
+
+
+
+
+

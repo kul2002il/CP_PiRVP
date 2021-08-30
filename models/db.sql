@@ -15,8 +15,6 @@ CREATE TABLE user(
 	password VARCHAR(255) NOT NULL
 );
 
-
-
 CREATE TABLE typeApparatus(
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	name VARCHAR(80) NOT NULL
@@ -25,6 +23,15 @@ CREATE TABLE typeApparatus(
 CREATE TABLE brand(
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	name VARCHAR(80) NOT NULL
+);
+
+
+CREATE TABLE file(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	idOwner INT NOT NULL,
+	name VARCHAR(200) NOT NULL,
+	
+	FOREIGN KEY (idOwner) REFERENCES user (id) ON DELETE CASCADE
 );
 
 CREATE TABLE model(
@@ -44,9 +51,21 @@ CREATE TABLE apparatus(
 	
 	idModel INT NOT NULL,
 	idOwner INT NOT NULL,
+	idFile INT,
 	
 	FOREIGN KEY (idModel) REFERENCES model (id) ON DELETE CASCADE,
-	FOREIGN KEY (idOwner) REFERENCES user (id) ON DELETE CASCADE
+	FOREIGN KEY (idOwner) REFERENCES user (id) ON DELETE CASCADE,
+	FOREIGN KEY (idFile) REFERENCES file (id) ON DELETE SET NULL
+);
+
+CREATE TABLE news(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	idFile INT,
+	title VARCHAR(200) NOT NULL,
+	content TEXT NOT NULL,
+	datetime DATETIME NOT NULL DEFAULT NOW(),
+	
+	FOREIGN KEY (idFile) REFERENCES file (id) ON DELETE SET NULL
 );
 
 
@@ -79,14 +98,6 @@ CREATE TABLE message(
 	FOREIGN KEY (idRepair) REFERENCES repair (id) ON DELETE CASCADE
 );
 
-CREATE TABLE file(
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	idOwner INT NOT NULL,
-	name VARCHAR(200) NOT NULL,
-	
-	FOREIGN KEY (idOwner) REFERENCES user (id) ON DELETE CASCADE
-);
-
 
 CREATE TABLE unread(
 	id INT AUTO_INCREMENT PRIMARY KEY,
@@ -106,16 +117,6 @@ CREATE TABLE fileInMessage(
 	
 	FOREIGN KEY (idFile) REFERENCES file (id) ON DELETE CASCADE,
 	FOREIGN KEY (idMessage) REFERENCES message (id) ON DELETE CASCADE
-);
-
-CREATE TABLE news(
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	idFile INT,
-	title VARCHAR(200) NOT NULL,
-	content TEXT NOT NULL,
-	datetime DATETIME NOT NULL DEFAULT NOW(),
-	
-	FOREIGN KEY (idFile) REFERENCES file (id) ON DELETE SET NULL
 );
 
 
@@ -168,98 +169,6 @@ INSERT INTO brand (name) VALUES
 ("Бирюса"),
 ("ЭвалКом"),
 ("КАМАЗ");
-
-INSERT INTO model (idType, idBrand, name) VALUES
-(
-	1,
-	2,
-	"201"
-),(
-	6,
-	6,
-	"ТН-01"
-),(
-	1,
-	1,
-	"n501103"
-),(
-	5,
-	4,
-	"ЛЛ-15-30"
-),(
-	3,
-	5,
-	"ТП-85М4"
-),(
-	4,
-	3,
-	"8954-Р"
-);
-
-INSERT INTO apparatus (idModel, idOwner) VALUES
-(1, 3),
-(3, 3),
-(6, 3),
-(1, 4),
-(3, 4),
-(6, 4);
-
-/*
-INSERT INTO statusRepair (name) VALUES
-("на рассмотрении"),
-("ожидает передачи"),
-("на диагностике"),
-("ожидает оплаты"),
-("на ремонте"),
-("ожидает приёма"),
-("на гарантии"),
-("завершён"),
-("отказано клиентом"),
-("отказано в починке"),
-("запись о ремонте вне РЕПРОТЕК");
-*/
-
-INSERT INTO repair
-(
-	idMaster,
-	idApparatus,
-	
-	title,
-	description,
-	feedback
-) VALUES
-(
-	2,
-	1,
-	"Сварка сломалась",
-	"Однажды во время работы перестал работать аппарат.",
-	"Всё замечательно."
-),(
-	2,
-	1,
-	"Сварка сломалась 2",
-	"Однажды во время работы перестал работать аппарат.",
-	NULL
-);
-
-INSERT INTO message (idSender, idRepair, content) VALUES
-(
-	3,
-	1,
-	"Добрый день. Есть поломка вот такая."
-),(
-	2,
-	1,
-	"Спасибо, что обратились в нашу ремонтную компанию. Откуда Вы о нас узнали?"
-),(
-	3,
-	1,
-	"Друзья порекомендовали."
-),(
-	2,
-	1,
-	"О проблеме прочитал. Готовы к встече на диагностику."
-);
 
 INSERT INTO file(idOwner, name) VALUES
 (1, "media/image/banner.png"),
@@ -315,6 +224,113 @@ INSERT INTO file(idOwner, name) VALUES
 (2, "media/image/3/DSC_2263.JPG"),
 (2, "media/image/3/DSC_2266.JPG");
 
+INSERT INTO model (idType, idBrand, name) VALUES
+(
+	1,
+	2,
+	"201"
+),(
+	6,
+	6,
+	"ТН-01"
+),(
+	1,
+	1,
+	"n501103"
+),(
+	5,
+	4,
+	"ЛЛ-15-30"
+),(
+	3,
+	5,
+	"ТП-85М4"
+),(
+	4,
+	3,
+	"8954-Р"
+);
+
+/*
+INSERT INTO statusRepair (name) VALUES
+("на рассмотрении"),
+("ожидает передачи"),
+("на диагностике"),
+("ожидает оплаты"),
+("на ремонте"),
+("ожидает приёма"),
+("на гарантии"),
+("завершён"),
+("отказано клиентом"),
+("отказано в починке"),
+("запись о ремонте вне РЕПРОТЕК");
+*/
+
+INSERT INTO apparatus (idModel, idOwner, idFile) VALUES
+(1, 3, 6),
+(3, 3, 15),
+(6, 3, 40),
+(1, 4, 7),
+(3, 4, 16),
+(6, 4, 41);
+
+INSERT INTO news (idFile, title, content) VALUES
+(
+	3,
+	"Есть старт",
+	"Положено начало отображения новостей для среды тестовой вёрстки интерфейса и вёрстки."
+),(
+	4,
+	"Странный старт",
+	"Какой-то дебил воткнул знак старта посередине дороги. Первая машина, что пошла на обгон, не смотря на двойную сплошную, также несмотря врезалась в столб знака. ГОСТы вам не игрушка. Пользуйтесь гостами при установке дорожных знаков. Удачи на дорогах"
+),(
+	2,
+	"М — значит металл",
+	"С этого момента мы занимаемся слесарной обработкой металла. Заявки принимаются в стандартном режиме, как и всегда."
+);
+
+INSERT INTO repair
+(
+	idMaster,
+	idApparatus,
+	
+	title,
+	description,
+	feedback
+) VALUES
+(
+	2,
+	1,
+	"Сварка сломалась",
+	"Однажды во время работы перестал работать аппарат.",
+	"Всё замечательно."
+),(
+	2,
+	1,
+	"Сварка сломалась 2",
+	"Однажды во время работы перестал работать аппарат.",
+	NULL
+);
+
+INSERT INTO message (idSender, idRepair, content) VALUES
+(
+	3,
+	1,
+	"Добрый день. Есть поломка вот такая."
+),(
+	2,
+	1,
+	"Спасибо, что обратились в нашу ремонтную компанию. Откуда Вы о нас узнали?"
+),(
+	3,
+	1,
+	"Друзья порекомендовали."
+),(
+	2,
+	1,
+	"О проблеме прочитал. Готовы к встече на диагностику."
+);
+
 INSERT INTO unread (idUser, idMessage) VALUES
 (3, 3);
 
@@ -336,21 +352,6 @@ INSERT INTO fileInMessage (idMessage, idFile) VALUES
 (1, 20),
 (1, 21),
 (1, 22);
-
-INSERT INTO news (idFile, title, content) VALUES
-(
-	3,
-	"Есть старт",
-	"Положено начало отображения новостей для среды тестовой вёрстки интерфейса и вёрстки."
-),(
-	4,
-	"Странный старт",
-	"Какой-то дебил воткнул знак старта посередине дороги. Первая машина, что пошла на обгон, не смотря на двойную сплошную, также несмотря врезалась в столб знака. ГОСТы вам не игрушка. Пользуйтесь гостами при установке дорожных знаков. Удачи на дорогах"
-),(
-	2,
-	"М — значит металл",
-	"С этого момента мы занимаемся слесарной обработкой металла. Заявки принимаются в стандартном режиме, как и всегда."
-);
 
 /*
 Для ролей:
