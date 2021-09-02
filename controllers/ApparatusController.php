@@ -2,10 +2,11 @@
 
 namespace app\controllers;
 
-use yii\web\NotFoundHttpException;
 use Yii;
+use yii\web\NotFoundHttpException;
 use app\models\Apparatus;
 use yii\data\Pagination;
+use app\models\Message;
 
 class ApparatusController extends \yii\web\Controller
 {
@@ -45,6 +46,26 @@ class ApparatusController extends \yii\web\Controller
 			throw new NotFoundHttpException("Заявка не найдена");
 		}
 
+		$messageForm = new Message();
+		$data = Yii::$app->request->post();
+		if($data)
+		{
+			$messageForm->load($data);
+			//$messageForm->content = $data;
+			$messageForm->idSender = Yii::$app->user->id;
+			$messageForm->idRepair = $repair->id;
+			
+			if(!$messageForm->save())
+			{
+				foreach ($messageForm->errors as $value) {
+					Yii::$app->session->setFlash('error', $value);
+				}
+			}
+			else{
+				Yii::$app->session->setFlash('success', 'Успешно.');
+			}
+		}
+
 		$messages = $repair->getMessages();
 		
 		$pagination = new Pagination([
@@ -62,6 +83,7 @@ class ApparatusController extends \yii\web\Controller
 			'repair' => $repair,
 			'messages' => $messages,
 			'pagination' => $pagination,
+			'messageForm' => $messageForm,
 		]);
 	}
 }

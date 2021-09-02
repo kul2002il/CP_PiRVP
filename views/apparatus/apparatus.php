@@ -4,10 +4,12 @@
 /* @var $pagination yii\data\Pagination*/
 /* @var $apparatus app\models\Apparatus */
 /* @var $messages app\models\Message[] */
+/* @var $messageForm app\models\Message */
 
 use app\widgets\Pagination;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\widgets\ActiveForm;
 
 $this->title = Html::encode($apparatus->name);
 ?>
@@ -56,17 +58,24 @@ $this->title = Html::encode($apparatus->name);
 			<?php endforeach;?>
 			<?= Pagination::widget(['pagination' => $pagination]) ?>
 			
-			<form method="post" class="form-message border-top">
+			<?php $form = ActiveForm::begin(['class' => 'form-message border-top']) ?>
 				<div class="d-flex align-items-end">
 					<div class="btn">
 						<img class="button-message" alt="paperclip" src="/static/img/paperclip.svg">
 					</div>
-					<textarea class="flex-grow-1 autogrow textarea-message" autofocus></textarea>
+					<?= $form->field($messageForm, 'content', [
+						'template' => '{input}',
+						'options' => ['class' => 'flex-grow-1'],
+					])->textarea([
+						'class' => 'autogrow textarea-message',
+						'style' => 'width: 100%',
+						'autofocus' => true,
+					]); ?>
 					<button class="btn">
 						<img class="button-message" alt="send" src="/static/img/send.svg">
 					</button>
 				</div>
-			</form>
+			<?php ActiveForm::end(); ?>
 		</div>
 	</div>
 </div>
