@@ -3,9 +3,7 @@
 /* @var $this yii\web\View */
 /* @var $user app\models\User */
 
-use yii\widgets\ActiveForm;
-use yii\helpers\Html;
-use yii\helpers\Url;
+use app\widgets\FormFloating;
 
 $this->title = 'Регистрация';
 
@@ -14,16 +12,16 @@ $this->title = 'Регистрация';
 
 <h2 class="h3 mb-3 fw-normal w-3">Регистрация</h2>
 
-<?php $form = ActiveForm::begin(); ?>
+<?php $form = FormFloating::begin(); ?>
 	<div class="row">
 		<div class="col">
 			<?php
-			echo $form->field($user, 'nameLast');
-			echo $form->field($user, 'nameFirst');
-			echo $form->field($user, 'nameMiddle');
-			echo $form->field($user, 'email');
-			echo $form->field($user, 'password')->passwordInput(['maxlength' => true]);
-			echo $form->field($user, 'password_repeat')->passwordInput(['maxlength' => true]);
+			echo $form->field($user, 'nameLast')->textInput(['placeholder' => 'Иванов']);
+			echo $form->field($user, 'nameFirst')->textInput(['placeholder' => 'Василий']);
+			echo $form->field($user, 'nameMiddle')->textInput(['placeholder' => 'Владимирович']);
+			echo $form->field($user, 'email')->textInput(['placeholder' => 'exemple@exemple.com']);
+			echo $form->field($user, 'password')->passwordInput(['maxlength' => true, 'placeholder' => 'password']);
+			echo $form->field($user, 'password_repeat')->passwordInput(['maxlength' => true, 'placeholder' => 'password']);
 			?>
 			<input class="btn btn-lg btn-primary" type="submit" name="signup" value="Зарегистрироваться">
 		</div>
@@ -41,6 +39,6 @@ $this->title = 'Регистрация';
 			</div>
 		</div>
 	</div>
-<?php ActiveForm::end(); ?>
+<?php FormFloating::end(); ?>
 
 </div>
