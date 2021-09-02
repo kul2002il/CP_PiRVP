@@ -18,8 +18,4 @@ class Pagination extends LinkPager
 		}
 		parent::init();
 	}
-	public function run()
-	{
-		return parent::run();
-	}
 }

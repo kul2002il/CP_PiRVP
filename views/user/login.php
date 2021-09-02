@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 use yii\widgets\ActiveForm;
+use app\widgets\FormFloating;
 use yii\helpers\Html;
 
 $this->title = 'Вход';
@@ -11,15 +12,15 @@ $this->title = 'Вход';
 
 <div class="form-signin">
 	<h2 class="h3 mb-3 fw-normal w-3">Вход</h2>
-	<?php $form = ActiveForm::begin(); ?>
+	<?php $form = FormFloating::begin(); ?>
 	
-	<?= $form->field($model, 'email') ?>
+	<?= $form->field($model, 'email')->textInput(['placeholder' => 'email2'])?>
 	
-	<?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
+	<?= $form->field($model, 'password')->passwordInput(['maxlength' => true, 'placeholder' => 'email2']) ?>
 	
 	<?= Html::submitButton('Войти', ['class' => 'w-100 btn btn-lg btn-primary']) ?>
 	
-	<?php ActiveForm::end(); ?>
+	<?php FormFloating::end(); ?>
 	<!--
 	<form method="post">
 		<h1 class="h3 mb-3 fw-normal w-3">Please sign in</h1>
