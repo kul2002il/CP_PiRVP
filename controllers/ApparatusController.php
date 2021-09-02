@@ -9,6 +9,10 @@ use yii\data\Pagination;
 
 class ApparatusController extends \yii\web\Controller
 {
+	public function actionRequest()
+	{
+		return $this->render('request');
+	}
 	public function actionIndex()
 	{
 		$id = Yii::$app->request->get('id');

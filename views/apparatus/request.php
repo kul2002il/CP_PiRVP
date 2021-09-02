@@ -1,3 +1,21 @@
+<?php
+
+/* @var $this yii\web\View */
+/* @var $apparatus app\models\Apparatus */
+
+use yii\helpers\Html;
+use app\models\Apparatus;
+use app\models\Type;
+use app\models\Brand;
+use app\models\Model;
+
+$apparatuses = Apparatus::getMy()->all();
+$types = Type::find()->all();
+$brands = Brand::find()->all();
+$models = Model::find()->all();
+
+$this->title = 'Новая заявка';
+?>
 <div class="container">
 	<h2 class="border-bottom border-4 my-3">Новая заявка</h2>
 	<form method="post">
@@ -7,7 +25,7 @@
 				<select class="form-select mb-3">
 					<option selected>Мой аппарат</option>
 					<?php foreach ($apparatuses as $app):?>
-					<option value="1"><?=$app['name']?></option>
+					<option value="1"><?=$app->name?></option>
 					<?php endforeach;?>
 				</select>
 				

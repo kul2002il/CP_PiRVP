@@ -20,7 +20,7 @@ $this->title = Html::encode($apparatus->name);
 <div class="container">
 	<div class="row">
 		<div class="col-4 my-2 py-2">
-			<img alt="Изображение аппарата" class="img-fluid" src="<?=Url::to($apparatus->idFile0->name)?>">
+			<img alt="Изображение аппарата" class="img-fluid" src="/<?=Url::to($apparatus->idFile0->name)?>">
 			<div class="border-bottom border-4"><?='Статус'?></div>
 			<div>
 				<a href="">Файлы</a>
