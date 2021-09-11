@@ -100,7 +100,7 @@ class Apparatus extends \yii\db\ActiveRecord
 	
 	public static function getMy()
 	{
-		return self::getByUser(Yii::$app->user->id);
+		return User::findOne(Yii::$app->user->id)->getApparatuses();
 	}
 	
 	public function getName()

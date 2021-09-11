@@ -6,14 +6,30 @@ use Yii;
 use yii\web\NotFoundHttpException;
 use app\models\Apparatus;
 use yii\data\Pagination;
+use yii\filters\AccessControl;
 use app\models\Message;
+use app\models\Repair;
+use yii\helpers\Url;
 
 class ApparatusController extends \yii\web\Controller
 {
-	public function actionRequest()
+	public function behaviors()
 	{
-		return $this->render('request');
+		return [
+			'access' => [
+				'class' => AccessControl::className(),
+				'rules' =>
+				[
+					[
+						'actions' => [],
+						'allow' => true,
+						'roles' => ['@'],
+					],
+				],
+			],
+		];
 	}
+
 	public function actionIndex()
 	{
 		$id = Yii::$app->request->get('id');
@@ -23,8 +39,8 @@ class ApparatusController extends \yii\web\Controller
 		}
 
 		$apparatus = Apparatus::find([
-			'idOwner' => Yii::$app->user->id,
 			'id' => $id,
+			'idOwner' => Yii::$app->user->id,
 		])->one();
 		if(!$apparatus)
 		{
@@ -86,4 +102,82 @@ class ApparatusController extends \yii\web\Controller
 			'messageForm' => $messageForm,
 		]);
 	}
+
+	public function actionRequest()
+	{
+		$apparatus = null;
+		if(Yii::$app->request->isPost)
+		{
+			$idApparatus = Yii::$app->request->post('apparatus');
+			if($idApparatus)
+			{
+				$apparatus = Apparatus::findOne([
+					'id' => $idApparatus,
+					'idOwner' => Yii::$app->user->id,
+				]);
+				if(!$apparatus)
+				{
+					throw new NotFoundHttpException("Аппарат номер $idApparatus не найден");
+				}
+			}
+			else
+			{
+				$apparatus = new Apparatus([
+					'idOwner' => Yii::$app->user->id,
+					'idModel' => Yii::$app->request->post('model'),
+				]);
+				if(!$apparatus->save())
+				{
+					foreach ($apparatus->errors as $key => $error) {
+						Yii::$app->session->setFlash('error', [
+							"Ошика: $key " . implode(', ', $error),
+						]);
+					}
+					$apparatus = null;
+				}
+			}
+		}
+		$repair = new Repair();
+		if($apparatus)
+		{
+			$repair->load(Yii::$app->request->post());
+			$repair->idApparatus = $apparatus->id;
+			if($repair->save())
+			{
+				return $this->redirect(Url::toRoute([
+					'/apparatus',
+					'id' => $apparatus->id,
+					'repair' => $repair->id,
+				]));
+			}
+			else
+			{
+				foreach ($repair->errors as $key => $error) {
+					Yii::$app->session->setFlash('error', [
+						"Ошика: $key " . implode(', ', $error),
+					]);
+				}
+			}
+		}
+		return $this->render('request',[
+			'repair' => $repair,
+		]);
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

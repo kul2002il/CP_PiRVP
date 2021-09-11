@@ -13,6 +13,7 @@ use Yii;
  * @property string|null $nameMiddle
  * @property string $email
  * @property string $password
+ * @property Apparatus[] $apparatuses
  */
 class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
@@ -56,13 +57,12 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 		];
 	}
 	
-	/**
-	 * Gets query for [[Role]].
-	 *
-	 * @return \yii\db\ActiveQuery
-	 */
-	
-	
+	public function getApparatuses()
+	{
+		return $this->hasMany(Apparatus::className(), ['idOwner' => 'id']);
+	}
+
+
 	/**
 	 * {@inheritdoc}
 	 */
