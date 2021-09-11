@@ -8,10 +8,11 @@ use Yii;
  * This is the model class for table "unread".
  *
  * @property int $id
- * @property int $idMessage
  * @property int $idUser
+ * @property int $idRepair
+ * @property string $datetime
  *
- * @property Message $idMessage0
+ * @property Repair $idRepair0
  * @property User $idUser0
  */
 class Unread extends \yii\db\ActiveRecord
@@ -30,10 +31,11 @@ class Unread extends \yii\db\ActiveRecord
 	public function rules()
 	{
 		return [
-			[['idMessage', 'idUser'], 'required'],
-			[['idMessage', 'idUser'], 'integer'],
+			[['idUser', 'idRepair'], 'required'],
+			[['idUser', 'idRepair'], 'integer'],
+			[['datetime'], 'safe'],
 			[['idUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['idUser' => 'id']],
-			[['idMessage'], 'exist', 'skipOnError' => true, 'targetClass' => Message::className(), 'targetAttribute' => ['idMessage' => 'id']],
+			[['idRepair'], 'exist', 'skipOnError' => true, 'targetClass' => Repair::className(), 'targetAttribute' => ['idRepair' => 'id']],
 		];
 	}
 
@@ -44,19 +46,20 @@ class Unread extends \yii\db\ActiveRecord
 	{
 		return [
 			'id' => 'ID',
-			'idMessage' => 'Id Сообщения',
-			'idUser' => 'Id Получателя',
+			'idUser' => 'Id Пользователя',
+			'idRepair' => 'Id Ремонта',
+			'datetime' => 'Дата и время',
 		];
 	}
 
 	/**
-	 * Gets query for [[IdMessage0]].
+	 * Gets query for [[IdRepair0]].
 	 *
 	 * @return \yii\db\ActiveQuery
 	 */
-	public function getIdMessage0()
+	public function getIdRepair0()
 	{
-		return $this->hasOne(Message::className(), ['id' => 'idMessage']);
+		return $this->hasOne(Repair::className(), ['id' => 'idRepair']);
 	}
 
 	/**

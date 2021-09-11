@@ -2,52 +2,58 @@
 
 namespace app\models;
 
+use app\models\Role;
+
 use Yii;
 
 /**
- * This is the model class for table "user".
- *
  * @property int $id
+ * @property int|null $idRole 
  * @property string $nameFirst
  * @property string $nameLast
  * @property string|null $nameMiddle
  * @property string $email
  * @property string $password
+ * 
  * @property Apparatus[] $apparatuses
+ * @property File[] $files
+ * @property Role $idRole0
+ * @property Message[] $messages
+ * @property Repair[] $repairs
+ * @property Unread[] $unreads
  */
 class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
 	public $password_repeat;
-	/**
-	 * {@inheritdoc}
-	 */
 	public static function tableName()
 	{
 		return 'user';
 	}
 	
-	/**
-	 * {@inheritdoc}
-	 */
 	public function rules()
 	{
 		return [
 			[['nameFirst', 'nameLast', 'email', 'password'], 'required'],
 			[['nameFirst', 'nameLast', 'nameMiddle', 'email'], 'string', 'max' => 100],
-			[['password'], 'string', 'max' => 255],
+			[['password'], 'string', 'max' => 255, 'min' => 8],
 			[['password_repeat'], 'compare', 'compareAttribute' => 'password'],
 			[['email'], 'unique'],
-			['email', 'email'],
+			[['email'], 'email'],
+			[
+				['idRole'],
+				'exist',
+				'skipOnError' => true,
+				'targetClass' => Role::className(),
+				'targetAttribute' => ['idRole' => 'id'],
+			],
 		];
 	}
-	
-	/**
-	 * {@inheritdoc}
-	 */
+
 	public function attributeLabels()
 	{
 		return [
 			'id' => 'ID',
+			'idRole' => 'Id Роли',
 			'nameFirst' => 'Имя',
 			'nameLast' => 'Фамилия',
 			'nameMiddle' => 'Отчество',
@@ -56,75 +62,92 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 			'password_repeat' => 'Повторение пароля',
 		];
 	}
-	
+
 	public function getApparatuses()
 	{
 		return $this->hasMany(Apparatus::className(), ['idOwner' => 'id']);
 	}
 
+	public function getFiles()
+	{
+		return $this->hasMany(File::className(), ['idOwner' => 'id']);
+	}
+
+	public function getIdRole0()
+	{
+		return $this->hasOne(Role::className(), ['id' => 'idRole']);
+	}
+
+	public function getMessages()
+	{
+		return $this->hasMany(Message::className(), ['idSender' => 'id']);
+	}
+
+	public function getRepairs()
+	{
+		return $this->hasMany(Repair::className(), ['idMaster' => 'id']);
+	}
+
+	public function getUnreads()
+	{
+		return $this->hasMany(Unread::className(), ['idUser' => 'id']);
+	}
+
 
 	/**
-	 * {@inheritdoc}
+	 * Реализация интерфейса IdentityInterface
 	 */
 	public static function findIdentity($id)
 	{
 		return self::findOne($id);
 	}
-	
-	/**
-	 * {@inheritdoc}
-	 */
+
 	public static function findIdentityByAccessToken($token, $type = null)
 	{
 		return null;
 	}
-	
-	/**
-	 * Finds user by username
-	 *
-	 * @param string $username
-	 * @return static|null
-	 */
+
 	public static function findByUsername($username)
 	{
 		return self::find()->where(['email' => $username])->one();
 	}
-	
-	/**
-	 * {@inheritdoc}
-	 */
+
 	public function getId()
 	{
 		return $this->id;
 	}
-	
-	/**
-	 * {@inheritdoc}
-	 */
+
 	public function getAuthKey()
 	{
 		return "key";
 	}
-	
-	/**
-	 * {@inheritdoc}
-	 */
+
 	public function validateAuthKey($authKey)
 	{
 		return true;
 	}
-	
-	/**
-	 * Validates password
-	 *
-	 * @param string $password password to validate
-	 * @return bool if password provided is valid for current user
-	 */
+
 	public function validatePassword($password)
 	{
-		return $this->password === $password;
+		return Yii::$app->getSecurity()->validatePassword($password, $this->password);
 	}
-	
+
+	public function save($runValidation = true, $attributeNames = null)
+	{
+		if($runValidation)
+		{
+			if(!$this->validate($attributeNames))
+			{
+				return false;
+			}
+		}
+		$this->password = Yii::$app->getSecurity()->generatePasswordHash($this->password);
+		$this->password_repeat = '';
+		return parent::save(false);
+	}
+
+
+
 	public function login()
 	{
 		$user = self::findByUsername($this->email);
@@ -141,7 +164,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 		
 		return false;
 	}
-	
+
 	public function getUsername()
 	{
 		$name = Yii::$app->user->identity->email;

@@ -40,10 +40,15 @@ class UserController extends Controller
 	public function actionSignup()
 	{
 		$model = new User();
-		if ($model->load(Yii::$app->request->post()) && $model->save())
+		if ($model->load(Yii::$app->request->post()))
 		{
-			return $this->redirect(['/user/login']);
+			if($model->save())
+			{
+				return $this->redirect(['/user/login']);
+			}
 		}
+		$model->password = '';
+		$model->password_repeat = '';
 		return $this->render('signup', [
 			'user' => $model
 		]);

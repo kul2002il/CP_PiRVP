@@ -4,32 +4,41 @@ DROP DATABASE reprotek;
 CREATE DATABASE reprotek;
 USE reprotek;
 
+CREATE TABLE role(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(80) NOT NULL UNIQUE,
+	code VARCHAR(40) NOT NULL UNIQUE
+);
+
 CREATE TABLE user(
 	id INT AUTO_INCREMENT PRIMARY KEY,
+	
+	idRole INT,
 
 	nameFirst VARCHAR(100) NOT NULL,
 	nameLast VARCHAR(100) NOT NULL,
 	nameMiddle VARCHAR(100),
 
 	email VARCHAR(100) NOT NULL UNIQUE,
-	password VARCHAR(255) NOT NULL
+	password VARCHAR(255) NOT NULL,
+	FOREIGN KEY (idRole) REFERENCES role (id) ON DELETE SET NULL
 );
 
 CREATE TABLE typeApparatus(
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	name VARCHAR(80) NOT NULL
+	name VARCHAR(80) NOT NULL UNIQUE
 );
 
 CREATE TABLE brand(
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	name VARCHAR(80) NOT NULL
+	name VARCHAR(80) NOT NULL UNIQUE
 );
 
 
 CREATE TABLE file(
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	idOwner INT NOT NULL,
-	name VARCHAR(200) NOT NULL,
+	name VARCHAR(200) NOT NULL UNIQUE,
 	
 	FOREIGN KEY (idOwner) REFERENCES user (id) ON DELETE CASCADE
 );
@@ -102,11 +111,12 @@ CREATE TABLE message(
 CREATE TABLE unread(
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	
-	idMessage INT NOT NULL,
 	idUser INT NOT NULL,
+	idRepair INT NOT NULL,
+	datetime DATETIME NOT NULL DEFAULT NOW(),
 	
 	FOREIGN KEY (idUser) REFERENCES user (id) ON DELETE CASCADE,
-	FOREIGN KEY (idMessage) REFERENCES message (id) ON DELETE CASCADE
+	FOREIGN KEY (idRepair) REFERENCES repair (id) ON DELETE CASCADE
 );
 
 CREATE TABLE fileInMessage(
@@ -125,33 +135,44 @@ CREATE TABLE fileInMessage(
 
 
 
+INSERT INTO role (name, code) VALUES
+(
+	"Главный администратор",
+	"admin"
+),(
+	"Мастер",
+	"master"
+);
 
-
-INSERT INTO user(nameLast, nameFirst, nameMiddle, email, password) VALUES
+INSERT INTO user(nameLast, nameFirst, nameMiddle, email, password, idRole) VALUES
 (
 	"Кулманаков",
 	"Илья",
 	"Владимирович",
 	"kul2002il@gmail.com",
-	"1234"
+	"1234",
+	1
 ),(
 	"Кулманаков",
 	"Алексей",
 	"Викторович",
 	"al42Sel@gmail.com",
-	"1234"
+	"1234",
+	2
 ),(
 	"Иванов",
 	"Дмитрий",
 	NULL,
 	"ivAN@gmail.com",
-	"1234"
+	"1234",
+	NULL
 ),(
 	"Вишняков",
 	"Андрей",
 	"Петрович",
 	"user@gmail.com",
-	"1234"
+	"1234",
+	NULL
 );
 
 INSERT INTO typeApparatus (name) VALUES
@@ -186,7 +207,6 @@ INSERT INTO file(idOwner, name) VALUES
 (2, "media/image/1/DSC_9386.JPG"),
 (2, "media/image/1/DSC_9392.JPG"),
 (3, "media/image/1/DSC_9373.JPG"),
-(3, "media/image/1/DSC_9373.JPG"),
 (3, "media/image/1/DSC_9376.JPG"),
 (3, "media/image/1/DSC_9378.JPG"),
 (2, "media/image/1/DSC_9381.JPG"),
@@ -199,7 +219,7 @@ INSERT INTO file(idOwner, name) VALUES
 (2, "media/image/2/DSC_1453.JPG"),
 (2, "media/image/2/DSC_1455.JPG"),
 (2, "media/image/2/DSC_1448.JPG"),
-(2, "media/image/2/DSC_1454.JPG"),
+(2, "media/image/2/DSC_1450.JPG"),
 (4, "media/image/2/DSC_1452.JPG"),
 (4, "media/image/2/DSC_1454.JPG"),
 (4, "media/image/2/DSC_1456.JPG"),
@@ -331,9 +351,6 @@ INSERT INTO message (idSender, idRepair, content) VALUES
 	"О проблеме прочитал. Готовы к встече на диагностику."
 );
 
-INSERT INTO unread (idUser, idMessage) VALUES
-(3, 3);
-
 INSERT INTO fileInMessage (idMessage, idFile) VALUES
 (1, 6),
 (1, 7),
@@ -352,9 +369,3 @@ INSERT INTO fileInMessage (idMessage, idFile) VALUES
 (1, 20),
 (1, 21),
 (1, 22);
-
-/*
-Для ролей:
-yii migrate --migrationPath=@yii/rbac/migrations
-yii rbac/init
-*/
