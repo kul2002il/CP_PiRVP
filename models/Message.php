@@ -10,6 +10,7 @@ use Yii;
  * @property int $id
  * @property int $idSender
  * @property int $idRepair
+ * @property int|null $idPurpose
  * @property string $content
  * @property string $datetime
  *
@@ -34,12 +35,25 @@ class Message extends \yii\db\ActiveRecord
 	public function rules()
 	{
 		return [
-			[['idSender', 'idRepair', 'content'], 'required'],
-			[['idSender', 'idRepair'], 'integer'],
+			[['idSender', 'idRepair'], 'required'],
+			[['idSender', 'idRepair', 'idPurpose'], 'integer'],
 			[['content'], 'string'],
 			[['datetime'], 'safe'],
-			[['idSender'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['idSender' => 'id']],
-			[['idRepair'], 'exist', 'skipOnError' => true, 'targetClass' => Repair::className(), 'targetAttribute' => ['idRepair' => 'id']],
+			[
+				['idPurpose'], 'exist', 'skipOnError' => true,
+				'targetClass' => Purpose::className(),
+				'targetAttribute' => ['idPurpose' => 'id']
+			],
+			[
+				['idRepair'], 'exist', 'skipOnError' => true,
+				'targetClass' => Repair::className(),
+				'targetAttribute' => ['idRepair' => 'id']
+			],
+			[
+				['idSender'], 'exist', 'skipOnError' => true,
+				'targetClass' => User::className(),
+				'targetAttribute' => ['idSender' => 'id']
+			],
 		];
 	}
 
@@ -52,8 +66,9 @@ class Message extends \yii\db\ActiveRecord
 			'id' => 'ID',
 			'idSender' => 'Id Отправителя',
 			'idRepair' => 'Id Ремонта',
+			'idPurpose' => 'Id Предназначения',
 			'content' => 'Содержимое',
-			'datetime' => 'Дата и время',
+			'datetime' => 'Дата и время отправки',
 		];
 	}
 
@@ -65,6 +80,16 @@ class Message extends \yii\db\ActiveRecord
 	public function getFileInMessages()
 	{
 		return $this->hasMany(FileInMessage::className(), ['idMessage' => 'id']);
+	}
+
+	/**
+	 * Gets query for [[IdPurpose0]].
+	 *
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getIdPurpose0()
+	{
+		return $this->hasOne(Purpose::className(), ['id' => 'idPurpose']);
 	}
 
 	/**
@@ -85,15 +110,5 @@ class Message extends \yii\db\ActiveRecord
 	public function getIdSender0()
 	{
 		return $this->hasOne(User::className(), ['id' => 'idSender']);
-	}
-
-	/**
-	 * Gets query for [[Unreads]].
-	 *
-	 * @return \yii\db\ActiveQuery
-	 */
-	public function getUnreads()
-	{
-		return $this->hasMany(Unread::className(), ['idMessage' => 'id']);
 	}
 }

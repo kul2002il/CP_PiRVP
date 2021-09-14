@@ -9,8 +9,9 @@ use Yii;
  *
  * @property int $id
  * @property int $idOwner
- * @property string $name
+ * @property string $path
  *
+ * @property Apparatus[] $apparatuses
  * @property FileInMessage[] $fileInMessages
  * @property User $idOwner0
  * @property News[] $news
@@ -33,8 +34,12 @@ class File extends \yii\db\ActiveRecord
 		return [
 			[['idOwner', 'name'], 'required'],
 			[['idOwner'], 'integer'],
-			[['name'], 'string', 'max' => 200],
-			[['idOwner'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['idOwner' => 'id']],
+			[['path'], 'string', 'max' => 255],
+			[
+				['idOwner'], 'exist', 'skipOnError' => true,
+				'targetClass' => User::className(),
+				'targetAttribute' => ['idOwner' => 'id']
+			],
 		];
 	}
 
@@ -48,6 +53,16 @@ class File extends \yii\db\ActiveRecord
 			'idOwner' => 'Id Владельца',
 			'name' => 'Путь',
 		];
+	}
+
+	/**
+	 * Gets query for [[Apparatuses]].
+	 *
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getApparatuses()
+	{
+		return $this->hasMany(Apparatus::className(), ['idFile' => 'id']);
 	}
 
 	/**

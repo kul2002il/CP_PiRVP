@@ -8,10 +8,10 @@ class m210911_124506_createNewsTable extends Migration
 	{
 		$this->createTable('news', [
 			'id' => $this->primaryKey(),
-			'idFile' => $this->integer()->notNull(),
-			'title' => $this->string()->notNull(),
+			'idFile' => $this->integer(),
+			'title' => $this->string(80)->notNull(),
 			'content' => $this->text()->notNull(),
-			'datetime' => $this->dateTime()->defaultExpression('NOW()'),
+			'datetime' => $this->dateTime()->notNull()->defaultExpression('NOW()'),
 		]);
 		$this->addForeignKey('NewsFile', 'news', 'idFile', 'file', 'id');
 	}

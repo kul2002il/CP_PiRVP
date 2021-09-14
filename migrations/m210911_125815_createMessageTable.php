@@ -10,11 +10,13 @@ class m210911_125815_createMessageTable extends Migration
 			'id' => $this->primaryKey(),
 			'idSender' => $this->integer()->notNull(),
 			'idRepair' => $this->integer()->notNull(),
-			'content' => $this->text(),
-			'datetime' => $this->dateTime()->defaultExpression('NOW()'),
+			'idPurpose' => $this->integer(),
+			'content' => $this->text()->notNull(),
+			'datetime' => $this->dateTime()->notNull()->defaultExpression('NOW()'),
 		]);
 		$this->addForeignKey('SenderMessage', 'message', 'idSender', 'user', 'id');
 		$this->addForeignKey('MessageRepair', 'message', 'idRepair', 'repair', 'id');
+		$this->addForeignKey('MessagePurpose', 'message', 'idPurpose', 'purpose', 'id');
 	}
 
 	public function safeDown()

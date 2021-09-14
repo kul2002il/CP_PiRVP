@@ -12,9 +12,9 @@ class m210911_103719_createUserTable extends Migration
 			
 			'nameFirst' => $this->string(80)->notNull(),
 			'nameLast' => $this->string(80)->notNull(),
-			'nameMiddle' => $this->string(80)->notNull(),
+			'nameMiddle' => $this->string(80),
 			
-			'email' => $this->string(80)->notNull()->unique(),
+			'email' => $this->string()->notNull()->unique(),
 			'password' => $this->string(255)->notNull(),
 		]);
 		$this->addForeignKey('RoleUser', 'user', 'idRole', 'role', 'id');

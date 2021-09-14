@@ -11,13 +11,13 @@ use Yii;
  * @property int|null $idMaster
  * @property int $idApparatus
  * @property string $title
- * @property string $description
- * @property string|null $feedback
+ * @property string|null $description
  * @property string $startRepair
  * @property string|null $endRepair
  *
  * @property Apparatus $idApparatus0
  * @property User $idMaster0
+ * @property LastActivity[] $lastActivities 
  * @property Message[] $messages
  */
 class Repair extends \yii\db\ActiveRecord
@@ -37,12 +37,20 @@ class Repair extends \yii\db\ActiveRecord
 	{
 		return [
 			[['idMaster', 'idApparatus'], 'integer'],
-			[['idApparatus', 'title', 'description'], 'required'],
-			[['description', 'feedback'], 'string'],
+			[['idApparatus', 'title'], 'required'],
+			[['description'], 'string'],
 			[['startRepair', 'endRepair'], 'safe'],
-			[['title'], 'string', 'max' => 200],
-			[['idMaster'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['idMaster' => 'id']],
-			[['idApparatus'], 'exist', 'skipOnError' => true, 'targetClass' => Apparatus::className(), 'targetAttribute' => ['idApparatus' => 'id']],
+			[['title'], 'string', 'max' => 80],
+			[
+				['idMaster'], 'exist', 'skipOnError' => true,
+				'targetClass' => User::className(),
+				'targetAttribute' => ['idMaster' => 'id']
+			],
+			[
+				['idApparatus'], 'exist', 'skipOnError' => true,
+				'targetClass' => Apparatus::className(),
+				'targetAttribute' => ['idApparatus' => 'id']
+			],
 		];
 	}
 
@@ -57,7 +65,6 @@ class Repair extends \yii\db\ActiveRecord
 			'idApparatus' => 'Id Аппарата',
 			'title' => 'Заголовок ремонта',
 			'description' => 'Описание',
-			'feedback' => 'Отзыв',
 			'startRepair' => 'Начало ремонта',
 			'endRepair' => 'Конец ремонта',
 		];
@@ -81,6 +88,16 @@ class Repair extends \yii\db\ActiveRecord
 	public function getIdMaster0()
 	{
 		return $this->hasOne(User::className(), ['id' => 'idMaster']);
+	}
+
+	/**
+	 * Gets query for [[LastActivities]].
+	 *
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getLastActivities()
+	{
+		return $this->hasMany(LastActivity::className(), ['idRepair' => 'id']);
 	}
 
 	/**

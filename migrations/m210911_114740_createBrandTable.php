@@ -8,7 +8,7 @@ class m210911_114740_createBrandTable extends Migration
 	{
 		$this->createTable('brand', [
 			'id' => $this->primaryKey(),
-			'name' => $this->string()->notNull()->unique(),
+			'name' => $this->string(80)->notNull()->unique(),
 		]);
 	}
 	

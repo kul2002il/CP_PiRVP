@@ -14,6 +14,7 @@ class m210911_134245_fillRoleTable extends Migration
 			'master',
 		],
 	];
+
 	public function safeUp()
 	{
 		$this->batchInsert('role', ['name', 'code'], $this->data);

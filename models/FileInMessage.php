@@ -5,11 +5,11 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "fileInMessage".
+ * This is the model class for table "file_in_message".
  *
  * @property int $id
- * @property int $idFile
  * @property int $idMessage
+ * @property int $idFile
  *
  * @property File $idFile0
  * @property Message $idMessage0
@@ -21,7 +21,7 @@ class FileInMessage extends \yii\db\ActiveRecord
 	 */
 	public static function tableName()
 	{
-		return 'fileInMessage';
+		return 'file_in_message';
 	}
 
 	/**
@@ -32,8 +32,16 @@ class FileInMessage extends \yii\db\ActiveRecord
 		return [
 			[['idFile', 'idMessage'], 'required'],
 			[['idFile', 'idMessage'], 'integer'],
-			[['idFile'], 'exist', 'skipOnError' => true, 'targetClass' => File::className(), 'targetAttribute' => ['idFile' => 'id']],
-			[['idMessage'], 'exist', 'skipOnError' => true, 'targetClass' => Message::className(), 'targetAttribute' => ['idMessage' => 'id']],
+			[
+				['idFile'], 'exist', 'skipOnError' => true,
+				'targetClass' => File::className(),
+				'targetAttribute' => ['idFile' => 'id']
+			],
+			[
+				['idMessage'], 'exist', 'skipOnError' => true,
+				'targetClass' => Message::className(),
+				'targetAttribute' => ['idMessage' => 'id']
+			],
 		];
 	}
 

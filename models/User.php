@@ -2,8 +2,6 @@
 
 namespace app\models;
 
-use app\models\Role;
-
 use Yii;
 
 /**
@@ -34,15 +32,14 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 	{
 		return [
 			[['nameFirst', 'nameLast', 'email', 'password'], 'required'],
-			[['nameFirst', 'nameLast', 'nameMiddle', 'email'], 'string', 'max' => 100],
+			[['nameFirst', 'nameLast', 'nameMiddle'], 'string', 'max' => 80],
 			[['password'], 'string', 'max' => 255, 'min' => 8],
 			[['password_repeat'], 'compare', 'compareAttribute' => 'password'],
+			[['email'], 'string', 'max' => 255],
 			[['email'], 'unique'],
 			[['email'], 'email'],
 			[
-				['idRole'],
-				'exist',
-				'skipOnError' => true,
+				['idRole'], 'exist', 'skipOnError' => true,
 				'targetClass' => Role::className(),
 				'targetAttribute' => ['idRole' => 'id'],
 			],
@@ -77,6 +74,11 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 	{
 		return $this->hasOne(Role::className(), ['id' => 'idRole']);
 	}
+	
+	public function getLastActivities()
+	{
+		return $this->hasMany(LastActivity::className(), ['idUser' => 'id']);
+	}
 
 	public function getMessages()
 	{
@@ -86,11 +88,6 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 	public function getRepairs()
 	{
 		return $this->hasMany(Repair::className(), ['idMaster' => 'id']);
-	}
-
-	public function getUnreads()
-	{
-		return $this->hasMany(Unread::className(), ['idUser' => 'id']);
 	}
 
 

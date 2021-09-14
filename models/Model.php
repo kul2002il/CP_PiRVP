@@ -35,8 +35,16 @@ class Model extends \yii\db\ActiveRecord
 			[['idType', 'idBrand', 'name'], 'required'],
 			[['idType', 'idBrand'], 'integer'],
 			[['name'], 'string', 'max' => 80],
-			[['idType'], 'exist', 'skipOnError' => true, 'targetClass' => Type::className(), 'targetAttribute' => ['idType' => 'id']],
-			[['idBrand'], 'exist', 'skipOnError' => true, 'targetClass' => Brand::className(), 'targetAttribute' => ['idBrand' => 'id']],
+			[
+				['idBrand'], 'exist', 'skipOnError' => true,
+				'targetClass' => Brand::className(),
+				'targetAttribute' => ['idBrand' => 'id']
+			],
+			[
+				['idType'], 'exist', 'skipOnError' => true,
+				'targetClass' => Type::className(),
+				'targetAttribute' => ['idType' => 'id']
+			],
 		];
 	}
 

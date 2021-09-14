@@ -10,7 +10,7 @@ class m210911_130539_createLastActivityTable extends Migration
 			'id' => $this->primaryKey(),
 			'idUser' => $this->integer()->notNull(),
 			'idRepair' => $this->integer()->notNull(),
-			'datetime' => $this->dateTime()->defaultExpression('NOW()'),
+			'datetime' => $this->dateTime()->notNull()->defaultExpression('NOW()'),
 		]);
 		$this->addForeignKey('UserActivity', 'last_activity', 'idUser', 'user', 'id');
 		$this->addForeignKey('RepairActivity', 'last_activity', 'idRepair', 'repair', 'id');

@@ -33,9 +33,10 @@ class News extends \yii\db\ActiveRecord
 			[['idFile'], 'integer'],
 			[['title', 'content'], 'required'],
 			[['content'], 'string'],
-			[['title'], 'string', 'max' => 200],
-			[['idFile'], 'exist',
-				'skipOnError' => true,
+			[['datetime'], 'safe'],
+			[['title'], 'string', 'max' => 80],
+			[
+				['idFile'], 'exist', 'skipOnError' => true,
 				'targetClass' => File::className(),
 				'targetAttribute' => ['idFile' => 'id']
 			],
@@ -49,9 +50,10 @@ class News extends \yii\db\ActiveRecord
 	{
 		return [
 			'id' => 'ID',
-			'idFile' => 'Id File',
-			'title' => 'Title',
-			'content' => 'Content',
+			'idFile' => 'Id Файла',
+			'title' => 'Заголовок',
+			'content' => 'Текст',
+			'datetime' => 'Дата и время публикации',
 		];
 	}
 

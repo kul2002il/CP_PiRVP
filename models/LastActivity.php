@@ -5,24 +5,24 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "unread".
+ * This is the model class for table "last_activity".
  *
  * @property int $id
  * @property int $idUser
  * @property int $idRepair
- * @property string $datetime
+ * @property string|null $datetime
  *
  * @property Repair $idRepair0
  * @property User $idUser0
  */
-class Unread extends \yii\db\ActiveRecord
+class LastActivity extends \yii\db\ActiveRecord
 {
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function tableName()
 	{
-		return 'unread';
+		return 'last_activity';
 	}
 
 	/**
@@ -34,8 +34,16 @@ class Unread extends \yii\db\ActiveRecord
 			[['idUser', 'idRepair'], 'required'],
 			[['idUser', 'idRepair'], 'integer'],
 			[['datetime'], 'safe'],
-			[['idUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['idUser' => 'id']],
-			[['idRepair'], 'exist', 'skipOnError' => true, 'targetClass' => Repair::className(), 'targetAttribute' => ['idRepair' => 'id']],
+			[
+				['idRepair'], 'exist', 'skipOnError' => true,
+				'targetClass' => Repair::className(),
+				'targetAttribute' => ['idRepair' => 'id']
+			],
+			[
+				['idUser'], 'exist', 'skipOnError' => true,
+				'targetClass' => User::className(),
+				'targetAttribute' => ['idUser' => 'id']
+			],
 		];
 	}
 
@@ -48,7 +56,7 @@ class Unread extends \yii\db\ActiveRecord
 			'id' => 'ID',
 			'idUser' => 'Id Пользователя',
 			'idRepair' => 'Id Ремонта',
-			'datetime' => 'Дата и время',
+			'datetime' => 'Дата и время последней активности',
 		];
 	}
 
