@@ -32,9 +32,9 @@ class File extends \yii\db\ActiveRecord
 	public function rules()
 	{
 		return [
-			[['idOwner', 'name'], 'required'],
+			[['idOwner', 'path'], 'required'],
 			[['idOwner'], 'integer'],
-			[['path'], 'string', 'max' => 255],
+			[['path'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
 			[
 				['idOwner'], 'exist', 'skipOnError' => true,
 				'targetClass' => User::className(),
@@ -51,8 +51,18 @@ class File extends \yii\db\ActiveRecord
 		return [
 			'id' => 'ID',
 			'idOwner' => 'Id Владельца',
-			'name' => 'Путь',
+			'path' => 'Путь',
 		];
+	}
+
+	public function upload()
+	{
+		if ($this->validate()) {
+			$this->path->saveAs('media/' . $this->path->baseName . '.' . $this->path->extension);
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**

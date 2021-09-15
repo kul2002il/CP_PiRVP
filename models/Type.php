@@ -54,4 +54,26 @@ class Type extends \yii\db\ActiveRecord
 	{
 		return $this->hasMany(Model::className(), ['idType' => 'id']);
 	}
+
+	public static function seed()
+	{
+		$data = [
+			['Сварочный аппарат'],
+			['Генератор'],
+			['Тепловая пушка'],
+			['Лазерный резак'],
+			['Промышленный холодильник'],
+			['ТНВД']
+		];
+		foreach ($data as $pin)
+		{
+			$model = new self();
+			$model->name = $pin[0];
+			if(!$model->save())
+			{
+				print_r($model->errors);
+				echo "Пункт {$pin[0]} не может быть сохранён по вышеуказанным причинам.";
+			}
+		}
+	}
 }

@@ -168,4 +168,70 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 		$name = explode('@', $name)[0];
 		return $name;
 	}
+
+	public function setRoleCode(string $code = '')
+	{
+		if($code === '')
+		{
+			$this->idRole = null;
+			return;
+		}
+		$role = Role::findOne(['code' => $code]);
+		if(!$role)
+		{
+			throw new \Exception("Роль $code не найдена.");
+		}
+		$this->idRole = $role->id;
+	}
+
+	public static function seed()
+	{
+		$data = [
+			[
+				'Кулманаков',
+				'Илья',
+				'Владимирович',
+				'kul2002il@gmail.com',
+				'12341234',
+				'admin',
+			],
+			[
+				'Кулманаков',
+				'Алексей',
+				'Викторович',
+				'al42Sel@gmail.com',
+				'12341234',
+				'master'
+			],[
+				'Иванов',
+				'Дмитрий',
+				null,
+				'ivAN@gmail.com',
+				'12341234',
+				'',
+			],[
+				'Вишняков',
+				'Андрей',
+				'Петрович',
+				'user@gmail.com',
+				'12341234',
+				'',
+			]
+		];
+		foreach ($data as $user)
+		{
+			$model = new self();
+			$model->nameFirst = $user[0];
+			$model->nameLast = $user[1];
+			$model->nameMiddle = $user[2];
+			$model->email = $user[3];
+			$model->password = $user[4];
+			$model->setRoleCode($user[5]);
+			if(!$model->save())
+			{
+				print_r($model->errors);
+				echo "Пользователь {$model->email} не может быть сохранён по вышеуказанным причинам.";
+			}
+		}
+	}
 }

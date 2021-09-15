@@ -66,7 +66,9 @@ $this->title = 'Новая заявка';
 					'class' => 'mb-3 autogrow textarea-message',
 					'style' => 'width: 100%',
 					'autofocus' => true,
-				]); ?>
+				]);?>
+				
+				<?php //$form->field($file, 'imageFile')->fileInput() ?>
 				<div class="input-group mb-3">
 					<input type="file"
 						class="form-control">
