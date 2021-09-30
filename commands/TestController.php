@@ -10,7 +10,6 @@ use tests\_support\TextTestListner;
 
 class TestController extends Controller
 {
-
 	public function actionIndex()
 	{
 		echo "Test application programm.\n";
@@ -23,6 +22,8 @@ class TestController extends Controller
 		$result->addListener(new TextTestListner());
 		$test = new TestSuite();
 		$test->addTestSuite(\tests\unit\models\RoleTest::class);
+		$test->addTestSuite(\tests\unit\models\UserTest::class);
+		$test->addTestSuite(\tests\unit\models\ModelTest::class);
 		$test->run($result);
 		foreach ($result->errors() as $fail)
 		{

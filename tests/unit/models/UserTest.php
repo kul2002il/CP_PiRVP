@@ -2,43 +2,25 @@
 
 namespace tests\unit\models;
 
+use PHPUnit\Framework\TestCase;
 use app\models\User;
+use app\models\Role;
 
-class UserTest extends \Codeception\Test\Unit
+class UserTest extends TestCase
 {
-    public function testFindUserById()
-    {
-        expect_that($user = User::findIdentity(100));
-        expect($user->username)->equals('admin');
+	public function testFindUserByUsername()
+	{
+		$user = User::findByUsername('kul.2002.il@gmail.com');
+		$this->assertNotEmpty($user, 'Пользователь не найден.');
+		$user = User::findByUsername('test@gmail.com');
+		$this->assertEmpty($user, 'Найден несуществующий пользователь.');
+	}
 
-        expect_not(User::findIdentity(999));
-    }
-
-    public function testFindUserByAccessToken()
-    {
-        expect_that($user = User::findIdentityByAccessToken('100-token'));
-        expect($user->username)->equals('admin');
-
-        expect_not(User::findIdentityByAccessToken('non-existing'));        
-    }
-
-    public function testFindUserByUsername()
-    {
-        expect_that($user = User::findByUsername('admin'));
-        expect_not(User::findByUsername('not-admin'));
-    }
-
-    /**
-     * @depends testFindUserByUsername
-     */
-    public function testValidateUser($user)
-    {
-        $user = User::findByUsername('admin');
-        expect_that($user->validateAuthKey('test100key'));
-        expect_not($user->validateAuthKey('test102key'));
-
-        expect_that($user->validatePassword('admin'));
-        expect_not($user->validatePassword('123456'));        
-    }
-
+	public function testSetRoleByCode()
+	{
+		$user = new User();
+		$this->assertNull($user->idRole, 'Присваивается роль по умолчанию');
+		$user->setRoleCode('admin');
+		$this->assertSame(Role::findOne(['code' => 'admin'])->id, $user->idRole, 'Роль устанавливается неверно или вовсе не устанавливается.');
+	}
 }

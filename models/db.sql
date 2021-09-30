@@ -60,7 +60,7 @@ INSERT INTO brand (name) VALUES
 ("ЭвалКом"),
 ("КАМАЗ");
 
-INSERT INTO file(idOwner, name) VALUES
+INSERT INTO file(idOwner, path) VALUES
 (1, "media/image/banner.png"),
 (1, "media/image/metal.jpeg"),
 (1, "media/image/start.jpg"),
@@ -184,21 +184,18 @@ INSERT INTO repair
 	idApparatus,
 	
 	title,
-	description,
-	feedback
+	description
 ) VALUES
 (
 	2,
 	1,
 	"Сварка сломалась",
-	"Однажды во время работы перестал работать аппарат.",
-	"Всё замечательно."
+	"Однажды во время работы перестал работать аппарат."
 ),(
 	2,
 	1,
 	"Сварка сломалась 2",
-	"Однажды во время работы перестал работать аппарат.",
-	NULL
+	"Однажды во время работы перестал работать аппарат."
 );
 
 INSERT INTO message (idSender, idRepair, content) VALUES
@@ -220,7 +217,7 @@ INSERT INTO message (idSender, idRepair, content) VALUES
 	"О проблеме прочитал. Готовы к встече на диагностику."
 );
 
-INSERT INTO fileInMessage (idMessage, idFile) VALUES
+INSERT INTO file_in_message (idMessage, idFile) VALUES
 (1, 6),
 (1, 7),
 (1, 8),
