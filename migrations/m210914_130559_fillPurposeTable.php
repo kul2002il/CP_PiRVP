@@ -13,7 +13,7 @@ class m210914_130559_fillPurposeTable extends Migration
 
 	public function safeUp()
 	{
-		$this->batchInsert('role', ['name', 'code'], $this->data);
+		$this->batchInsert('purpose', ['name', 'code'], $this->data);
 	}
 
 	public function safeDown(){}
