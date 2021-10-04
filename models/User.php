@@ -129,22 +129,43 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 		return Yii::$app->getSecurity()->validatePassword($password, $this->password);
 	}
 
-	public function save($runValidation = true, $attributeNames = null)
+
+	public function passwordHash($save = true)
 	{
-		if($runValidation)
-		{
-			if(!$this->validate($attributeNames))
-			{
-				return false;
-			}
-		}
 		$this->password = Yii::$app->getSecurity()->generatePasswordHash($this->password);
 		$this->password_repeat = '';
-		return parent::save(false);
+		if($save)
+		{
+			return $this->save(false, ['password']);
+		}
 	}
 
 
-
+	public static function signup(array $data)
+	{
+		$model = new self();
+		$fillable = [
+			'nameFirst',
+			'nameLast',
+			'nameMiddle',
+			'email',
+			'password',
+			'password_repeat',
+		];
+		$data = array_intersect_key($data, array_flip($fillable));
+		$model->attributes = $data;
+		if($model->validate())
+		{
+			$model->passwordHash(false);
+			$model->save(false);
+		}
+		else
+			file_put_contents('log.txt', var_export('Не валидна', true));
+		//$model->password = '';
+		$model->password_repeat = '';
+		return $model;
+	}
+	
 	public function login()
 	{
 		$user = self::findByUsername($this->email);
@@ -191,7 +212,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 				'Кулманаков',
 				'Илья',
 				'Владимирович',
-				'kul2002il@gmail.com',
+				'kul.2002.il@gmail.com',
 				'12341234',
 				'admin',
 			],

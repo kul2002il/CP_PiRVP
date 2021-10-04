@@ -10,7 +10,15 @@ class UserTest extends TestCase
 {
 	public function testSignupWithSetRoleId()
 	{
-		$user = new User([
+		$user = User::findByUsername('test@gmail.com');
+		if($user)
+		{
+			$user->delete();
+		}
+		$this->assertEmpty(
+			$user,
+			'Пользователь не может быть удалён.');
+		$user = User::signup([
 			'idRole' => 1,
 			'nameFirst' => 'testFirst',
 			'nameLast' => 'testLast',
@@ -19,8 +27,11 @@ class UserTest extends TestCase
 			'password' => '12341234',
 			'password_repeat' => '12341234',
 		]);
-		$this->assertNotTrue(
-			$user->validate(),
+		$this->assertEmpty(
+			$user->errors,
+			"Установка роли при регистрации вызывает ошибку:\n" . var_export($user->errors, true));
+		$this->assertNull(
+			$user->idRole,
 			'Установка роли при регистрации считается нормой.');
 	}
 
@@ -41,7 +52,7 @@ class UserTest extends TestCase
 	{
 		$user = User::findByUsername('kul.2002.il@gmail.com');
 		$this->assertNotEmpty($user, 'Пользователь не найден.');
-		$user = User::findByUsername('test@gmail.com');
+		$user = User::findByUsername('empty@gmail.com');
 		$this->assertEmpty($user, 'Найден несуществующий пользователь.');
 	}
 

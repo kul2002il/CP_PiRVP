@@ -23,7 +23,7 @@ $this->title = "Мои аппараты";
 	<div class="container px-4">
 		<div class="row align-items-center py-4">
 			<div class="col-3">
-				<img src="/<?= Url::to($article->idFile0->name)?>"
+				<img src="/<?=$article->idFile0->url?>"
 					class="img-fluid"
 					alt="image">
 			</div>

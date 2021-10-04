@@ -9,7 +9,7 @@ $this->title = 'Контакты';
 	<div class="row">
 		<div class="col">
 			<div class="card w-100">
-				<img src="/static/img/envelope.svg"
+				<img src="<?=url::base()?>/static/img/envelope.svg"
 					class="bd-placeholder-img card-img-top py-2"
 					width="100%" height="180">
 			
@@ -26,7 +26,7 @@ $this->title = 'Контакты';
 		
 		<div class="col">
 			<div class="card w-100">
-				<img src="/static/img/phone.svg"
+				<img src="<?=url::base()?>/static/img/phone.svg"
 					class="bd-placeholder-img card-img-top py-2"
 					width="100%" height="180">
 			
@@ -42,7 +42,7 @@ $this->title = 'Контакты';
 		
 		<div class="col">
 			<div class="card w-100">
-				<img src="/static/img/at.svg"
+				<img src="<?=url::base()?>/static/img/at.svg"
 					class="bd-placeholder-img card-img-top py-2"
 					width="100%" height="180">
 			

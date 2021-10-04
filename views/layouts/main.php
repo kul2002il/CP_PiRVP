@@ -27,12 +27,12 @@ AppAsset::register($this);
 <header>
 	<div class="container">
 		<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
-			<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+			<a href="<?=Url::toRoute('/');?>" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
 				<span class="fs-4">РEПРОТЭК</span>
 			</a>
 
 			<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-				<li><a href="/" class="nav-link px-2 link-dark">Главная</a></li>
+				<li><a href="<?=Url::toRoute('/');?>" class="nav-link px-2 link-dark">Главная</a></li>
 				<li><a href="<?=Url::toRoute('/news');?>" class="nav-link px-2 link-dark">Новости</a></li>
 				<li><a href="<?=Url::toRoute('/site/contact-links');?>" class="nav-link px-2 link-dark">Контакты</a></li>
 				<li><a href="<?=Url::toRoute('/site/about');?>" class="nav-link px-2 link-dark">О нас</a></li>
@@ -44,17 +44,9 @@ AppAsset::register($this);
 					<?=Yii::$app->user->identity->username?>
 				</a>
 				<a href="<?=Url::toRoute('/user/logout');?>" class="btn">
-					<img alt="logout" src="/static/img/logout.svg" style="width: 40px;">
+					<img alt="logout" src="<?=url::base()?>/static/img/logout.svg" style="width: 40px;">
 				</a>
 			</div>
-			<!-- <form method="post" class="col-md-3 text-end" action="<?=Url::to('/user/logout');?>">
-				<a href="<?=Url::toRoute('/user/personal-area');?>" class="btn btn-outline-dark me-2">
-					<?=Yii::$app->user->identity->username?>
-				</a>
-				<button class="btn" name="logout" value="Выйти">
-					<img alt="logout" src="/static/img/logout.svg" style="width: 40px;">
-				</button>
-			</form> -->
 			<?php else:?>
 			<div class="col-md-3 text-end">
 				<a href="<?=Url::toRoute('/user/login');?>" class="btn btn-outline-dark me-2">Войти</a>

@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "file".
@@ -63,6 +64,11 @@ class File extends \yii\db\ActiveRecord
 		} else {
 			return false;
 		}
+	}
+
+	public function getUrl()
+	{
+		return url::base() . '/' . $this->path;
 	}
 
 	/**

@@ -5,7 +5,6 @@
 /* @var $pagination yii\data\Pagination */
 
 use yii\helpers\Html;
-use yii\helpers\Url;
 use app\widgets\Pagination;
 
 $this->title = 'Новости';
@@ -18,8 +17,8 @@ $this->title = 'Новости';
 		<div class="container col-xxl-8 px-4">
 			<div class="row flex-lg-row-reverse align-items-center py-4">
 				<div class="col-10 col-sm-8 col-lg-6">
-					<img src="/<?= Url::to($article->idFile0->name)?>" class="d-block mx-lg-auto img-fluid"
-						alt="image" width="350" height="250">
+					<img src="<?=$article->idFile0->url?>" class="d-block mx-lg-auto img-fluid"
+						alt="news image" width="350" height="250">
 				</div>
 				<div class="col-lg-6">
 					<h2 class="display-5 fw-bold mb-3"><?= Html::encode($article->title)?></h2>

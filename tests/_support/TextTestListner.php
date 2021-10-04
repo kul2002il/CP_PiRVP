@@ -64,6 +64,19 @@ class TextTestListner implements TestListener
 		$this->print("[R] $class: {$t->getMessage()}");
 	}
 
+	//*
+	public function startTest(Test $test): void
+	{}
+
+	public function startTestSuite(TestSuite $suite): void
+	{}
+	
+	public function endTest(Test $test, float $time): void
+	{}
+	
+	public function endTestSuite(TestSuite $suite): void
+	{}
+	/*/
 	public function startTest(Test $test): void
 	{
 		$class = get_class($test);
@@ -91,5 +104,6 @@ class TextTestListner implements TestListener
 		$this->shiftBraces(-1);
 		$this->print("   End suite $class");
 	}
+	//*/
 }
 
