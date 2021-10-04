@@ -8,6 +8,7 @@
 
 use app\widgets\Pagination;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 $this->title = Html::encode($apparatus->name);
@@ -60,7 +61,7 @@ $this->title = Html::encode($apparatus->name);
 			<?php $form = ActiveForm::begin(['class' => 'form-message border-top']) ?>
 				<div class="d-flex align-items-end">
 					<div class="btn">
-						<img class="button-message" alt="paperclip" src="/static/img/paperclip.svg">
+						<img class="button-message" alt="paperclip" src="<?=Url::base()?>/static/img/paperclip.svg">
 					</div>
 					<?= $form->field($messageForm, 'content', [
 						'template' => '{input}',
@@ -71,7 +72,7 @@ $this->title = Html::encode($apparatus->name);
 						'autofocus' => true,
 					]); ?>
 					<button class="btn">
-						<img class="button-message" alt="send" src="/static/img/send.svg">
+						<img class="button-message" alt="send" src="<?=Url::base()?>/static/img/send.svg">
 					</button>
 				</div>
 			<?php ActiveForm::end(); ?>

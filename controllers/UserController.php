@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\data\Pagination;
 use app\models\User;
 use app\models\Apparatus;
+use yii\helpers\Url;
 
 class UserController extends Controller
 {
@@ -39,10 +40,14 @@ class UserController extends Controller
 	
 	public function actionSignup()
 	{
-		$user = User::signup(Yii::$app->request->post());
-		if(empty($user->errors))
+		$user = new User();
+		if(Yii::$app->request->isPost)
 		{
-			return $this->goBack();
+			$user->load(Yii::$app->request->post());
+			if($user->signup())
+			{
+				return $this->redirect(Url::toRoute('/user/login'));
+			}
 		}
 		return $this->render('signup', [
 			'user' => $user,

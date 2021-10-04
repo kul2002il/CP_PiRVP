@@ -141,29 +141,19 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 	}
 
 
-	public static function signup(array $data)
+	public function signup()
 	{
-		$model = new self();
-		$fillable = [
-			'nameFirst',
-			'nameLast',
-			'nameMiddle',
-			'email',
-			'password',
-			'password_repeat',
-		];
-		$data = array_intersect_key($data, array_flip($fillable));
-		$model->attributes = $data;
-		if($model->validate())
+		$this->idRole = null;
+		if($this->validate())
 		{
-			$model->passwordHash(false);
-			$model->save(false);
+			$this->passwordHash(false);
+			$this->save(false);
+			$this->password_repeat = '';
+			return true;
 		}
-		else
-			file_put_contents('log.txt', var_export('Не валидна', true));
-		//$model->password = '';
-		$model->password_repeat = '';
-		return $model;
+		$this->password = '';
+		$this->password_repeat = '';
+		return false;
 	}
 	
 	public function login()
@@ -203,56 +193,5 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 			throw new \Exception("Роль $code не найдена.");
 		}
 		$this->idRole = $role->id;
-	}
-
-	public static function seed()
-	{
-		$data = [
-			[
-				'Кулманаков',
-				'Илья',
-				'Владимирович',
-				'kul.2002.il@gmail.com',
-				'12341234',
-				'admin',
-			],
-			[
-				'Кулманаков',
-				'Алексей',
-				'Викторович',
-				'al42Sel@gmail.com',
-				'12341234',
-				'master'
-			],[
-				'Иванов',
-				'Дмитрий',
-				null,
-				'ivAN@gmail.com',
-				'12341234',
-				'',
-			],[
-				'Вишняков',
-				'Андрей',
-				'Петрович',
-				'user@gmail.com',
-				'12341234',
-				'',
-			]
-		];
-		foreach ($data as $user)
-		{
-			$model = new self();
-			$model->nameFirst = $user[0];
-			$model->nameLast = $user[1];
-			$model->nameMiddle = $user[2];
-			$model->email = $user[3];
-			$model->password = $user[4];
-			$model->setRoleCode($user[5]);
-			if(!$model->save())
-			{
-				print_r($model->errors);
-				echo "Пользователь {$model->email} не может быть сохранён по вышеуказанным причинам.";
-			}
-		}
 	}
 }

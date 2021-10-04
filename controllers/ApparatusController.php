@@ -35,7 +35,7 @@ class ApparatusController extends \yii\web\Controller
 		$id = Yii::$app->request->get('id');
 		if(!$id)
 		{
-			return $this->redirect('/user/personal-area');
+			return $this->redirect(Url::toRoute('/user/personal-area'));
 		}
 
 		$apparatus = Apparatus::find([

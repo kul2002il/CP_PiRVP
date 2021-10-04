@@ -44,7 +44,7 @@ AppAsset::register($this);
 					<?=Yii::$app->user->identity->username?>
 				</a>
 				<a href="<?=Url::toRoute('/user/logout');?>" class="btn">
-					<img alt="logout" src="<?=url::base()?>/static/img/logout.svg" style="width: 40px;">
+					<img alt="logout" src="<?=Url::base()?>/static/img/logout.svg" style="width: 40px;">
 				</a>
 			</div>
 			<?php else:?>

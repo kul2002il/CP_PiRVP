@@ -54,26 +54,4 @@ class Brand extends \yii\db\ActiveRecord
 	{
 		return $this->hasMany(Model::className(), ['idBrand' => 'id']);
 	}
-
-	public static function seed()
-	{
-		$data = [
-			['DEXP'],
-			['Ресанта'],
-			['PKH'],
-			['Бирюса'],
-			['ЭвалКом'],
-			['КАМАЗ'],
-		];
-		foreach ($data as $pin)
-		{
-			$model = new self();
-			$model->name = $pin[0];
-			if(!$model->save())
-			{
-				print_r($model->errors);
-				echo "Пункт {$pin[0]} не может быть сохранён по вышеуказанным причинам.";
-			}
-		}
-	}
 }

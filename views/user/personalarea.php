@@ -13,23 +13,34 @@ $this->title = "Мои аппараты";
 
 <div class="container my-3">
 	<div>
-		<a class="btn btn-warning" href="/apparatus/request">Подать заявку</a>
+		<a class="btn btn-warning" href="<?=Url::toRoute('/apparatus/request')?>">Подать заявку</a>
 	</div>
 </div>
 
 <?= Pagination::widget(['pagination' => $pagination]) ?>
-<?php foreach ($apparatuses as $article):?>
+<?php
+if(!$apparatuses)
+{
+?>
+<div class="container px-4">
+	<div>Нет аппаратов</div>
+</div>
+<?php
+}
+foreach ($apparatuses as $article):
+?>
 <div class="news-article">
 	<div class="container px-4">
 		<div class="row align-items-center py-4">
 			<div class="col-3">
-				<img src="/<?=$article->idFile0->url?>"
+				<img src="<?=$article->idFile0->url?>"
 					class="img-fluid"
 					alt="image">
 			</div>
 			<div class="col">
 				<h3>
-					<a href="/apparatus?id=<?=$article->id?>" class="link-dark text-decoration-none">
+					<a href="<?=Url::toRoute(['/apparatus', 'id' => $article->id])?>"
+						class="link-dark text-decoration-none">
 						<?= Html::encode($article->name)?>
 					</a>
 				</h3>
@@ -48,7 +59,7 @@ $this->title = "Мои аппараты";
 				</table>
 				<?php else:?>
 				<div>Нет ремонтов.</div>
-				<a class="btn btn-warning" href="/apparatus/request?apparatus=<?=$article->id?>">Подать заявку</a>
+				<a class="btn btn-warning" href="<?=Url::toRoute('/apparatus/request')?>">Подать заявку</a>
 				<?php endif;?>
 			</div>
 		</div>
