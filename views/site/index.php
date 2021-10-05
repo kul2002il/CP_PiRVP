@@ -4,20 +4,20 @@
 
 use app\models\MainPage;
 
-$model = new MainPage();
+$data = MainPage::getData();
 
 $this->title = 'Главная';
 ?>
 
 <div class="container-banner"
-	style="background-image: url(<?=$model->banner['image']?>)">
+	style="background-image: url(<?=$data['banner']['image']?>)">
 	<div class="blur">
 		<div class="container banner"
-			style="background-image: url(<?=$model->banner['image']?>)"></div>
+			style="background-image: url(<?=$data['banner']['image']?>)"></div>
 	</div>
 </div>
 
-<?php foreach ($model->heroes as $article):?>
+<?php foreach ($data['heroes'] as $article):?>
 <div class="container col-xxl-8 px-4">
 	<div class="row flex-lg-row-reverse align-items-center g-5 py-4">
 		<div class="col-10 col-sm-8 col-lg-6">

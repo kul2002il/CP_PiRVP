@@ -1,2 +1,2 @@
 RewriteEngine on
-RewriteRule ^(.*)$ /cp/web/$0 [L]
+RewriteRule ^(.*)$ /cp/web/$0 [L,R]

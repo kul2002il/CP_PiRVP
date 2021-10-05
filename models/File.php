@@ -68,7 +68,8 @@ class File extends \yii\db\ActiveRecord
 
 	public function getUrl()
 	{
-		return url::base() . '/' . $this->path;
+		//return url::base() . '/' . $this->path;
+		return Url::toRoute(['/file', 'id' => $this->id]);
 	}
 
 	/**
