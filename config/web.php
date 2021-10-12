@@ -45,6 +45,9 @@ $config = [
 			],
 		],
 		'db' => $db,
+		'authManager' => [
+			'class' => 'yii\rbac\PhpManager',
+		],
 		'urlManager' => [
 			'baseUrl' => '/cp/web/',
 			'enablePrettyUrl' => true,
