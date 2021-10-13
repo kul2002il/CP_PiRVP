@@ -11,7 +11,6 @@ class RbacController extends Controller
 
 	public function actionInit()
 	{
-		$auth = Yii::$app->authManager;
 		// Подключение корневой роли для создания всех остальных.
 		$admin = new \app\rbac\roles\Admin();
 	}
