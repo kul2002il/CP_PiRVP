@@ -6,15 +6,16 @@ use app\rbac\support\Role;
 use app\rbac\permissions as p;
 use app\rbac\roles as r;
 
-class Admin extends Role
+class Manager extends Role
 {
-	public $description = 'Администратор системы';
+	public $description = 'Управляющий мастерами';
 	public function children()
 	{
 		return [
 			new p\AddNews(),
 			new p\EditNews(),
 			new p\DeleteNews(),
+			
 			new r\User(),
 		];
 	}

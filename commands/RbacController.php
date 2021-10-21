@@ -4,14 +4,15 @@ namespace app\commands;
 
 use Yii;
 use yii\console\Controller;
-use yii\rbac\Permission;
 
 class RbacController extends Controller
 {
 
 	public function actionInit()
 	{
-		// Подключение корневой роли для создания всех остальных.
-		$admin = new \app\rbac\roles\Admin();
+		Yii::$app->authManager->removeAll();
+		// Создание корневой роли для создания всех остальных.
+		new \app\rbac\roles\Superuser();
+		new \app\rbac\roles\Guest();
 	}
 }

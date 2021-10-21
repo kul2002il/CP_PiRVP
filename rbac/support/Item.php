@@ -5,11 +5,18 @@ namespace app\rbac\support;
 class Item extends \yii\rbac\Item
 {
 	/*
-	 * Название ролей и дочерних разрешений.
-	 * (Имя класса без пространства имён.)
+	 * Дочерние роли и разрешения.
 	 * @return \app\rbac\Role[]|\app\rbac\Permition[] Массив объектов ролей и разрешений.
 	 */
 	public function children(){
+		return [];
+	}
+
+	/*
+	 * Правила
+	 * @return \app\rbac\Role[]|\app\rbac\Permition[]
+	 */
+	public function rules(){
 		return [];
 	}
 
@@ -20,21 +27,22 @@ class Item extends \yii\rbac\Item
 		preg_match('/(.*)\\\\(.+?)$/', get_called_class(), $mathes);
 		$this->name = $mathes[2];
 		$auth = \Yii::$app->authManager;
-		if(!$auth->getPermission($this->name))
+		foreach ($this->rules() as $rule) {
+			if(!$auth->getRule($rule->name))
+			{
+				$auth->add($rule);
+			}
+			$this->ruleName = $rule->name;
+		}
+		if(!$auth->getPermission($this->name) || true)
 		{
 			$auth->add($this);
 		}
 		foreach ($this->children() as $child) {
-			/*$child = $auth->getPermission($childName);
-			if(!$child)
+			if(!$auth->hasChild($this, $child))
 			{
-				$child = $auth->getRole($childName);
+				$auth->addChild($this, $child);
 			}
-			if(!$child)
-			{
-				throw new \Exception("Разрешение или роль $childName не найдено.");
-			}*/
-			\Yii::$app->authManager->addChild($this, $child);
 		}
 	}
 }
