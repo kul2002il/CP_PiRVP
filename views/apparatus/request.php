@@ -25,7 +25,7 @@ $this->title = 'Новая заявка';
 			<div class="col">
 				<h3>Добавленный аппарат</h3>
 				<select class="form-select mb-3" name="apparatus">
-					<option selected>Мой аппарат</option>
+					<option value="0" selected>Мой аппарат</option>
 					<?php foreach ($apparatuses as $app):?>
 					<option value="<?=$app->id?>"><?=$app->name?></option>
 					<?php endforeach;?>

@@ -116,6 +116,7 @@ class ApparatusController extends \yii\web\Controller
 			$idApparatus = Yii::$app->request->post('apparatus');
 			if($idApparatus)
 			{
+				Yii::debug("Аппарат id = $idApparatus");
 				$apparatus = Apparatus::findOne([
 					'id' => $idApparatus,
 					'idOwner' => Yii::$app->user->id,
@@ -169,20 +170,3 @@ class ApparatusController extends \yii\web\Controller
 		]);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
