@@ -77,9 +77,15 @@ if (YII_ENV_DEV) {
 			'myPermission' => [
 				'class' => 'app\gii\permission\Generator',
 				'templates' => [
-					'my' => '@app/gii/permission/default',
-				]
-			]
+					'with children' => '@app/gii/permission/withChildren',
+				],
+			],
+			'myRole' => [
+				'class' => 'app\gii\role\Generator',
+			],
+			'myRule' => [
+				'class' => 'app\gii\rule\Generator',
+			],
 		],
 	];
 }
