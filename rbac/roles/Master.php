@@ -5,10 +5,12 @@ namespace app\rbac\roles;
 use app\rbac\support\Role;
 use app\rbac\permissions as p;
 use app\rbac\roles as r;
+use app\rbac\rules as rule;
 
 class Master extends Role
 {
 	public $description = 'Мастер';
+
 	public function children()
 	{
 		return [
@@ -18,5 +20,10 @@ class Master extends Role
 			new p\ViewMasterApparatus(),
 			new r\User(),
 		];
+	}
+
+	public function rule()
+	{
+		return new rule\IsSmth();
 	}
 }

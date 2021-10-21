@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\NotFoundHttpException;
+use yii\web\ForbiddenHttpException;
 use app\models\Apparatus;
 use yii\data\Pagination;
 use yii\filters\AccessControl;
@@ -105,6 +106,10 @@ class ApparatusController extends \yii\web\Controller
 
 	public function actionRequest()
 	{
+		if(!Yii::$app->user->can('CreateRequest'))
+		{
+			throw new ForbiddenHttpException("Создание запроса невозможно");
+		}
 		$apparatus = null;
 		if(Yii::$app->request->isPost)
 		{

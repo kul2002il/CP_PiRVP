@@ -4,6 +4,7 @@ return [
     'Superuser' => [
         'type' => 1,
         'description' => 'Царь сея приложения',
+        'ruleName' => 'IsSmth',
         'children' => [
             'Admin',
             'Master',
@@ -13,6 +14,7 @@ return [
     'Admin' => [
         'type' => 1,
         'description' => 'Администратор системы',
+        'ruleName' => 'IsSmth',
         'children' => [
             'AddNews',
             'EditNews',
@@ -35,11 +37,13 @@ return [
     'User' => [
         'type' => 1,
         'description' => 'Простой пользователь',
+        'ruleName' => 'IsSmth',
         'children' => [
             'EditOwnProfile',
             'ViewOwnApparatus',
             'SendFeedbackOwnRepair',
             'SendMessage',
+            'CreateRequest',
         ],
     ],
     'EditOwnProfile' => [
@@ -56,7 +60,6 @@ return [
     'ViewOwnApparatus' => [
         'type' => 2,
         'description' => 'Просмотр своего аппарата',
-        'ruleName' => 'OwnApparatus',
         'children' => [
             'ViewApparatus',
         ],
@@ -80,9 +83,14 @@ return [
         'type' => 2,
         'description' => 'Отправка сообщения',
     ],
+    'CreateRequest' => [
+        'type' => 2,
+        'description' => 'Отправка запроса на ремонт аппарата.',
+    ],
     'Master' => [
         'type' => 1,
         'description' => 'Мастер',
+        'ruleName' => 'IsSmth',
         'children' => [
             'AddNews',
             'EditNews',
@@ -101,6 +109,7 @@ return [
     'Manager' => [
         'type' => 1,
         'description' => 'Управляющий мастерами',
+        'ruleName' => 'IsSmth',
         'children' => [
             'AddNews',
             'EditNews',
@@ -111,6 +120,7 @@ return [
     'Guest' => [
         'type' => 1,
         'description' => 'Простой гость',
+        'ruleName' => 'IsSmth',
         'children' => [
             'SignIn',
             'SignUp',

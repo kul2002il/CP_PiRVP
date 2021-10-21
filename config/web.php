@@ -47,6 +47,15 @@ $config = [
 		'db' => $db,
 		'authManager' => [
 			'class' => 'yii\rbac\PhpManager',
+			'defaultRoles' =>
+			[
+				'Superuser',
+				'Admin',
+				'Guest',
+				'Manager',
+				'Master',
+				'User',
+			],
 		],
 		'urlManager' => [
 			'baseUrl' => '/cp/web/',

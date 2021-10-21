@@ -5,12 +5,24 @@ return [
 	[
 		'id' => 1,
 		'name' => 'Главный администратор',
-		'code' => 'admin',
+		'code' => 'Admin',
 	],
 	'role master' =>
 	[
 		'id' => 2,
 		'name' => 'Мастер',
-		'code' => 'master',
+		'code' => 'Master',
+	],
+	'role superuser' =>
+	[
+		'id' => 3,
+		'name' => 'Царь сея системы',
+		'code' => 'Superuser',
+	],
+	'role manager' =>
+	[
+		'id' => 4,
+		'name' => 'SMM менеджер',
+		'code' => 'Manager',
 	],
 ];

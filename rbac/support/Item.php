@@ -8,16 +8,18 @@ class Item extends \yii\rbac\Item
 	 * Дочерние роли и разрешения.
 	 * @return \app\rbac\Role[]|\app\rbac\Permition[] Массив объектов ролей и разрешений.
 	 */
-	public function children(){
+	public function children()
+	{
 		return [];
 	}
 
 	/*
 	 * Правила
-	 * @return \app\rbac\Role[]|\app\rbac\Permition[]
+	 * @return \app\rbac\Rule|null
 	 */
-	public function rules(){
-		return [];
+	public function rule()
+	{
+		return null;
 	}
 
 	public function __construct($config = [])
@@ -27,14 +29,15 @@ class Item extends \yii\rbac\Item
 		preg_match('/(.*)\\\\(.+?)$/', get_called_class(), $mathes);
 		$this->name = $mathes[2];
 		$auth = \Yii::$app->authManager;
-		foreach ($this->rules() as $rule) {
+		$rule = $this->rule();
+		if ($rule) {
 			if(!$auth->getRule($rule->name))
 			{
 				$auth->add($rule);
 			}
 			$this->ruleName = $rule->name;
 		}
-		if(!$auth->getPermission($this->name) || true)
+		if (!$auth->getPermission($this->name) || true)
 		{
 			$auth->add($this);
 		}

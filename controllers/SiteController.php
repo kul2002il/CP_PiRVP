@@ -72,6 +72,7 @@ class SiteController extends Controller
 	{
 		return $this->render('contactLinks');
 	}
+
 	public function actionContact()
 	{
 		$model = new ContactForm();
