@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 /* @var $apparatus app\models\Apparatus */
 /* @var $repair app\models\Repair */
+/* @var $file app\models\File */
 
 use yii\helpers\Html;
 use app\widgets\FormFloating;
@@ -20,7 +21,7 @@ $this->title = 'Новая заявка';
 ?>
 <div class="container">
 	<h2 class="border-bottom border-4 my-3">Новая заявка</h2>
-	<?php $form = FormFloating::begin() ?>
+	<?php $form = FormFloating::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
 		<div class="row">
 			<div class="col">
 				<h3>Добавленный аппарат</h3>
@@ -68,11 +69,18 @@ $this->title = 'Новая заявка';
 					'autofocus' => true,
 				]);?>
 				
-				<?php //$form->field($file, 'imageFile')->fileInput() ?>
+				<?= $form->field($file, 'fileToUpload', [
+					'template' => '{input}',
+					'options' => [
+						'class' => 'input-group mb-3',
+					],
+				])->fileInput([
+					'class' => 'form-control',
+				]);/*/?>
 				<div class="input-group mb-3">
-					<input type="file"
+					<input type="file" name="File[fileToUpload]"
 						class="form-control">
-				</div>
+				</div><?php//*/ ?>
 				<input type="submit" class="btn btn-warning" name="request" value="Отправить">
 			</div>
 		</div>

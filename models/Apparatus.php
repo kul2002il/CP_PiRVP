@@ -34,8 +34,8 @@ class Apparatus extends \yii\db\ActiveRecord
 	public function rules()
 	{
 		return [
-			[['idModel', 'idOwner'], 'required'],
-			[['idModel', 'idOwner'], 'integer'],
+			[['idModel', 'idOwner', 'idFile'], 'required'],
+			[['idModel', 'idOwner', 'idFile'], 'integer'],
 			[
 				['idModel'], 'exist', 'skipOnError' => true,
 				'targetClass' => Model::className(),
@@ -65,6 +65,23 @@ class Apparatus extends \yii\db\ActiveRecord
 			'idFile' => 'Id Файла',
 			'idOwner' => 'Id Владельца',
 		];
+	}
+
+	public static function createWithFile($postData)
+	{
+		$apparatus = new self([
+			'idOwner' => Yii::$app->user->id,
+			'idModel' => Yii::$app->request->post('model'),
+			'idFile' => File::createFile($postData)->id,
+		]);
+		if(!$apparatus->save())
+		{
+			foreach ($apparatus->errors as $key => $error) {
+				Yii::$app->session->addFlash('error',
+					"Ошика при создании аппарата: $key " . implode(', ', $error));
+			}
+		}
+		return $apparatus;
 	}
 
 	/**

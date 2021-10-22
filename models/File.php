@@ -4,6 +4,8 @@ namespace app\models;
 
 use Yii;
 use yii\helpers\Url;
+use yii\web\ForbiddenHttpException;
+use phpDocumentor\Reflection\PseudoTypes\True_;
 
 /**
  * This is the model class for table "file".
@@ -19,12 +21,26 @@ use yii\helpers\Url;
  */
 class File extends \yii\db\ActiveRecord
 {
+	public $fileToUpload;
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function tableName()
 	{
 		return 'file';
+	}
+	
+	/**
+	 * {@inheritdoc}
+	 */
+	public function attributeLabels()
+	{
+		return [
+			'id' => 'ID',
+			'idOwner' => 'Id Владельца',
+			'path' => 'Путь',
+			'file' => 'Файл'
+		];
 	}
 
 	/**
@@ -35,7 +51,9 @@ class File extends \yii\db\ActiveRecord
 		return [
 			[['idOwner', 'path'], 'required'],
 			[['idOwner'], 'integer'],
-			[['path'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
+			[['path'], 'unique'],
+			[['path'], 'string', 'max' => 255],
+			[['fileToUpload'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg'],
 			[
 				['idOwner'], 'exist', 'skipOnError' => true,
 				'targetClass' => User::className(),
@@ -43,25 +61,44 @@ class File extends \yii\db\ActiveRecord
 			],
 		];
 	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function attributeLabels()
+	
+	public static function createFile($postData)
 	{
-		return [
-			'id' => 'ID',
-			'idOwner' => 'Id Владельца',
-			'path' => 'Путь',
-		];
+		if(!Yii::$app->user->can('LoadFile'))
+		{
+			throw new ForbiddenHttpException("Вам запрещено выгружать файлы.");
+		}
+		$file = new self();
+		$file->load($postData);
+		$file->idOwner = Yii::$app->user->id;
+		
+		if(!$file->upload() || !$file->save())
+		{
+			foreach ($file->errors as $key => $error) {
+				Yii::$app->session->addFlash('error',
+					"Ошика при создании файла: $key " . implode(', ', $error));
+			}
+		}
+		Yii::$app->session->addFlash('info',
+			"Файл " . $file->fileToUpload);
+		return $file;
 	}
 
 	public function upload()
 	{
+		$this->path = 'a';
+		$this->validate();
+		foreach ($this->errors as $key => $error) {
+			Yii::$app->session->addFlash('error',
+				"Ошика при валидации файла: $key " . implode(', ', $error));
+		}
 		if ($this->validate()) {
-			$this->path->saveAs('media/' . $this->path->baseName . '.' . $this->path->extension);
+			$this->path = 'media/' . $this->fileToUpload->baseName . '.' . $this->fileToUpload->extension;
+			$this->fileToUpload->saveAs($this->path);
 			return true;
-		} else {
+		}
+		else
+		{
 			return false;
 		}
 	}

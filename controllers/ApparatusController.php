@@ -10,6 +10,7 @@ use yii\data\Pagination;
 use yii\filters\AccessControl;
 use app\models\Message;
 use app\models\Repair;
+use app\models\File;
 use yii\helpers\Url;
 
 class ApparatusController extends \yii\web\Controller
@@ -75,11 +76,11 @@ class ApparatusController extends \yii\web\Controller
 			if(!$messageForm->save())
 			{
 				foreach ($messageForm->errors as $value) {
-					Yii::$app->session->setFlash('error', $value);
+					Yii::$app->session->addFlash('error', $value);
 				}
 			}
 			else{
-				Yii::$app->session->setFlash('success', 'Успешно.');
+				Yii::$app->session->addFlash('success', 'Успешно.');
 			}
 		}
 
@@ -106,11 +107,29 @@ class ApparatusController extends \yii\web\Controller
 
 	public function actionRequest()
 	{
-		if(!Yii::$app->user->can('CreateRequest'))
+		$apparatus = new Apparatus();
+		$repair = new Repair();
+		$file = new File();
+		if(Yii::$app->request->isPost)
 		{
-			throw new ForbiddenHttpException("Создание запроса невозможно");
+			$repair = Repair::createRequest(Yii::$app->request->post());
+			if($repair->idApparatus0)
+			{
+				$apparatus = $repair->idApparatus0;
+				$file = $apparatus->idFile0;
+			}
+			if(!$repair->errors)
+			{
+				return $this->redirect(Url::toRoute([
+					'/apparatus',
+					'id' => $apparatus->id,
+					'repair' => $repair->id,
+				]));
+			}
 		}
-		$apparatus = null;
+		
+		
+		/*
 		if(Yii::$app->request->isPost)
 		{
 			$idApparatus = Yii::$app->request->post('apparatus');
@@ -131,6 +150,7 @@ class ApparatusController extends \yii\web\Controller
 				$apparatus = new Apparatus([
 					'idOwner' => Yii::$app->user->id,
 					'idModel' => Yii::$app->request->post('model'),
+					''
 				]);
 				if(!$apparatus->save())
 				{
@@ -143,18 +163,12 @@ class ApparatusController extends \yii\web\Controller
 				}
 			}
 		}
-		$repair = new Repair();
 		if($apparatus)
 		{
 			$repair->load(Yii::$app->request->post());
 			$repair->idApparatus = $apparatus->id;
 			if($repair->save())
 			{
-				return $this->redirect(Url::toRoute([
-					'/apparatus',
-					'id' => $apparatus->id,
-					'repair' => $repair->id,
-				]));
 			}
 			else
 			{
@@ -164,9 +178,12 @@ class ApparatusController extends \yii\web\Controller
 					]);
 				}
 			}
-		}
+		}*/
+
 		return $this->render('request',[
 			'repair' => $repair,
+			'apparatus' => $apparatus,
+			'file' => $file,
 		]);
 	}
 }

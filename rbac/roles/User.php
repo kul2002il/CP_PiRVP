@@ -17,7 +17,9 @@ class User extends Role
 			new p\ViewOwnApparatus(),
 			new p\SendFeedbackOwnRepair(),
 			new p\SendMessage(),
-			new p\CreateRequest(),
+			new p\CreateRequestRepairMyApparatus(),
+			new p\CreateRequestRepairNewApparatus(),
+			new p\LoadFile(),
 		];
 	}
 

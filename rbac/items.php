@@ -43,7 +43,9 @@ return [
             'ViewOwnApparatus',
             'SendFeedbackOwnRepair',
             'SendMessage',
-            'CreateRequest',
+            'CreateRequestRepairMyApparatus',
+            'CreateRequestRepairNewApparatus',
+            'LoadFile',
         ],
     ],
     'EditOwnProfile' => [
@@ -83,9 +85,25 @@ return [
         'type' => 2,
         'description' => 'Отправка сообщения',
     ],
+    'CreateRequestRepairMyApparatus' => [
+        'type' => 2,
+        'description' => 'Отправка запроса на ремонт своего аппарата.',
+        'ruleName' => 'OwnApparatus',
+        'children' => [
+            'CreateRequest',
+        ],
+    ],
     'CreateRequest' => [
         'type' => 2,
-        'description' => 'Отправка запроса на ремонт аппарата.',
+        'description' => 'Отправка запроса на ремонт.',
+    ],
+    'CreateRequestRepairNewApparatus' => [
+        'type' => 2,
+        'description' => 'Отправка запроса на ремонт нового аппарата.',
+    ],
+    'LoadFile' => [
+        'type' => 2,
+        'description' => 'Выгрузка файла на сервер.',
     ],
     'Master' => [
         'type' => 1,

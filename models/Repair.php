@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\web\ForbiddenHttpException;
+use yii\web\ServerErrorHttpException;
 
 /**
  * This is the model class for table "repair".
@@ -68,6 +70,37 @@ class Repair extends \yii\db\ActiveRecord
 			'startRepair' => 'Начало ремонта',
 			'endRepair' => 'Конец ремонта',
 		];
+	}
+	
+	public static function createRequest($postData)
+	{
+		$repair = new self();
+		$repair->load($postData);
+		$idApparatus = $postData['apparatus'];
+		if($idApparatus)
+		{
+			if(!Yii::$app->user->can('CreateRequestRepairMyApparatus', ['id' => $idApparatus]))
+			{
+				throw new ForbiddenHttpException("Аппарат $idApparatus не найден в списке Ваших аппаратов.");
+			}
+			throw new ServerErrorHttpException("Отправка запроса на ремонт аппарата из списка своих аппаратов не реализовано.");
+		}
+		else
+		{
+			if(!Yii::$app->user->can('CreateRequestRepairNewApparatus'))
+			{
+				throw new ForbiddenHttpException("Вам запрещено создавать запрос на ремонт с новым аппаратом");
+			}
+			$repair->idApparatus = Apparatus::createWithFile($postData)->id;
+		}
+		if(!$repair->save())
+		{
+			foreach ($repair->errors as $key => $error) {
+				Yii::$app->session->addFlash('error',
+					"Ошика при создании заявки: $key " . implode(', ', $error));
+			}
+		}
+		return $repair;
 	}
 
 	/**
