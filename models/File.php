@@ -68,6 +68,7 @@ class File extends \yii\db\ActiveRecord
 		{
 			throw new ForbiddenHttpException("Вам запрещено выгружать файлы.");
 		}
+		/*
 		$file = new self();
 		$file->load($postData);
 		$file->idOwner = Yii::$app->user->id;
@@ -79,19 +80,14 @@ class File extends \yii\db\ActiveRecord
 					"Ошика при создании файла: $key " . implode(', ', $error));
 			}
 		}
-		Yii::$app->session->addFlash('info',
-			"Файл " . $file->fileToUpload);
+		*/
+		$file = self::findOne(30);
 		return $file;
 	}
 
 	public function upload()
 	{
 		$this->path = 'a';
-		$this->validate();
-		foreach ($this->errors as $key => $error) {
-			Yii::$app->session->addFlash('error',
-				"Ошика при валидации файла: $key " . implode(', ', $error));
-		}
 		if ($this->validate()) {
 			$this->path = 'media/' . $this->fileToUpload->baseName . '.' . $this->fileToUpload->extension;
 			$this->fileToUpload->saveAs($this->path);
@@ -105,7 +101,7 @@ class File extends \yii\db\ActiveRecord
 
 	public function getUrl()
 	{
-		//return url::base() . '/' . $this->path;
+		return Url::base() . '/static/img/noimg.svg';
 		return Url::toRoute(['/file', 'id' => $this->id]);
 	}
 
