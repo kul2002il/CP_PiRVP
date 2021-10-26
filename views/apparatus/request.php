@@ -69,7 +69,7 @@ $this->title = 'Новая заявка';
 					'autofocus' => true,
 				]);?>
 				
-				<?= $form->field($file, 'fileToUpload', [
+				<?= ''/* $form->field($file, 'fileToUpload', [
 					'template' => '{input}',
 					'options' => [
 						'class' => 'input-group mb-3',

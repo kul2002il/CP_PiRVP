@@ -40,10 +40,10 @@ class ApparatusController extends \yii\web\Controller
 			return $this->redirect(Url::toRoute('/user/personal-area'));
 		}
 
-		$apparatus = Apparatus::find([
+		$apparatus = Apparatus::findOne([
 			'id' => $id,
 			'idOwner' => Yii::$app->user->id,
-		])->one();
+		]);
 		if(!$apparatus)
 		{
 			throw new NotFoundHttpException(

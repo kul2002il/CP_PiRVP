@@ -81,7 +81,7 @@ class File extends \yii\db\ActiveRecord
 			}
 		}
 		*/
-		$file = self::findOne(30);
+		$file = self::findOne(6);
 		return $file;
 	}
 
