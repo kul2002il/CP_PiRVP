@@ -101,7 +101,6 @@ class File extends \yii\db\ActiveRecord
 
 	public function getUrl()
 	{
-		return Url::base() . '/static/img/noimg.svg';
 		return Url::toRoute(['/file', 'id' => $this->id]);
 	}
 
